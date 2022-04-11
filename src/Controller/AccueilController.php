@@ -26,6 +26,12 @@ class AccueilController extends AbstractController
         $filterForm = $this->createForm(FilterType::class);
         $filterForm->handleRequest($request);
 
+        if ($filterForm->isSubmitted() && $filterForm->isValid()) {
+
+            $filterForm->get('');
+
+        };
+
         return $this->render('accueil/index.html.twig',
             ['formProfil' =>$filterForm->createView(),
             'user'=>$user, 'sorties' => $sorties]);
