@@ -50,7 +50,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Sortie::class, mappedBy: 'participant')]
     private $orgaSorties;
 
-    #[ORM\Column(type: 'string', length: 50, nullable: true)]
+    #[ORM\Column(type: 'string', length: 50, nullable: true,  unique: true)]
     private $pseudo;
 
 
