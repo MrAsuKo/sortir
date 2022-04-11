@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfilController!{% endblock %}
+
+{% block body %}
+    <h1>Mon Profil</h1>
+    {{ form_start(formProfil) }}
+    {{ form_widget(formProfil) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(formProfil) }}
+{% endblock %}
