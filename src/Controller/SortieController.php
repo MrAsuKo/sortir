@@ -24,7 +24,7 @@ class SortieController extends AbstractController
         $sortieForm = $this -> createForm(SortieType::class, $sortie);
         $sortieForm -> handleRequest($request);
         if ($sortieForm -> isSubmitted() && $sortieForm -> isValid()) {
-            dump($sortieForm->get('lieu'));
+            dump($sortieForm->get('lieu')->getData());
             $em->persist($sortie);
             $em->flush();
             $this->addFlash(

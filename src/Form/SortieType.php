@@ -62,16 +62,7 @@ class SortieType extends AbstractType
                     "attr" => ["class" => "form"]
                 ]
             )
-            ->add('ville',
-                EntityType::class,
-                [
-                    'label'=> 'Ville : ',
-                    'class'=> Ville::class,
-                    'choice_label' => 'nom',
-                    'mapped' => false,
-                    "attr" => ["class" => "form"]
-                ]
-            )
+
             ->add('lieu',
                 EntityType::class,
                 [
@@ -82,6 +73,18 @@ class SortieType extends AbstractType
                     "attr" => ["class" => "form"]
                 ]
             )
+
+            ->add('ville',
+                EntityType::class,
+                [
+                    'label'=> 'Ville : ',
+                    'class'=> Ville::class,
+                    'choice_label' => 'nom',
+                    'mapped' => false,
+                    "attr" => ["class" => "form"]
+                ]
+            )
+
         ;
     }
 
