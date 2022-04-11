@@ -4,10 +4,15 @@ namespace App\Form;
 
 use App\Entity\Campus;
 use App\Entity\Sortie;
+
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 class FilterType extends AbstractType
 {
@@ -21,9 +26,32 @@ class FilterType extends AbstractType
                     'choice_label' => 'nom',
                     "multiple" => true,
                 ])
-            ->add('nom', EntityType::class, [
-                'label' => 'Le nom de la sortie contient : '
-            ])
+            ->add('nom', )
+            ->add('dateHeureDebu', DateTimeType::class,
+                    [
+                        'label' => 'Entre '
+                    ])
+            ->add('dateHeureFin',DateTimeType::class,[
+                    'label' => 'Et '
+                ])
+
+            ->add('organisateur', CheckboxType::class,
+                [
+                    'label' => 'Sorties dont je suis l\'organisateur/trice'
+                ])
+            ->add('participant', CheckboxType::class,
+                [
+                    'label' => 'Sorties auxquelles je suis inscrit/e '
+                ])
+            ->add('inscrit', CheckboxType::class,
+                [
+                    'label' => 'Sorties auxquelles je ne suis pas inscrit/e'
+                ])
+            ->add('dateLimiteInscription', CheckboxType::class,
+                [
+                    'label' => 'Sorties passées'
+                ])
+
 
         ;
 

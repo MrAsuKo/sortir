@@ -6,6 +6,8 @@
     <p>Date du jour : {{ "now"|date("m/d/Y") }}</p>
     <p>Participant : {{ user.prenom }}</p>
 
+    {{ form_start(formProfil) }}
+    {{ form_end(formProfil) }}
 
     <table>
         <thead>
