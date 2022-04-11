@@ -30,7 +30,7 @@ class SortieController extends AbstractController
                 'Bravo',
                 'La sortie a bien été créée'
             );
-            return $this -> redirectToRoute('');
+            return $this -> redirectToRoute('app_accueil');
         }
         return $this->render(
             'sortie/creer.html.twig',
