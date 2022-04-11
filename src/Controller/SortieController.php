@@ -2,10 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Lieu;
 use App\Entity\Sortie;
 use App\Form\SortieType;
-use App\Repository\SortieRepository;
-use App\Repository\VilleRepository;
+use App\Repository\LieuRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +17,7 @@ class SortieController extends AbstractController
     #[Route('/sortie/creer', name: 'sortie_creer')]
     public function creer(
         EntityManagerInterface $em,
-        Request $request,
+        Request $request
     ): Response
     {
         $sortie = new Sortie();
@@ -26,6 +26,7 @@ class SortieController extends AbstractController
         if ($sortieForm -> isSubmitted() && $sortieForm -> isValid()) {
             dump($sortieForm->get('lieu')->getData());
             $em->persist($sortie);
+            dump($sortie);
             $em->flush();
             $this->addFlash(
                 'Bravo',
