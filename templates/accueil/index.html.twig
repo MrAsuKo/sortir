@@ -41,8 +41,8 @@
         {% for sortie in sorties %}
             <tr class="campus_tr">
                 <td class="campus_td">{{ sortie.nom }}</td>
-                <td class="campus_td">{{ sortie.dateHeureDebut | date }}</td>
-                <td class="campus_td">{{ sortie.dateHeureDebut | date}}</td>
+                <td class="campus_td">{{ sortie.dateHeureDebut | date("d/m/Y H:m") }}</td>
+                <td class="campus_td">{{ sortie.dateLimiteInscription | date("d/m/Y") }}</td>
                 <td class="campus_td">{{ sortie.participant | length }}/{{ sortie.nbInscriptionsMax }}</td>
                 <td class="campus_td">{{ sortie.etat }}</td>
                 <td class="campus_td"></td>
