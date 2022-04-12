@@ -39,16 +39,17 @@
             <td class="ville_td">{{ form_widget(villeForm.codePostal) }}</td>
             <td class="ville_td">{{ form_widget(villeForm.valider) }}</td>
             {{ form_end(villeForm) }}
-            <ul>
-                <li data-vicopo="#ville, #code" data-vicopo-click='{"#code": "code", "#ville": "ville"}'>
-                    <strong data-vicopo-code-postal></strong>
-                    <span data-vicopo-ville></span>
-                </li>
-            </ul>
         </tr>
     </tfoot>
-
 </table>
+</div>
+<div class="profil_div">
+    <ul>
+        <li data-vicopo="#ville_nom, #ville_codePostal" data-vicopo-click='{"#ville_codePostal": "code", "#ville_nom": "ville"}'>
+            <strong data-vicopo-code-postal></strong>
+            <span data-vicopo-ville></span>
+        </li>
+    </ul>
 </div>
 <div class="profil_div">
     {% for label, messages in app.flashes %}
@@ -60,12 +61,6 @@
     {% endfor %}
 </div>
 {%  endif %}
-
-    <div>
-        <input id="code" placeholder="Code postal">
-        <input id="ville" placeholder="Ville">
-    </div>
-
     <script src={{ asset('js/Ville.js') }}></script>
 
 {% endblock %}

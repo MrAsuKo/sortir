@@ -15,13 +15,10 @@ class VilleType extends AbstractType
     {
         $builder
             ->add('nom',
-                TextType::class,
-                [
-                "attr" => [
-                            'id'=> 'ville'
-                    ]      ]
+                TextType::class
                         )
-            ->add('codePostal'
+            ->add('codePostal',
+                TextType::class
         )
             ->add("valider",
             SubmitType::class)
