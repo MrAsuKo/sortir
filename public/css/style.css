@@ -42,3 +42,21 @@ header{
 .profil_btn:hover{
     color:red
 }
+
+.sortieForm {
+    display: flex;
+    justify-content: center;
+}
+
+.sortieCol {
+    width: 400px;
+}
+
+.sortieInter {
+    width: 100px;
+}
+
+.sortieBout {
+    display: flex;
+    justify-content: center;
+}

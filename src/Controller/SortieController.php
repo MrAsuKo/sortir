@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Sortie;
 use App\Form\SortieType;
+use App\Repository\ParticipantRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,15 +16,19 @@ class SortieController extends AbstractController
     #[Route('/sortie/creer', name: 'sortie_creer')]
     public function creer(
         EntityManagerInterface $em,
+        ParticipantRepository $pr,
         Request                $request
     ): Response
     {
         $sortie = new Sortie();
+        $user = $this->getUser()->getUserIdentifier();
+        $user = $pr -> findOneBy(["mail"=>$user]);
         $sortieForm = $this -> createForm(SortieType::class, $sortie);
         $sortieForm -> handleRequest($request);
         if ($sortieForm -> isSubmitted() && $sortieForm -> isValid()) {
             $sortie->setLieu($sortieForm->get('lieu')->getData());
-            $sortie->setCampus($sortieForm->get('campus')->getData());
+            $sortie->setCampus($user->getCampus());
+            $sortie->setOrganisateur($user);
             $em->persist($sortie);
             $em->flush();
             $this->addFlash(
@@ -34,7 +39,7 @@ class SortieController extends AbstractController
         }
         return $this->render(
             'sortie/creer.html.twig',
-            ['sortieForm' => $sortieForm -> createView()]
+            ['sortieForm' => $sortieForm -> createView(), 'user' => $user]
         );
     }
 
