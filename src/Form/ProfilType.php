@@ -24,9 +24,9 @@ class ProfilType extends AbstractType
                     "label_attr" => [
                         "class" => "profil_label"
                     ],
-                    "attr" => [
-                        "class" => "profil_input"
-                    ]
+                        "attr" => [
+                            "class" => "profil_input"
+                        ]
                 ]
             )
             ->add('password',
