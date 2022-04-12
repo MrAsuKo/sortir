@@ -7,6 +7,9 @@ use App\Repository\ParticipantRepository;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\QueryBuilder;
+use EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto;
+use EasyCorp\Bundle\EasyAdminBundle\Dto\FilterDataDto;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +21,8 @@ class AccueilController extends AbstractController
     public function index(
         SortieRepository $sm,
         ParticipantRepository $pm,
-        Request $request
+        Request $request,
+        QueryBuilder $queryBuilder
     ): Response
     {
         $sorties = $sm->findAll();
@@ -28,12 +32,19 @@ class AccueilController extends AbstractController
 
         if ($filterForm->isSubmitted() && $filterForm->isValid()) {
 
-            $filterForm->get('');
+            $critere = '';
 
+            if ($filterForm->get('campus')->getData()) {
+                $critere .= 'campus = ' . $filterForm->get('campus')->getData();
+            }
+
+            if ($filterForm->get('nom')->getData()) {
+                $critere .= 'nom LIKE %' . $filterForm->get('campus')->getData() . '%';
+            }
         };
 
         return $this->render('accueil/index.html.twig',
             ['formProfil' =>$filterForm->createView(),
             'user'=>$user, 'sorties' => $sorties]);
     }
-}
+
