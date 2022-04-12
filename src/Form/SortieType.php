@@ -2,9 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Campus;
 use App\Entity\Lieu;
 use App\Entity\Sortie;
 use App\Entity\Ville;
+use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -62,7 +64,16 @@ class SortieType extends AbstractType
                     "attr" => ["class" => "form"]
                 ]
             )
-
+            ->add('campus',
+                EntityType::class,
+                [
+                    "label" => "Campus : ",
+                    'class'=> Campus::class,
+                    'choice_label' => 'nom',
+                    'mapped' => false,
+                    "attr" => ["class" => "form"]
+                ]
+            )
             ->add('lieu',
                 EntityType::class,
                 [
@@ -73,7 +84,6 @@ class SortieType extends AbstractType
                     "attr" => ["class" => "form"]
                 ]
             )
-
             ->add('ville',
                 EntityType::class,
                 [
@@ -84,7 +94,6 @@ class SortieType extends AbstractType
                     "attr" => ["class" => "form"]
                 ]
             )
-
         ;
     }
 
