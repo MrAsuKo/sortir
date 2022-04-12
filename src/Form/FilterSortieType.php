@@ -35,19 +35,23 @@ class FilterSortieType extends AbstractType
 
             ->add('organisateur', CheckboxType::class,
                 [
-                    'label' => 'Sorties dont je suis l\'organisateur/trice'
+                    'label' => 'Sorties dont je suis l\'organisateur/trice',
+                    'required' => false,
                 ])
             ->add('participant', CheckboxType::class,
                 [
-                    'label' => 'Sorties auxquelles je suis inscrit/e '
+                    'label' => 'Sorties auxquelles je suis inscrit/e ',
+                    'required' => false,
                 ])
             ->add('inscrit', CheckboxType::class,
                 [
-                    'label' => 'Sorties auxquelles je ne suis pas inscrit/e'
+                    'label' => 'Sorties auxquelles je ne suis pas inscrit/e',
+                    'required' => false,
                 ])
             ->add('dateLimiteInscription', CheckboxType::class,
                 [
-                    'label' => 'Sorties passées'
+                    'label' => 'Sorties passées',
+                    'required' => false,
                 ])
             ->add('Rechercher', SubmitType::class)
 
