@@ -24,8 +24,8 @@ security:
             logout:
                 path: app_logout
             remember_me:
-                secret:'%kernel.secret%' # required
-                lifetime:604800
+                secret: '%kernel.secret%' # required
+                lifetime: 604800 # 1 week in secondes
                 # where to redirect after logout
                 # target: app_any_route
 
