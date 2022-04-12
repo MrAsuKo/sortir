@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CampusController!{% endblock %}
+
+{% block body %}
+{% if app.user.administrateur ==1 %}
+<div class="profil_div">
+    <h1>Gerer les Campus</h1>
+</div>
+<div class="profil_div">
+    <h1>Filter les campus</h1>
+    {{ form_start(filterForm) }}
+    {{ form_end(filterForm) }}
+</div>
+<div class="profil_div">
+    <table class="campus-table">
+        <thead>
+        <tr class="campus_tr">
+            <td class="campus_td_head">Nom</td>
+            <td class="campus_td_head">Actions</td>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for campus in campuss %}
+            <tr class="campus_tr">
+                <td>{{ campus.nom }}</td>
+                <td><a href=""> Modifier</a> - <a href="{{ path('campus_supprimer',{'id': campus.id}) }}"> Supprimer</a>    </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+        <tfoot>
+        <tr class="campus_tr">
+            {{ form_start(campusForm) }}
+            <td class="campus_td">{{ form_widget(campusForm.nom) }}</td>
+            <td class="campus_td">{{ form_widget(campusForm.valider) }}</td>
+            {{ form_end(campusForm) }}
+        </tr>
+        </tfoot>
+
+    </table>
+</div>
+<div class="profil_div">
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

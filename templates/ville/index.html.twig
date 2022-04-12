@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Villes{% endblock %}
+
+{% block body %}
+{% if app.user.administrateur ==1 %}
+<div class="profil_div">
+    <h1>Gerer les villes</h1>
+</div>
+<div class="profil_div">
+    <h1>Filter les Villes</h1>
+    {{ form_start(filterForm) }}
+    {{ form_end(filterForm) }}
+</div>
+<div class="profil_div">
+<table class="ville_table">
+    <thead>
+    <tr class="ville_tr">
+        <td class="ville_td_head">Ville</td>
+        <td class="ville_td_head">Code Postal</td>
+        <td class="ville_td_head">Actions</td>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for ville in villes %}
+        <tr class="ville_tr">
+            <td class="ville_td">{{ ville.nom }}</td>
+            <td class="ville_td">{{ ville.codePostal }}</td>
+            <td class="ville_td"><a href=""> Modifier</a> - <a href="{{ path('ville_Supprimer',{'id': ville.id}) }}"> Supprimer</a>    </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+    <tfoot>
+        <tr class="ville_tr">
+            {{ form_start(villeForm) }}
+            <td class="ville_td">{{ form_widget(villeForm.nom) }}</td>
+            <td class="ville_td">{{ form_widget(villeForm.codePostal) }}</td>
+            <td class="ville_td">{{ form_widget(villeForm.valider) }}</td>
+            {{ form_end(villeForm) }}
+        </tr>
+    </tfoot>
+
+</table>
+</div>
+<div class="profil_div">
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>
+{%  endif %}
+{% endblock %}

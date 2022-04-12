@@ -45,6 +45,15 @@ class CampusRepository extends ServiceEntityRepository
         }
     }
 
+    public function findCampus(string $nom)
+    {
+        return $this->createQueryBuilder('c')
+            ->where("c.nom = :nom")
+            ->setParameter('nom', $nom)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Campus[] Returns an array of Campus objects
     //  */

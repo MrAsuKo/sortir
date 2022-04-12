@@ -10,7 +10,7 @@
 <div class="parent">
         <div class="div1">{{ form_row(formProfil.campus) }} </div>
         <div class="div2">{{ form_row(formProfil.nom) }} </div>
-        <div class="div3">{{ form_row(formProfil.dateHeureDebu) }}
+        <div class="div3">{{ form_row(formProfil.dateHeureDebut) }}
                         {{ form_row(formProfil.dateHeureFin) }} </div>
         <div class="div4">
             {{ form_row(formProfil.organisateur) }}
@@ -18,8 +18,9 @@
             {{ form_row(formProfil.inscrit) }}
             {{ form_row(formProfil.dateLimiteInscription)  }}
             </div>
+    {{ form_end(formProfil) }}
 </div>
-        {{ form_end(formProfil) }}
+
 
 
     <table class="campus_table">

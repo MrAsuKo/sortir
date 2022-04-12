@@ -1,9 +1,13 @@
+{% if app.user %}
 <header>
     <ul class="header_ul">
+        {% if app.user.administrateur ==1 %}
         <li class="header_li"><a class="header_a" href="{{ path('ville_liste') }}"><i class="fa-solid fa-building"></i>Villes</a></li>
         <li class="header_li"><a class="header_a" href="{{ path('campus_liste') }}"><i class="fa-solid fa-school"></i>Campus</a></li>
+        {% endif %}
         <li class="header_li"><a class="header_a" href="{{ path('app_accueil') }}"><i class="fa-solid fa-house"></i>Accueil</a></li>
         <li class="header_li"><a class="header_a" href="{{ path('profil_modif')  }}"><i class="fa-solid fa-user"></i>Mon profil</a></li>
         <li class="header_li"><a class="header_a" href="{{ path('app_logout') }}"><i class="fa-solid fa-power-off"></i>Se déconnecter</a></li>
     </ul>
 </header>
+{% endif %}

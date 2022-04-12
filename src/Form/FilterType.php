@@ -26,7 +26,7 @@ class FilterType extends AbstractType
                     'choice_label' => 'nom',
                 ])
             ->add('nom')
-            ->add('dateHeureDebu', DateTimeType::class,
+            ->add('dateHeureDebut', DateTimeType::class,
                     [
                         'label' => 'Entre '
                     ])
