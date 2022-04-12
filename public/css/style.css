@@ -1,0 +1,44 @@
+header{
+    background-color: #0dcaf0;
+}
+
+.header_ul{
+    display: flex;
+}
+
+.header_li{
+    padding: 10px;
+    list-style: none;
+    border: solid;
+}
+
+.header_a{
+    text-decoration: none;
+    color: black;
+}
+
+.header_a:hover{
+    color: red;
+}
+
+.profil_label{
+    width: 100px;
+    display: inline-block;
+}
+
+.profil-input{
+
+}
+
+.profil_div{
+    display: flex;
+    justify-content: center;
+}
+
+.profil_btn{
+    margin: 10px;
+}
+
+.profil_btn:hover{
+    color:red
+}

@@ -19,10 +19,10 @@ class AccueilController extends AbstractController
 {
     #[Route('/accueil', name: 'app_accueil')]
     public function index(
-        SortieRepository $sm,
+        SortieRepository      $sm,
         ParticipantRepository $pm,
-        Request $request,
-        QueryBuilder $queryBuilder
+        Request               $request,
+        //QueryBuilder          $queryBuilder
     ): Response
     {
         $sorties = $sm->findAll();
@@ -30,7 +30,7 @@ class AccueilController extends AbstractController
         $filterForm = $this->createForm(FilterType::class);
         $filterForm->handleRequest($request);
 
-        if ($filterForm->isSubmitted() && $filterForm->isValid()) {
+        /*if ($filterForm->isSubmitted() && $filterForm->isValid()) {
 
             $critere = '';
 
@@ -41,10 +41,10 @@ class AccueilController extends AbstractController
             if ($filterForm->get('nom')->getData()) {
                 $critere .= 'nom LIKE %' . $filterForm->get('campus')->getData() . '%';
             }
-        };
+        };*/
 
         return $this->render('accueil/index.html.twig',
-            ['formProfil' =>$filterForm->createView(),
-            'user'=>$user, 'sorties' => $sorties]);
+            ['formProfil' => $filterForm->createView(),
+                'user' => $user, 'sorties' => $sorties]);
     }
-
+}
