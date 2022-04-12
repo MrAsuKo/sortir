@@ -30,7 +30,7 @@ class AccueilController extends AbstractController
             $sorties = $sm->Filter($critere);
 
 
-            if($filterForm->get('organisateur'))
+            if($filterForm->get('organisateur')->getViewData())
             {
                 $tabSorties = $sorties;
                 $sorties = [];
@@ -44,42 +44,45 @@ class AccueilController extends AbstractController
                }
             }
 
-            if($filterForm->get('dateLimiteInscription'))
+            if($filterForm->get('dateLimiteInscription')->getViewData())
             {
                 $tabSorties = $sorties;
                 $sorties = [];
+                $now = new \DateTime();
 
                 foreach( $tabSorties as $sortie )
                 {
-                    if( $sortie->getDateLimiteInscription() < getdate())
+                    if( $sortie->getDateLimiteInscription() < $now)
                     {
                         $sorties[] = $sortie;
                     }
                 }
             }
 
-            if($filterForm->get('participant'))
+            $inscrit = $sorties;
+
+            if($filterForm->get('participant')->getViewData())
             {
                 $tabSorties = $sorties;
                 $sorties = [];
 
                 foreach( $tabSorties as $sortie )
                 {
-                    if( $sortie->getParcipant)
+                    if( $sortie->getParticipant()->contains($user))
                     {
                         $sorties[] = $sortie;
                     }
                 }
             }
 
-            if($filterForm->get('inscrit'))
+            if($filterForm->get('inscrit')->getViewData())
             {
-                $tabSorties = $sorties;
+                $tabSorties = $inscrit;
                 $sorties = [];
 
                 foreach( $tabSorties as $sortie )
                 {
-                    if( $sortie->getParticipant)
+                    if( !$sortie->getParticipant()->contains($user))
                     {
                         $sorties[] = $sortie;
                     }
