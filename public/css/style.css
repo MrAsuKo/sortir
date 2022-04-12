@@ -42,3 +42,90 @@ header{
 .profil_btn:hover{
     color:red
 }
+
+.ville_table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+
+}
+
+.ville_td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.ville_tr:nth-child(even){background-color: #f2f2f2;}
+
+.ville_tr:hover {background-color: #ddd;}
+
+.ville_td_head{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+
+
+.campus_table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+}
+
+.campus_td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.campus_tr:nth-child(even){background-color: #f2f2f2;}
+
+.campus_tr:hover {background-color: #ddd;}
+
+.campus_td_head{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+.accueil_table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+}
+
+.accueils_td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.accueil_tr:nth-child(even){background-color: #f2f2f2;}
+
+.accueil_tr:hover {background-color: #ddd;}
+
+.accueil_td_head{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+.parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    height:400px;
+}
+
+.div1 { grid-area: 1 / 1 / 2 / 2; }
+.div2 { grid-area: 2 / 1 / 3 / 2; }
+.div3 { grid-area: 3 / 1 / 4 / 2;
+display: flex}
+.div4 { grid-area: 1 / 2 / 4 / 3; }
+
+.form_accueil{
+    height: 310px;
+}

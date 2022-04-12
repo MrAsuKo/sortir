@@ -6,34 +6,47 @@
     <p>Date du jour : {{ "now"|date("m/d/Y") }}</p>
     <p>Participant : {{ user.prenom }}</p>
 
-    {{ form_start(formProfil) }}
-    {{ form_end(formProfil) }}
+        {{ form_start(formProfil,{ 'attr': {'class': 'form_accueil'} }) }}
+<div class="parent">
+        <div class="div1">{{ form_row(formProfil.campus) }} </div>
+        <div class="div2">{{ form_row(formProfil.nom) }} </div>
+        <div class="div3">{{ form_row(formProfil.dateHeureDebu) }}
+                        {{ form_row(formProfil.dateHeureFin) }} </div>
+        <div class="div4">
+            {{ form_row(formProfil.organisateur) }}
+            {{ form_row(formProfil.participant) }}
+            {{ form_row(formProfil.inscrit) }}
+            {{ form_row(formProfil.dateLimiteInscription)  }}
+            </div>
+</div>
+        {{ form_end(formProfil) }}
 
-    <table>
+
+    <table class="campus_table">
         <thead>
-        <tr>
-            <td>Nom de la sortie</td>
-            <td>Date de la sortie</td>
-            <td>Clôture</td>
-            <td>inscrits/places</td>
-            <td>Etat</td>
-            <td>Inscrit</td>
-            <td>Organisateur</td>
-            <td>Actions</td>
+        <tr class="campus_tr">
+            <td class="campus_td_head">Nom de la sortie</td>
+            <td class="campus_td_head">Date de la sortie</td>
+            <td class="campus_td_head">Clôture</td>
+            <td class="campus_td_head">inscrits/places</td>
+            <td class="campus_td_head">Etat</td>
+            <td class="campus_td_head">Inscrit</td>
+            <td class="campus_td_head">Organisateur</td>
+            <td class="campus_td_head">Actions</td>
         </tr>
         </thead>
         <tbody>
 
         {% for sortie in sorties %}
-            <tr class>
-                <td>{{ sortie.nom }}</td>
-                <td>{{ sortie.dateHeureDebut | date }}</td>
-                <td>{{ sortie.dateHeureDebut | date}}</td>
-                <td>{{ sortie.participant | length }}/{{ sortie.nbInscriptionsMax }}</td>
-                <td>{{ sortie.etat }}</td>
-                <td><a href="#">{{ sortie.nom }}</a></td>
-                <td>{{ sortie.organisateur }}</td>
-                <td>    </td>
+            <tr class="campus_tr">
+                <td class="campus_td">{{ sortie.nom }}</td>
+                <td class="campus_td">{{ sortie.dateHeureDebut | date }}</td>
+                <td class="campus_td">{{ sortie.dateHeureDebut | date}}</td>
+                <td class="campus_td">{{ sortie.participant | length }}/{{ sortie.nbInscriptionsMax }}</td>
+                <td class="campus_td">{{ sortie.etat }}</td>
+                <td class="campus_td"><a href="#">{{ sortie.nom }}</a></td>
+                <td class="campus_td">{{ sortie.organisateur }}</td>
+                <td class="campus_td"><a href="#">Action</a>    </td>
             </tr>
         {% endfor %}
 

@@ -24,9 +24,8 @@ class FilterType extends AbstractType
                     'label'=>'Campus : ',
                     'class'=> Campus::class,
                     'choice_label' => 'nom',
-                    "multiple" => true,
                 ])
-            ->add('nom', )
+            ->add('nom')
             ->add('dateHeureDebu', DateTimeType::class,
                     [
                         'label' => 'Entre '
