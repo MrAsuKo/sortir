@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\FilterSortieType;
 use App\Form\FilterType;
 use App\Repository\ParticipantRepository;
 use App\Repository\SortieRepository;
@@ -26,20 +27,13 @@ class AccueilController extends AbstractController
     {
         $sorties = $sm->findAll();
         $user = $pm->findOneBy(['mail' => $this->getUser()->getUserIdentifier()]);
-        $filterForm = $this->createForm(FilterType::class);
+        $filterForm = $this->createForm(FilterSortieType::class);
         $filterForm->handleRequest($request);
 
         if ($filterForm->isSubmitted() && $filterForm->isValid()) {
 
-            $critere = '';
-
-            if ($filterForm->get('campus')->getData()) {
-                $critere .= 'campus = ' . $filterForm->get('campus')->getData();
-            }
-
-            if ($filterForm->get('nom')->getData()) {
-                $critere .= 'nom LIKE %' . $filterForm->get('campus')->getData() . '%';
-            }
+            $critere = $filterForm->getData();
+            $sorties = $sm->Filter($critere);
         };
 
         return $this->render('accueil/index.html.twig',
