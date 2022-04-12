@@ -29,7 +29,7 @@
             <td class="campus_td_head">Nom de la sortie</td>
             <td class="campus_td_head">Date de la sortie</td>
             <td class="campus_td_head">Clôture</td>
-            <td class="campus_td_head">inscrits/places</td>
+            <td class="campus_td_head">Inscrits/Places</td>
             <td class="campus_td_head">Etat</td>
             <td class="campus_td_head">Inscrit</td>
             <td class="campus_td_head">Organisateur</td>
@@ -45,9 +45,9 @@
                 <td class="campus_td">{{ sortie.dateHeureDebut | date}}</td>
                 <td class="campus_td">{{ sortie.participant | length }}/{{ sortie.nbInscriptionsMax }}</td>
                 <td class="campus_td">{{ sortie.etat }}</td>
-                <td class="campus_td"><a href="#">{{ sortie.nom }}</a></td>
+                <td class="campus_td"></td>
                 <td class="campus_td">{{ sortie.organisateur }}</td>
-                <td class="campus_td"><a href="#">Action</a>    </td>
+                <td class="campus_td"><a href="#">Action</a></td>
             </tr>
         {% endfor %}
 
