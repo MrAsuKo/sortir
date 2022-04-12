@@ -22,7 +22,6 @@ class AccueilController extends AbstractController
         SortieRepository      $sm,
         ParticipantRepository $pm,
         Request               $request,
-        QueryBuilder          $queryBuilder
     ): Response
     {
         $sorties = $sm->findAll();
