@@ -10,6 +10,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,39 +20,46 @@ class FilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('campus', EntityType::class,
+            ->add('campusFilter', EntityType::class,
                 [
                     'label'=>'Campus : ',
                     'class'=> Campus::class,
                     'choice_label' => 'nom',
                     "multiple" => true,
+                    "mapped" => false,
                 ])
             ->add('nom', )
-            ->add('dateHeureDebu', DateTimeType::class,
+            ->add('dateHeureDebut', DateTimeType::class,
                     [
-                        'label' => 'Entre '
+                        'label' => 'Entre ',
+                        "mapped" => false
                     ])
             ->add('dateHeureFin',DateTimeType::class,[
-                    'label' => 'Et '
+                    'label' => 'Et ',
+                    "mapped" => false,
                 ])
 
             ->add('organisateur', CheckboxType::class,
                 [
-                    'label' => 'Sorties dont je suis l\'organisateur/trice'
+                    'label' => 'Sorties dont je suis l\'organisateur/trice',
+                    "mapped" => false,
                 ])
             ->add('participant', CheckboxType::class,
                 [
-                    'label' => 'Sorties auxquelles je suis inscrit/e '
+                    'label' => 'Sorties auxquelles je suis inscrit/e ',
+                    "mapped" => false,
                 ])
             ->add('inscrit', CheckboxType::class,
                 [
-                    'label' => 'Sorties auxquelles je ne suis pas inscrit/e'
+                    'label' => 'Sorties auxquelles je ne suis pas inscrit/e',
+                    "mapped" => false,
                 ])
             ->add('dateLimiteInscription', CheckboxType::class,
                 [
-                    'label' => 'Sorties passées'
+                    'label' => 'Sorties passées',
+                    "mapped" => false,
                 ])
-
+            ->add('Rechercher', SubmitType::class)
 
         ;
 
