@@ -56,8 +56,10 @@ class SortieRepository extends ServiceEntityRepository
             ->setParameter('debut', $criteria['dateHeureDebut'])
             ->andWhere('s.dateHeureDebut < :fin')
             ->setParameter('fin', $criteria['dateHeureFin'])
+
             ->getQuery()
             ->getResult();
+
     }
 
     // /**

@@ -3,14 +3,8 @@
 namespace App\Controller;
 
 use App\Form\FilterSortieType;
-use App\Form\FilterType;
 use App\Repository\ParticipantRepository;
 use App\Repository\SortieRepository;
-use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\Mapping\Entity;
-use Doctrine\ORM\QueryBuilder;
-use EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto;
-use EasyCorp\Bundle\EasyAdminBundle\Dto\FilterDataDto;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,6 +28,66 @@ class AccueilController extends AbstractController
 
             $critere = $filterForm->getData();
             $sorties = $sm->Filter($critere);
+
+
+            if($filterForm->get('organisateur')->getViewData())
+            {
+                $tabSorties = $sorties;
+                $sorties = [];
+
+               foreach( $tabSorties as $sortie )
+               {
+                   if( $sortie->getOrganisateur() == $user)
+                   {
+                       $sorties[] = $sortie;
+                   }
+               }
+            }
+
+            if($filterForm->get('dateLimiteInscription')->getViewData())
+            {
+                $tabSorties = $sorties;
+                $sorties = [];
+                $now = new \DateTime();
+
+                foreach( $tabSorties as $sortie )
+                {
+                    if( $sortie->getDateLimiteInscription() < $now)
+                    {
+                        $sorties[] = $sortie;
+                    }
+                }
+            }
+
+            $inscrit = $sorties;
+
+            if($filterForm->get('participant')->getViewData())
+            {
+                $tabSorties = $sorties;
+                $sorties = [];
+
+                foreach( $tabSorties as $sortie )
+                {
+                    if( $sortie->getParticipant()->contains($user))
+                    {
+                        $sorties[] = $sortie;
+                    }
+                }
+            }
+
+            if($filterForm->get('inscrit')->getViewData())
+            {
+                $tabSorties = $inscrit;
+                $sorties = [];
+
+                foreach( $tabSorties as $sortie )
+                {
+                    if( !$sortie->getParticipant()->contains($user))
+                    {
+                        $sorties[] = $sortie;
+                    }
+                }
+            }
         };
 
         return $this->render('accueil/index.html.twig',
