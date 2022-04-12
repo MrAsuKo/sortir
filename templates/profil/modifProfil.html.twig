@@ -3,7 +3,10 @@
 {% block title %}Hello ProfilController!{% endblock %}
 
 {% block body %}
+<div class="profil_div">
     <h1>Mon Profil</h1>
+</div>
+<div class="profil_div">
     {{ form_start(formProfil) }}
     {{ form_row(formProfil.pseudo) }}
     {{ form_row(formProfil.prenom) }}
@@ -12,6 +15,8 @@
     {{ form_row(formProfil.mail) }}
     {{ form_row(formProfil.password) }}
     {{ form_row(formProfil.campus) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-    {{ form_end(formProfil) }}
+</div>
+<div class="profil_div">
+    <button class="profil_btn">{{ button_label|default('Save') }}</button>
+</div>
 {% endblock %}

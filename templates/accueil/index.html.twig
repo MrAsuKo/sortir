@@ -25,21 +25,23 @@
         <tbody>
 
         {% for sortie in sorties %}
-            <tr>
+            <tr class>
                 <td>{{ sortie.nom }}</td>
                 <td>{{ sortie.dateHeureDebut | date }}</td>
                 <td>{{ sortie.dateHeureDebut | date}}</td>
                 <td>{{ sortie.participant | length }}/{{ sortie.nbInscriptionsMax }}</td>
                 <td>{{ sortie.etat }}</td>
-                <td>{{ sortie.nom }}</td>
+                <td><a href="#">{{ sortie.nom }}</a></td>
                 <td>{{ sortie.organisateur }}</td>
-                <td></td>
+                <td>    </td>
             </tr>
         {% endfor %}
 
         </tbody>
 
     </table>
-
+    <div>
+        <a href="{{ path('sortie_creer') }}">Créer une sortie</a>
+    </div>
 
 {% endblock %}
