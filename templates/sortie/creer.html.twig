@@ -7,7 +7,78 @@
         <h1>Créer une sortie</h1>
     </div>
     {{ form_start(sortieForm) }}
-    {{ form_widget(sortieForm) }}
-    <button>Publier la sortie</button>
+    <div class="sortieForm">
+        <div class="sortieCol">
+            <div>
+                {{ form_label(sortieForm.nom) }}
+                {{ form_widget(sortieForm.nom) }}
+                {{ form_errors(sortieForm.nom) }}
+            </div>
+            <br>
+            <div>
+                {{ form_label(sortieForm.dateHeureDebut) }}
+                {{ form_widget(sortieForm.dateHeureDebut) }}
+                {{ form_errors(sortieForm.dateHeureDebut) }}
+            </div>
+            <br>
+            <div>
+                {{ form_label(sortieForm.dateLimiteInscription) }}
+                {{ form_widget(sortieForm.dateLimiteInscription) }}
+                {{ form_errors(sortieForm.dateLimiteInscription) }}
+            </div>
+            <br>
+            <div>
+                {{ form_label(sortieForm.nbInscriptionsMax) }}
+                {{ form_widget(sortieForm.nbInscriptionsMax) }}
+                {{ form_errors(sortieForm.nbInscriptionsMax) }}
+            </div>
+            <br>
+            <div>
+                {{ form_label(sortieForm.duree) }}
+                {{ form_widget(sortieForm.duree) }}
+                {{ form_errors(sortieForm.duree) }}
+            </div>
+            <br>
+            <div>
+                {{ form_label(sortieForm.infosSortie) }}
+                {{ form_widget(sortieForm.infosSortie) }}
+                {{ form_errors(sortieForm.infosSortie) }}
+            </div>
+        </div>
+        <div class="sortieInter"></div>
+        <div class="sortieCol">
+            <div>
+                <p>Campus : {{ user.campus.nom }}</p>
+            </div>
+            <div>
+                {{ form_label(sortieForm.ville) }}
+                {{ form_widget(sortieForm.ville) }}
+                {{ form_errors(sortieForm.ville) }}
+            </div>
+            <br>
+            <div>
+                {{ form_label(sortieForm.lieu) }}
+                {{ form_widget(sortieForm.lieu) }}
+                {{ form_errors(sortieForm.lieu) }}
+            </div>
+            <br>
+            <div>
+                <p>Rue : </p>
+            </div>
+            <div>
+                <p>Code postal : </p>
+            </div>
+            <div>
+                <p>Latitude : </p>
+            </div>
+            <div>
+                <p>Longitude : </p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="sortieBout">
+        <button>Publier la sortie</button>
+    </div>
     {{ form_end(sortieForm) }}
 {% endblock %}

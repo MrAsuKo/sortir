@@ -45,6 +45,23 @@ class SortieRepository extends ServiceEntityRepository
         }
     }
 
+    public function Filter( $criteria )
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.campus = :campus')
+            ->setParameter('campus', $criteria['campus'])
+            ->andWhere( 's.nom LIKE :nom')
+            ->setParameter('nom', '%'.$criteria['nom'].'%')
+            ->andWhere('s.dateHeureDebut > :debut')
+            ->setParameter('debut', $criteria['dateHeureDebut'])
+            ->andWhere('s.dateHeureDebut < :fin')
+            ->setParameter('fin', $criteria['dateHeureFin'])
+
+            ->getQuery()
+            ->getResult();
+
+    }
+
     // /**
     //  * @return Sortie[] Returns an array of Sortie objects
     //  */

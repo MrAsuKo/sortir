@@ -43,6 +43,24 @@ header{
     color:red
 }
 
+.sortieForm {
+    display: flex;
+    justify-content: center;
+}
+
+.sortieCol {
+    width: 400px;
+}
+
+.sortieInter {
+    width: 100px;
+}
+
+.sortieBout {
+    display: flex;
+    justify-content: center;
+}
+
 .ville_table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;

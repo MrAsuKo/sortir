@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\FilterSortieType;
 use App\Form\FilterType;
 use App\Repository\ParticipantRepository;
 use App\Repository\SortieRepository;
@@ -22,26 +23,75 @@ class AccueilController extends AbstractController
         SortieRepository      $sm,
         ParticipantRepository $pm,
         Request               $request,
-        //QueryBuilder          $queryBuilder
     ): Response
     {
         $sorties = $sm->findAll();
         $user = $pm->findOneBy(['mail' => $this->getUser()->getUserIdentifier()]);
-        $filterForm = $this->createForm(FilterType::class);
+        $filterForm = $this->createForm(FilterSortieType::class);
         $filterForm->handleRequest($request);
 
-        /*if ($filterForm->isSubmitted() && $filterForm->isValid()) {
+        if ($filterForm->isSubmitted() && $filterForm->isValid()) {
 
-            $critere = '';
+            $critere = $filterForm->getData();
+            $sorties = $sm->Filter($critere);
 
-            if ($filterForm->get('campus')->getData()) {
-                $critere .= 'campus = ' . $filterForm->get('campus')->getData();
+
+            if($filterForm->get('organisateur'))
+            {
+                $tabSorties = $sorties;
+                $sorties = [];
+
+               foreach( $tabSorties as $sortie )
+               {
+                   if( $sortie->getOrganisateur() == $user)
+                   {
+                       $sorties[] = $sortie;
+                   }
+               }
             }
 
-            if ($filterForm->get('nom')->getData()) {
-                $critere .= 'nom LIKE %' . $filterForm->get('campus')->getData() . '%';
+            if($filterForm->get('dateLimiteInscription'))
+            {
+                $tabSorties = $sorties;
+                $sorties = [];
+
+                foreach( $tabSorties as $sortie )
+                {
+                    if( $sortie->getDateLimiteInscription() < getdate())
+                    {
+                        $sorties[] = $sortie;
+                    }
+                }
             }
-        };*/
+
+            if($filterForm->get('participant'))
+            {
+                $tabSorties = $sorties;
+                $sorties = [];
+
+                foreach( $tabSorties as $sortie )
+                {
+                    if( $sortie->getParcipant)
+                    {
+                        $sorties[] = $sortie;
+                    }
+                }
+            }
+
+            if($filterForm->get('inscrit'))
+            {
+                $tabSorties = $sorties;
+                $sorties = [];
+
+                foreach( $tabSorties as $sortie )
+                {
+                    if( $sortie->getParticipant)
+                    {
+                        $sorties[] = $sortie;
+                    }
+                }
+            }
+        };
 
         return $this->render('accueil/index.html.twig',
             ['formProfil' => $filterForm->createView(),
