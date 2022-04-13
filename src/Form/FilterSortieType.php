@@ -46,7 +46,7 @@ class FilterSortieType extends AbstractType
 
             ->add('organisateur', CheckboxType::class,
                 [
-                    'label' => 'Sorties dont je suis l\'organisateur/trice',
+                    'label'  => 'Sorties dont je suis l\'organisateur/trice',
                     'required' => false,
                 ])
             ->add('participant', CheckboxType::class,
