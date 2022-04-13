@@ -27,10 +27,12 @@ class FilterSortieType extends AbstractType
             ->add('nom', )
             ->add('dateHeureDebut', DateTimeType::class,
                 [
-                    'label' => 'Entre '
+                    'label' => 'Entre ',
+                    'widget' => 'single_text'
                 ])
             ->add('dateHeureFin',DateTimeType::class,[
-                'label' => 'Et '
+                'label' => 'Et ',
+                'widget' => 'single_text'
             ])
 
             ->add('organisateur', CheckboxType::class,
