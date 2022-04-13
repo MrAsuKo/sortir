@@ -71,7 +71,8 @@ class SortieType extends AbstractType
                     'class'=> Lieu::class,
                     'choice_label' => 'nom',
                     'mapped' => false,
-                    "attr" => ["class" => "form"]
+                    "attr" => ["class" => "form", "id" => "lieu"]
+
                 ]
             )
             ->add('ville',

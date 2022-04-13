@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+
+use App\Entity\Lieu;
 use App\Entity\Sortie;
 use App\Form\SortieType;
+
 use App\Repository\ParticipantRepository;
+use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,19 +20,17 @@ class SortieController extends AbstractController
     #[Route('/sortie/creer', name: 'sortie_creer')]
     public function creer(
         EntityManagerInterface $em,
-        ParticipantRepository $pr,
-        Request                $request
+        Request $request,
+        ParticipantRepository $pr
     ): Response
     {
         $sortie = new Sortie();
         $user = $this->getUser()->getUserIdentifier();
-        $user = $pr -> findOneBy(["mail"=>$user]);
+        $user = $pr->findOneBy(['mail' => $user] );
         $sortieForm = $this -> createForm(SortieType::class, $sortie);
         $sortieForm -> handleRequest($request);
         if ($sortieForm -> isSubmitted() && $sortieForm -> isValid()) {
-            $sortie->setLieu($sortieForm->get('lieu')->getData());
-            $sortie->setCampus($user->getCampus());
-            $sortie->setOrganisateur($user);
+            $sortie->setLieu($sortieForm->get('lieu')->getData()) ;
             $em->persist($sortie);
             $em->flush();
             $this->addFlash(
@@ -66,4 +68,44 @@ class SortieController extends AbstractController
             'controller_name' => 'SortieController',
         ]);
     }
+
+    #[Route('/sortie/lieu/{id}',
+        requirements: ["id" => "\d+"])]
+    public function findLieu(
+        SortieRepository $sm,
+        Lieu $lieu
+    ): Response
+    {
+
+        return $this->json($lieu);
+
+    }
+
+    #[Route('/sortie/inscription/{id}', name: 'sortie_inscription', requirements: ["id" => "\d+"])]
+    public function inscription(
+        SortieRepository $sm,
+        ParticipantRepository $pm,
+        Sortie $sortie,
+        EntityManagerInterface $em
+    ): Response
+    {
+        $user = $this->getUser()->getUserIdentifier();
+        $user = $pm->findOneBy(['mail' => $user]);
+
+        if( $sortie->getParticipant()->contains($user) )
+        {
+            $sortie->removeParticipant($user);
+        }
+        else
+        {
+            $sortie->addParticipant($user);
+        }
+
+
+        $em->persist($sortie);
+        $em->flush();
+
+        return $this->redirectToRoute('app_accueil');
+    }
+
 }

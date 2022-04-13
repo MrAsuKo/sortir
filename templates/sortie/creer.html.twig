@@ -64,15 +64,19 @@
             <br>
             <div>
                 <p>Rue : </p>
+                <p id="rue"></p>
             </div>
             <div>
                 <p>Code postal : </p>
+                <p id="cp"></p>
             </div>
             <div>
                 <p>Latitude : </p>
+                <p id="latitude"></p>
             </div>
             <div>
                 <p>Longitude : </p>
+                <p id="longitude"></p>
             </div>
         </div>
     </div>
@@ -82,4 +86,5 @@
     </div>
     {{ form_end(sortieForm) }}
 
+    <script src="{{ asset('js/script.js') }}"></script>
 {% endblock %}

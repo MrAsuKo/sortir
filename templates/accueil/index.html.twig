@@ -47,7 +47,14 @@
                 <td class="campus_td">{{ sortie.etat }}</td>
                 <td class="campus_td"></td>
                 <td class="campus_td">{{ sortie.organisateur }}</td>
-                <td class="campus_td"><a href="#">Action</a></td>
+                <td class="campus_td">
+                    <a href="">Afficher</a>
+                    {% if  user in sortie.participant  %}
+                        <a href="{{ path('sortie_inscription', {'id' : sortie.id })  }}">Se désister</a>
+                    {% else %}
+                        <a href="{{ path('sortie_inscription', {'id' : sortie.id })  }}">S'inscrire</a>
+                    {% endif %}
+                </td>
             </tr>
         {% endfor %}
 
