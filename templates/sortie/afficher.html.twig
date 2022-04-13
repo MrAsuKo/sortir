@@ -61,19 +61,19 @@
         </div>
     <div>
 
-        <table class="profil_table">
+        <table class="ville_table">
             <thead>
-            <tr class="profil_tr">
-                <td class="profil_td_head">Pseudo</td>
-                <td class="profil_td_head">Nom - Prénom</td>
+            <tr class="ville_tr">
+                <td class="ville_td_head">Pseudo</td>
+                <td class="ville_td_head">Nom - Prénom</td>
             </tr>
             </thead>
-            <tbody class=profil_tbody>
+            <tbody>
             {% for part in sortie.participant %}
             <p></p>
-                <tr class="profil_tr">
-                    <td class="profil_td"><a href="{{ path('profil_affichage', {'id' : part.id }) }}">{{ part.pseudo }}</a></td>
-                    <td class="profil_td">{{ part.nom }} {{ part.prenom }}</td>
+                <tr class="ville_tr">
+                    <td class="ville_td">{{ part.pseudo }}</td>
+                    <td class="ville_td">{{ part.nom }} {{ part.prenom }}</td>
                 </tr>
             {% endfor %}
             </tbody>
