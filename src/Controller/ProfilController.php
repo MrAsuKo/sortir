@@ -41,4 +41,15 @@ class ProfilController extends AbstractController
             ['formProfil' =>$profilForm->createView()]
         );
     }
+
+    #[Route('/profil/affichage/{id}', name: 'profil_affichage')]
+    public function affichage(
+        Participant $profil
+    ):Response
+    {
+        return $this->render('profil/affichage.html.twig',
+        compact('profil')
+        );
+    }
+
 }

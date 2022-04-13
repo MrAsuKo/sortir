@@ -46,7 +46,7 @@
                 <td class="campus_td">{{ sortie.participant | length }}/{{ sortie.nbInscriptionsMax }}</td>
                 <td class="campus_td">{{ sortie.etat.libelle }}</td>
                 <td class="campus_td"></td>
-                <td class="campus_td">{{ sortie.organisateur }}</td>
+                <td class="campus_td"><a href="{{ path('profil_affichage', {'id' : sortie.organisateur.id }) }}">{{ sortie.organisateur }}</a></td>
                 <td class="campus_td">
                     <a href="{{ path('sortie_afficher', {'id': sortie.id}) }}">Afficher</a>
 
