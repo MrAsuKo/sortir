@@ -25,24 +25,25 @@ class RegistrationController extends AbstractController
         $user = new Participant();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
+        $mdp = $this->passgen1();
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user -> setAdministrateur(false);
             $user -> setActif(true);
             $user -> setCampus($form->get('campus')->getData());
+            $plainPassword = $mdp;
             $user->setPassword(
             $userPasswordHasher->hashPassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                    $plainPassword
                 )
             );
-            $mail= $user->getMail();
-            $mdp = $user->getPassword();
+            $mail = $user->getMail();
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $corps='Bonjour, avec votre email, et le password '.$mdp;
+            $corps='Bonjour, avec votre email, et le password '.$mdp .', vous pouvez vous connecter au site de sortie';
             $courriel->envoi($mail,'Espace Utilisateur',$corps,'admin@sortir.fr');
 
             return $this->redirectToRoute('app_login');
@@ -51,5 +52,16 @@ class RegistrationController extends AbstractController
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
+    }
+
+    function passgen1() {
+        $nbChar=6;
+        $chaine ="mnoTUzS5678kVvwxy9WXYZRNCDEFrslq41GtuaHIJKpOPQA23LcdefghiBMbj0";
+        srand((double)microtime()*1000000);
+        $pass = '';
+        for($i=0; $i<$nbChar; $i++){
+            $pass .= $chaine[rand()%strlen($chaine)];
+        }
+        return $pass;
     }
 }
