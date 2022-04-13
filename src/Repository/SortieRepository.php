@@ -47,11 +47,23 @@ class SortieRepository extends ServiceEntityRepository
 
     public function Filter( $criteria )
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.campus = :campus')
-            ->setParameter('campus', $criteria['campus'])
-            ->andWhere( 's.nom LIKE :nom')
-            ->setParameter('nom', '%'.$criteria['nom'].'%')
+        $qb = $this->createQueryBuilder('s');
+            if ( $criteria['campus'])
+            {
+                $qb
+                ->andWhere('s.campus = :campus')
+                ->setParameter('campus', $criteria['campus']);
+            }
+
+            if( $criteria['nom'] )
+            {
+                $qb
+                ->andWhere( 's.nom LIKE :nom')
+                ->setParameter('nom', '%'.$criteria['nom'].'%');
+            }
+
+            return
+            $qb
             ->andWhere('s.dateHeureDebut > :debut')
             ->setParameter('debut', $criteria['dateHeureDebut'])
             ->andWhere('s.dateHeureDebut < :fin')
