@@ -70,6 +70,7 @@ header{
 .ville_td {
     border: 1px solid #ddd;
     padding: 8px;
+    width: 200px;
 }
 
 .ville_tr:nth-child(even){background-color: #f2f2f2;}
@@ -82,9 +83,9 @@ header{
     text-align: left;
     background-color: #04AA6D;
     color: white;
+    border-right: solid grey;
+    width: 200px;
 }
-
-
 
 .campus_table {
     font-family: Arial, Helvetica, sans-serif;
@@ -94,6 +95,7 @@ header{
 .campus_td {
     border: 1px solid #ddd;
     padding: 8px;
+    width: 200px;
 }
 
 .campus_tr:nth-child(even){background-color: #f2f2f2;}
@@ -106,6 +108,8 @@ header{
     text-align: left;
     background-color: #04AA6D;
     color: white;
+    border-right: solid grey;
+    width: 200px;
 }
 
 .accueil_table {
@@ -146,4 +150,43 @@ display: flex}
 
 .form_accueil{
     height: 310px;
+}
+
+
+tbody, thead tr, tfoot { display: block; }
+
+tbody {
+    height: 200px;
+    overflow-y: scroll;
+}
+
+.profil_table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+
+}
+
+.profil_td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    width: 100px;
+}
+
+.profil_tr:nth-child(even){background-color: #f2f2f2;}
+
+.profil_tr:hover {background-color: #ddd;}
+
+.profil_td_head{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+    border-right: solid grey;
+    width: 100px;
+}
+
+.profil_tbody{
+    height: 150px;
+    overflow-y: scroll;
 }
