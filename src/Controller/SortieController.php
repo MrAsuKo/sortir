@@ -11,6 +11,7 @@ use App\Repository\ParticipantRepository;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -162,10 +163,10 @@ class SortieController extends AbstractController
     public function findLieu(
         SortieRepository $sm,
         Lieu $lieu
-    ): Response
+    ): JsonResponse
     {
-
-        return $this->json($lieu);
+        $tab = [$lieu];
+        return new JsonResponse(['mesDonnees' => $lieu, 200]);
 
     }
 
