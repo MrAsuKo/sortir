@@ -20,6 +20,8 @@ class FilterSortieType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        date_default_timezone_set('Europe/Paris');
+
         $builder
             ->add('campus', EntityType::class,
                 [
@@ -41,7 +43,7 @@ class FilterSortieType extends AbstractType
             ->add('dateHeureFin',DateTimeType::class,[
                 'label' => 'Et ',
                 'widget' => 'single_text',
-                'data' => new DateTime('2026-09-01T15:03:01.012345Z')
+                'data' => new DateTime('+6month')
             ])
 
             ->add('organisateur', CheckboxType::class,
