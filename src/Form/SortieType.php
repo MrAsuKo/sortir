@@ -2,11 +2,11 @@
 
 namespace App\Form;
 
-use App\Entity\Campus;
 use App\Entity\Lieu;
 use App\Entity\Sortie;
 use App\Entity\Ville;
-use Doctrine\ORM\Mapping\Entity;
+use Cassandra\Date;
+use DateTime;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -35,7 +35,7 @@ class SortieType extends AbstractType
                 [
                     "label" => "Date et heure de la sortie : ",
                     'widget' => 'single_text',
-                    'value' => date('now'),
+                    'data' => new DateTime('now'),
                     "attr" => ["class" => "form"]
                 ]
             )
@@ -44,6 +44,7 @@ class SortieType extends AbstractType
                 [
                     "label" => "Date limite d'inscription : ",
                     'widget' => 'single_text',
+                    'data' => new DateTime('now'),
                     "attr" => ["class" => "form"]
                 ]
             )
