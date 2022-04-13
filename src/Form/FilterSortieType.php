@@ -36,12 +36,12 @@ class FilterSortieType extends AbstractType
                 [
                     'label' => 'Entre ',
                     'widget' => 'single_text',
-                    'data' => new DateTime('2022-01-01T15:03:01.012345Z')
+                    'data' => new DateTime('now')
                 ])
             ->add('dateHeureFin',DateTimeType::class,[
                 'label' => 'Et ',
                 'widget' => 'single_text',
-                'data' => new DateTime('2022-09-01T15:03:01.012345Z')
+                'data' => new DateTime('2026-09-01T15:03:01.012345Z')
             ])
 
             ->add('organisateur', CheckboxType::class,
