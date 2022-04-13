@@ -94,19 +94,27 @@ class SortieController extends AbstractController
         $user = $this->getUser()->getUserIdentifier();
         $user = $pm->findOneBy(['mail' => $user]);
 
-        if( $sortie->getParticipant()->contains($user) )
+        if( $sortie->getEtat()->getLibelle() == "Ouverte" || $sortie->getEtat()->getLibelle() == "Clôturée")
         {
-            $sortie->removeParticipant($user);
+
+            if( $sortie->getParticipant()->contains($user) )
+            {
+                $sortie->removeParticipant($user);
+            }
+            else
+            {
+                if( $sortie->getEtat()->getLibelle() == "Ouverte")
+                {
+                    $sortie->addParticipant($user);
+                }
+            }
+
+
+
+            $em->persist($sortie);
+            $em->flush();
+
         }
-        else
-        {
-            $sortie->addParticipant($user);
-        }
-
-
-        $em->persist($sortie);
-        $em->flush();
-
         return $this->redirectToRoute('app_accueil');
     }
 
