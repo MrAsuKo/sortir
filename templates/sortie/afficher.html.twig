@@ -72,7 +72,7 @@
             {% for part in sortie.participant %}
             <p></p>
                 <tr class="ville_tr">
-                    <td class="ville_td"><a href="{{ path('profil_affichage', {'id' : part.id }) }}">{{ part.pseudo }}</a></td>
+                    <td class="ville_td">{{ part.pseudo }}</td>
                     <td class="ville_td">{{ part.nom }} {{ part.prenom }}</td>
                 </tr>
             {% endfor %}
