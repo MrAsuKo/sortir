@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Participant;
 use App\Form\RegistrationFormType;
+use App\Service\Courriel;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,8 +15,12 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    #[Route('/register', name: 'register')]
+    public function register(Request $request,
+                             UserPasswordHasherInterface $userPasswordHasher,
+                             EntityManagerInterface $entityManager,
+                             Courriel $courriel,
+    ): Response
     {
         $user = new Participant();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -32,10 +37,13 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
+            $mail= $user->getMail();
+            $mdp = $user->getPassword();
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
+
+            $corps='Bonjour, avec votre email, et le password '.$mdp;
+            $courriel->envoi($mail,'Espace Utilisateur',$corps,'admin@sortir.fr');
 
             return $this->redirectToRoute('app_login');
         }

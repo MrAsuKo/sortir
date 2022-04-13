@@ -4,6 +4,7 @@
         {% if app.user.administrateur ==1 %}
         <li class="header_li"><a class="header_a" href="{{ path('ville_liste') }}"><i class="fa-solid fa-building"></i>Villes</a></li>
         <li class="header_li"><a class="header_a" href="{{ path('campus_liste') }}"><i class="fa-solid fa-school"></i>Campus</a></li>
+        <li class="header_li"><a class="header_a" href="{{ path('register') }}"><i class="fa-solid fa-user-plus"></i>Ajouter Utilisateur</a></li>
         {% endif %}
         <li class="header_li"><a class="header_a" href="{{ path('app_accueil') }}"><i class="fa-solid fa-house"></i>Accueil</a></li>
         <li class="header_li"><a class="header_a" href="{{ path('profil_modif')  }}"><i class="fa-solid fa-user"></i>Mon profil</a></li>
