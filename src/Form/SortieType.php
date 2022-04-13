@@ -107,7 +107,7 @@ class SortieType extends AbstractType
             ->add('annuler',
                 SubmitType::class,
                 [
-                    'label'=> 'Annuler la sortie'
+                    'label'=> 'Supprimer la sortie'
                 ]
             )
         ;

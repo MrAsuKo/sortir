@@ -108,7 +108,7 @@ class SortieController extends AbstractController
                     'La sortie a bien été créée'
                 );
             }
-            else
+            elseif( $sortieForm->getClickedButton() && 'publier' === $sortieForm->getClickedButton()->getName() )
             {
                 $etat = $er->findOneBy(['id' => 2]);
                 $sortie->setEtat($etat);
@@ -116,6 +116,16 @@ class SortieController extends AbstractController
                 (
                     'Bravo',
                     'La sortie a bien été publiée'
+                );
+            }
+            else
+            {
+                $etat = $er->findOneBy(['id' => 6]);
+                $sortie->setEtat($etat);
+                $this->addFlash
+                (
+                    'Bravo',
+                    'La sortie a bien été annulée'
                 );
             }
 
@@ -180,7 +190,8 @@ class SortieController extends AbstractController
             }
             else
             {
-                if( $sortie->getEtat()->getLibelle() == "Ouverte" && $sortie->getDateLimiteInscription() > $now)
+                if( $sortie->getEtat()->getLibelle() == "Ouverte" && $sortie->getDateLimiteInscription() > $now
+                    && $sortie->getNbInscriptionsMax() > count($sortie->getParticipant()))
                 {
                     $sortie->addParticipant($user);
                 }

@@ -39,6 +39,8 @@
 
         <tbody>
         {% for sortie in sorties %}
+            {% if sortie.etat.id in [2,3,4,5 ]  or sortie.etat.id == 1 and sortie.organisateur.id == user.id %}
+
             <tr class="campus_tr">
                 <td class="campus_td">{{ sortie.nom }}</td>
                 <td class="campus_td">{{ sortie.dateHeureDebut | date("d/m/Y H:m") }}</td>
@@ -68,6 +70,8 @@
                         {% endif %}
                 </td>
             </tr>
+
+            {% endif %}
         {% endfor %}
         </tbody>
 
