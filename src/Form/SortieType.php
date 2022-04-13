@@ -34,6 +34,7 @@ class SortieType extends AbstractType
                 DateTimeType::class,
                 [
                     "label" => "Date et heure de la sortie : ",
+                    'widget' => 'single_text',
                     "attr" => ["class" => "form"]
                 ]
             )
@@ -41,6 +42,7 @@ class SortieType extends AbstractType
                 DateType::class,
                 [
                     "label" => "Date limite d'inscription : ",
+                    'widget' => 'single_text',
                     "attr" => ["class" => "form"]
                 ]
             )
