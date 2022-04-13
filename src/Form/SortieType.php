@@ -35,6 +35,7 @@ class SortieType extends AbstractType
                 [
                     "label" => "Date et heure de la sortie : ",
                     'widget' => 'single_text',
+                    'value' => date('now'),
                     "attr" => ["class" => "form"]
                 ]
             )
