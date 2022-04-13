@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Campus;
 
+use DateTime;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -11,6 +13,8 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
+
 
 class FilterSortieType extends AbstractType
 {
@@ -24,13 +28,18 @@ class FilterSortieType extends AbstractType
                     'choice_label' => 'nom',
                     "multiple" => false,
                 ])
-            ->add('nom', )
+            ->add('nom', TextType::class,
+            [
+                'required' => false
+            ])
             ->add('dateHeureDebut', DateTimeType::class,
                 [
-                    'label' => 'Entre '
+                    'label' => 'Entre ',
+                    'data' => new DateTime('2022-01-01T15:03:01.012345Z')
                 ])
             ->add('dateHeureFin',DateTimeType::class,[
-                'label' => 'Et '
+                'label' => 'Et ',
+                'data' => new DateTime('2022-09-01T15:03:01.012345Z')
             ])
 
             ->add('organisateur', CheckboxType::class,
