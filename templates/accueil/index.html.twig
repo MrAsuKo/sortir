@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {%  block body %}
+    <div class="body">
     {% set now = date('now') %}
 
     <p>Date du jour : {{ "now"|date("m/d/Y") }}</p>
@@ -21,33 +22,31 @@
     {{ form_end(formProfil) }}
 </div>
 
-
-
-    <table class="campus_table">
+    <table class="index_table">
         <thead>
-        <tr class="campus_tr">
-            <td class="campus_td_head">Nom de la sortie</td>
-            <td class="campus_td_head">Date de la sortie</td>
-            <td class="campus_td_head">Clôture</td>
-            <td class="campus_td_head">Inscrits/Places</td>
-            <td class="campus_td_head">Etat</td>
-            <td class="campus_td_head">Inscrit</td>
-            <td class="campus_td_head">Organisateur</td>
-            <td class="campus_td_head">Actions</td>
+        <tr class="index_tr">
+            <td class="index_td_head index_td_head1">Nom de la sortie</td>
+            <td class="index_td_head index_td_head2">Date de la sortie</td>
+            <td class="index_td_head index_td_head3">Clôture</td>
+            <td class="index_td_head index_td_head4">Inscrits/Places</td>
+            <td class="index_td_head index_td_head5">Etat</td>
+            <td class="index_td_head index_td_head6">Inscrit</td>
+            <td class="index_td_head index_td_head7">Organisateur</td>
+            <td class="index_td_head index_td_head8">Actions</td>
         </tr>
         </thead>
 
         <tbody>
         {% for sortie in sorties %}
-            <tr class="campus_tr">
-                <td class="campus_td">{{ sortie.nom }}</td>
-                <td class="campus_td">{{ sortie.dateHeureDebut | date("d/m/Y H:m") }}</td>
-                <td class="campus_td">{{ sortie.dateLimiteInscription | date("d/m/Y") }}</td>
-                <td class="campus_td">{{ sortie.participant | length }}/{{ sortie.nbInscriptionsMax }}</td>
-                <td class="campus_td">{{ sortie.etat.libelle }}</td>
-                <td class="campus_td"></td>
-                <td class="campus_td"><a href="{{ path('profil_affichage', {'id' : sortie.organisateur.id }) }}">{{ sortie.organisateur }}</a></td>
-                <td class="campus_td">
+            <tr class="index_tr">
+                <td class="index_td">{{ sortie.nom }}</td>
+                <td class="index_td">{{ sortie.dateHeureDebut | date("d/m/Y H:m") }}</td>
+                <td class="index_td">{{ sortie.dateLimiteInscription | date("d/m/Y") }}</td>
+                <td class="index_td">{{ sortie.participant | length }}/{{ sortie.nbInscriptionsMax }}</td>
+                <td class="index_td">{{ sortie.etat.libelle }}</td>
+                <td class="index_td"></td>
+                <td class="index_td"><a href="{{ path('profil_affichage', {'id' : sortie.organisateur.id }) }}">{{ sortie.organisateur }}</a></td>
+                <td class="index_td">
                     <a href="{{ path('sortie_afficher', {'id': sortie.id}) }}">Afficher</a>
 
                         {% if  user in sortie.participant %}
@@ -69,7 +68,7 @@
 
     </table>
     <div>
-        <a href="{{ path('sortie_creer') }}">Créer une sortie</a>
+        <a class="index_creer_sortie" href="{{ path('sortie_creer') }}">Créer une sortie</a>
     </div>
-
+    </div>
 {% endblock %}

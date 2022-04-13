@@ -81,6 +81,14 @@
         </div>
     </div>
     <br>
+    <div class="sortieBout">
+        <div class="interBout">
+            {{ form_widget(sortieForm.enregistrer) }}
+        </div>
+        <div class="interBout">
+            {{ form_widget(sortieForm.publier) }}
+        </div>
+    </div>
     {{ form_end(sortieForm) }}
     <script type="text/javascript" src="{{ asset('js/selectionCodePostal.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
