@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
-
+use App\Entity\Etat;
 use App\Entity\Lieu;
 use App\Entity\Sortie;
 use App\Form\SortieType;
-
+use App\Repository\EtatRepository;
 use App\Repository\ParticipantRepository;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -21,7 +21,8 @@ class SortieController extends AbstractController
     public function creer(
         EntityManagerInterface $em,
         Request $request,
-        ParticipantRepository $pr
+        ParticipantRepository $pr,
+        EtatRepository $er
     ): Response
     {
         $sortie = new Sortie();
@@ -33,12 +34,23 @@ class SortieController extends AbstractController
             $sortie->setLieu($sortieForm->get('lieu')->getData()) ;
             $sortie->setOrganisateur($user);
             $sortie->setCampus($user->getCampus());
+            if ($sortieForm->getClickedButton() && 'enregistrer' === $sortieForm->getClickedButton()->getName()) {
+                $etat = $er->findOneBy(['id' => 1]);
+                $sortie->setEtat($etat);
+                $this->addFlash(
+                    'Bravo',
+                    'La sortie a bien été créée'
+                );
+            } else {
+                $etat = $er->findOneBy(['id' => 2]);
+                $sortie->setEtat($etat);
+                $this->addFlash(
+                    'Bravo',
+                    'La sortie a bien été publiée'
+                );
+            }
             $em->persist($sortie);
             $em->flush();
-            $this->addFlash(
-                'Bravo',
-                'La sortie a bien été créée'
-            );
             return $this -> redirectToRoute('app_accueil');
         }
         return $this->render(

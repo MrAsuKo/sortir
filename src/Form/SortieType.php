@@ -12,6 +12,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -61,7 +62,7 @@ class SortieType extends AbstractType
                 TextareaType::class,
                 [
                     "label" => "Description et infos : ",
-                    "attr" => ["class" => "form"]
+                    "attr" => [ "class" => "form"]
                 ]
             )
             ->add('lieu',
@@ -82,7 +83,19 @@ class SortieType extends AbstractType
                     'class'=> Ville::class,
                     'choice_label' => 'nom',
                     'mapped' => false,
-                    "attr" => ["class" => "form"]
+                    "attr" => [ "class" => "form"]
+                ]
+            )
+            ->add('enregistrer',
+                SubmitType::class,
+                [
+                    'label'=> 'Enregistrer'
+                ]
+            )
+            ->add('publier',
+                SubmitType::class,
+                [
+                    'label'=> 'Publier la sortie'
                 ]
             )
         ;
