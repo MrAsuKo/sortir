@@ -48,7 +48,7 @@
                 <td class="campus_td"></td>
                 <td class="campus_td">{{ sortie.organisateur }}</td>
                 <td class="campus_td">
-                    <a href="">Afficher</a>
+                    <a href="{{ path('sortie_afficher', {'id': sortie.id}) }}">Afficher -
 
 
                         {% if  user in sortie.participant %}

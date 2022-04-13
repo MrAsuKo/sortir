@@ -55,7 +55,8 @@ class SortieType extends AbstractType
                 IntegerType::class,
                 [
                     "label" => "Durée : ",
-                    "attr" => ["class" => "form"]
+                    "attr" => ["class" => "form",
+                    "onchange" => "select()"]
                 ]
             )
             ->add('infosSortie',

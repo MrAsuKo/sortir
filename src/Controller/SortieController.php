@@ -67,12 +67,13 @@ class SortieController extends AbstractController
         ]);
     }
 
-    #[Route('/sortie/afficher', name: 'sortie_afficher')]
-    public function afficher(): Response
+    #[Route('/sortie/afficher/{id}', name: 'sortie_afficher')]
+    public function afficher(
+        Sortie $sortie
+    ): Response
     {
-        return $this->render('sortie/afficher.html.twig', [
-            'controller_name' => 'SortieController',
-        ]);
+        return $this->render('sortie/afficher.html.twig',
+            compact('sortie'));
     }
 
     #[Route('/sortie/annuler', name: 'sortie_annuler')]

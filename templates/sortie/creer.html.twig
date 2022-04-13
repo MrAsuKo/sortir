@@ -67,7 +67,7 @@
                 <p id="rue"></p>
             </div>
             <div>
-                <p>Code postal : </p>
+                <p id="CP" >Code postal : </p>
                 <p id="cp"></p>
             </div>
             <div>
@@ -82,6 +82,6 @@
     </div>
     <br>
     {{ form_end(sortieForm) }}
-
+    <script type="text/javascript" src="{{ asset('js/selectionCodePostal.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
 {% endblock %}

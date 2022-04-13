@@ -6,4 +6,79 @@
     <div>
         <h1>Afficher une sortie</h1>
     </div>
+    <div class="sortieForm">
+        <div class="sortieCol">
+            <div>
+                <p>Nom de la sortie : {{ sortie.nom }}</p>
+            </div>
+            <br>
+            <div>
+                <p>Date et heure de sortie : {{ sortie.dateHeureDebut | date('d/m/Y à G:i:s')}}</p>
+            </div>
+            <br>
+            <div>
+                <p> Date limite d'inscription : {{ sortie.dateLimiteInscription | date('d/m/Y à G:i:s') }}</p>
+            </div>
+            <br>
+            <div>
+                <p>Nombre de place : {{ sortie.nbInscriptionsMax }}</p>
+            </div>
+            <br>
+            <div>
+                <p> durée : {{ sortie.duree }} minutes</p>
+            </div>
+            <br>
+            <div>
+                <p>Descrption et infos : {{ sortie.infosSortie }}</p>
+            </div>
+        </div>
+        <div class="sortieInter"></div>
+        <div class="sortieCol">
+            <div>
+                <p>Campus : {{ sortie.campus.nom }} </p>
+            </div>
+            <div>
+                <p>Ville : {{ sortie.lieu.ville.nom}} </p>
+            </div>
+            <br>
+            <div>
+                <p>Lieu : {{ sortie.lieu.nom}} </p>
+            </div>
+            <br>
+            <div>
+                <p>Rue  {{ sortie.lieu.rue}}: </p>
+            </div>
+            <div>
+                <p id="CP" >Code postal : {{ sortie.lieu.ville.codePostal}} </p>
+            </div>
+            <div>
+                <p>Latitude : {{ sortie.lieu.latitude}} </p>
+            </div>
+            <div>
+                <p>Longitude : {{ sortie.lieu.longitude}} </p>
+            </div>
+        </div>
+        </div>
+    <div>
+
+        <table class="ville_table">
+            <thead>
+            <tr class="ville_tr">
+                <td class="ville_td_head">Pseudo</td>
+                <td class="ville_td_head">Nom - Prénom</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for part in sortie.participant %}
+            <p></p>
+                <tr class="ville_tr">
+                    <td class="ville_td">{{ part.pseudo }}</td>
+                    <td class="ville_td">{{ part.nom }} {{ part.prenom }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    <br>
 {% endblock %}
