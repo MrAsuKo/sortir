@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {%  block body %}
-
+    {% set now = date('now') %}
 
     <p>Date du jour : {{ "now"|date("m/d/Y") }}</p>
     <p>Participant : {{ user.prenom }}</p>
@@ -49,11 +49,18 @@
                 <td class="campus_td">{{ sortie.organisateur }}</td>
                 <td class="campus_td">
                     <a href="">Afficher</a>
-                    {% if  user in sortie.participant  %}
-                        <a href="{{ path('sortie_inscription', {'id' : sortie.id })  }}">Se désister</a>
-                    {% else %}
-                        <a href="{{ path('sortie_inscription', {'id' : sortie.id })  }}">S'inscrire</a>
-                    {% endif %}
+
+
+                        {% if  user in sortie.participant %}
+                            <a href="{{ path('sortie_inscription', {'id' : sortie.id })  }}">Se désister</a>
+                        {% else %}
+
+                            {% if sortie.dateLimiteInscription > now %}
+                                <a href="{{ path('sortie_inscription', {'id' : sortie.id })  }}">S'inscrire</a>
+                            {% endif %}
+                        {% endif %}
+
+
                 </td>
             </tr>
         {% endfor %}
