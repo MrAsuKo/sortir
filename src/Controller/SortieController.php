@@ -26,45 +26,108 @@ class SortieController extends AbstractController
     ): Response
     {
         $sortie = new Sortie();
+
         $user = $this->getUser()->getUserIdentifier();
         $user = $pr->findOneBy(['mail' => $user] );
+
         $sortieForm = $this -> createForm(SortieType::class, $sortie);
         $sortieForm -> handleRequest($request);
-        if ($sortieForm -> isSubmitted() && $sortieForm -> isValid()) {
+
+        if ($sortieForm -> isSubmitted() && $sortieForm -> isValid())
+        {
             $sortie->setLieu($sortieForm->get('lieu')->getData()) ;
             $sortie->setOrganisateur($user);
             $sortie->setCampus($user->getCampus());
-            if ($sortieForm->getClickedButton() && 'enregistrer' === $sortieForm->getClickedButton()->getName()) {
+
+            if ($sortieForm->getClickedButton() && 'enregistrer' === $sortieForm->getClickedButton()->getName())
+            {
                 $etat = $er->findOneBy(['id' => 1]);
                 $sortie->setEtat($etat);
-                $this->addFlash(
+
+                $this->addFlash
+                (
                     'Bravo',
                     'La sortie a bien été créée'
                 );
-            } else {
+            }
+            else
+            {
                 $etat = $er->findOneBy(['id' => 2]);
                 $sortie->setEtat($etat);
-                $this->addFlash(
+
+                $this->addFlash
+                (
                     'Bravo',
                     'La sortie a bien été publiée'
                 );
             }
+
             $em->persist($sortie);
             $em->flush();
+
             return $this -> redirectToRoute('app_accueil');
         }
+
         return $this->render(
             'sortie/creer.html.twig',
             ['sortieForm' => $sortieForm -> createView(), 'user' => $user]
+
         );
     }
 
-    #[Route('/sortie/modifier', name: 'sortie_modifier')]
-    public function modifier(): Response
+    #[Route('/sortie/modifier/{id}', name: 'sortie_modifier', requirements: ["id" => "\d+"])]
+    public function modifier(
+        EtatRepository $er,
+        Sortie $sortie,
+        SortieRepository $sr,
+        ParticipantRepository $pr,
+        EntityManagerInterface $em,
+        Request $request
+    ): Response
     {
-        return $this->render('sortie/modifier.html.twig', [
-            'controller_name' => 'SortieController',
-        ]);
+        $user = $this->getUser()->getUserIdentifier();
+        $user = $pr->findOneBy(['mail'=> $user]);
+
+        $sortieForm = $this -> createForm(SortieType::class, $sortie);
+        $sortieForm -> handleRequest($request);
+
+        if ($sortieForm -> isSubmitted() && $sortieForm -> isValid())
+        {
+            $sortie->setLieu($sortieForm->get('lieu')->getData()) ;
+            $sortie->setOrganisateur($user);
+            $sortie->setCampus($user->getCampus());
+
+            if ($sortieForm->getClickedButton() && 'enregistrer' === $sortieForm->getClickedButton()->getName())
+            {
+                $etat = $er->findOneBy(['id' => 1]);
+                $sortie->setEtat($etat);
+
+                $this->addFlash
+                (
+                    'Bravo',
+                    'La sortie a bien été créée'
+                );
+            }
+            else
+            {
+                $etat = $er->findOneBy(['id' => 2]);
+                $sortie->setEtat($etat);
+                $this->addFlash
+                (
+                    'Bravo',
+                    'La sortie a bien été publiée'
+                );
+            }
+
+            $em->persist($sortie);
+            $em->flush();
+
+            return $this -> redirectToRoute('app_accueil');
+        }
+
+        return $this->render('sortie/modifier.html.twig',
+            ['sortieForm' => $sortieForm -> createView(), 'user' => $user]
+        );
     }
 
     #[Route('/sortie/afficher/{id}', name: 'sortie_afficher')]
@@ -104,6 +167,7 @@ class SortieController extends AbstractController
         EntityManagerInterface $em
     ): Response
     {
+        $now = new \DateTime();
         $user = $this->getUser()->getUserIdentifier();
         $user = $pm->findOneBy(['mail' => $user]);
 
@@ -116,7 +180,7 @@ class SortieController extends AbstractController
             }
             else
             {
-                if( $sortie->getEtat()->getLibelle() == "Ouverte")
+                if( $sortie->getEtat()->getLibelle() == "Ouverte" && $sortie->getDateLimiteInscription() > $now)
                 {
                     $sortie->addParticipant($user);
                 }

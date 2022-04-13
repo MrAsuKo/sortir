@@ -5,7 +5,7 @@ namespace App\Form;
 use App\Entity\Lieu;
 use App\Entity\Sortie;
 use App\Entity\Ville;
-use Cassandra\Date;
+
 use DateTime;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -101,6 +101,13 @@ class SortieType extends AbstractType
                 SubmitType::class,
                 [
                     'label'=> 'Publier la sortie'
+                ]
+            )
+
+            ->add('annuler',
+                SubmitType::class,
+                [
+                    'label'=> 'Annuler la sortie'
                 ]
             )
         ;

@@ -50,6 +50,10 @@
                 <td class="campus_td">
                     <a href="{{ path('sortie_afficher', {'id': sortie.id}) }}">Afficher</a>
 
+                    {% if sortie.organisateur == user %}
+                        <a href="{{ path('sortie_modifier', {'id' : sortie.id }) }}">Modifier</a>
+                    {% endif %}
+
                         {% if  user in sortie.participant %}
                             {% if sortie.etat.libelle == 'Ouverte' or  sortie.etat.libelle == 'Clôturée'%}
                                  - <a href="{{ path('sortie_inscription', {'id' : sortie.id })  }}">Se désister</a>
