@@ -46,20 +46,20 @@
                 <td class="campus_td">{{ sortie.participant | length }}/{{ sortie.nbInscriptionsMax }}</td>
                 <td class="campus_td">{{ sortie.etat.libelle }}</td>
                 <td class="campus_td"></td>
-                <td class="campus_td">{{ sortie.organisateur }}</td>
+                <td class="campus_td"><a href="{{ path('profil_affichage', {'id' : sortie.organisateur.id }) }}">{{ sortie.organisateur }}</a></td>
                 <td class="campus_td">
-                    <a href="{{ path('sortie_afficher', {'id': sortie.id}) }}">Afficher -
+                    <a href="{{ path('sortie_afficher', {'id': sortie.id}) }}">Afficher</a>
 
 
                         {% if  user in sortie.participant %}
                             {% if sortie.etat.libelle == 'Ouverte' or  sortie.etat.libelle == 'Clôturée'%}
-                                <a href="{{ path('sortie_inscription', {'id' : sortie.id })  }}">Se désister</a>
+                                 - <a href="{{ path('sortie_inscription', {'id' : sortie.id })  }}">Se désister</a>
                             {% endif %}
                         {% else %}
 
                             {% if sortie.dateLimiteInscription > now  %}
                                 {% if sortie.etat.libelle == 'Ouverte' %}
-                                    <a href="{{ path('sortie_inscription', {'id' : sortie.id })  }}">S'inscrire</a>
+                                     - <a href="{{ path('sortie_inscription', {'id' : sortie.id })  }}">S'inscrire</a>
                                 {% endif %}
                             {% endif %}
                         {% endif %}

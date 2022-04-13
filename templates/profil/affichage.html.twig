@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfilController!{% endblock %}
+
+{% block body %}
+<div class="profil_div">
+    <h1>Profil</h1>
+</div>
+    <div class="profil_div">
+        <p>Pseudo : {{ profil.pseudo }}</p>
+    </div>
+    <div class="profil_div">
+        <p>Nom : {{ profil.nom }}</p>
+    </div>
+    <div class="profil_div">
+        <p>Prénom : {{ profil.prenom }}</p>
+    </div>
+    <div class="profil_div">
+        <p>Telephone : {{ profil.telephone }}</p>
+    </div>
+    <div class="profil_div">
+        <p>Campus : {{ profil.campus.nom }}</p>
+    </div>
+    <div class="profil_div">
+        <p>Mail : {{ profil.mail }}</p>
+    </div>
+{% endblock %}

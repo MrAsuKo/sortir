@@ -35,10 +35,12 @@ class FilterSortieType extends AbstractType
             ->add('dateHeureDebut', DateTimeType::class,
                 [
                     'label' => 'Entre ',
+                    'widget' => 'single_text',
                     'data' => new DateTime('2022-01-01T15:03:01.012345Z')
                 ])
             ->add('dateHeureFin',DateTimeType::class,[
                 'label' => 'Et ',
+                'widget' => 'single_text',
                 'data' => new DateTime('2022-09-01T15:03:01.012345Z')
             ])
 
