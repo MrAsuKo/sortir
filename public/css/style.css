@@ -401,3 +401,49 @@ tbody {
 .img_avatar{
     height: 150px;
 }
+
+.div1 {
+    display: flex;
+}
+
+.div2 {
+    display: flex;
+}
+
+.div3 {
+    display: flex;
+}
+
+.div4 {
+    display: flex;
+}
+
+.input-group-text {
+    width: 75px;
+    background-color: #00304a;
+    border-color: #00877e;
+    color: white;
+    transition: all 1s ease-in-out;
+}
+
+.input-group-text:hover {
+    width: 75px;
+    background-color: #00304a;
+    border-color: #00877e;
+    color: black;
+    background: linear-gradient(to right, rgba(254,43,57,255), rgba(255,131,43,255), rgba(254,233,42,255), rgba(44,194,84,255), rgba(41,123,253,255), rgba(169,41,193,255), rgba(252,50,159,255));
+}
+
+.form-select {
+    width: 240px;
+    border-color: #00877e;
+}
+
+.form-control {
+    width: 240px;
+    border-color: #00877e;
+}
+
+.filter_titre {
+    color: #00304a;
+}
