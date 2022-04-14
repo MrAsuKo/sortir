@@ -101,7 +101,7 @@ header {
 }
 
 .sortieCol {
-    width: 400px;
+    width: 360px;
 }
 
 .sortieInter {
@@ -358,6 +358,21 @@ tbody {
     overflow-y: scroll;
 }
 
+.bouton_lieu {
+    background: #00304a;
+    font-weight: bold;
+    border-color: #00877e;
+    border-radius: 100%;
+    transition: all 1s ease-in-out;
+}
+
+.bouton_lieu:hover {
+    color: black;
+    font-weight: bold;
+    border-color: #00877e;
+    background: linear-gradient(to right, rgba(254,43,57,255), rgba(255,131,43,255), rgba(254,233,42,255), rgba(44,194,84,255), rgba(41,123,253,255), rgba(169,41,193,255), rgba(252,50,159,255));
+}
+
 .bouton_creer {
     background: #00304a;
     border-color: #00877e;
@@ -408,7 +423,7 @@ tbody {
 }
 
 .input-group-text {
-    width: 75px;
+    width: 90px;
     background-color: #00304a;
     border-color: #00877e;
     color: white;
@@ -416,7 +431,7 @@ tbody {
 }
 
 .input-group-text:hover {
-    width: 75px;
+    width: 90px;
     background-color: #00304a;
     border-color: #00877e;
     color: black;
@@ -424,12 +439,12 @@ tbody {
 }
 
 .form-select {
-    width: 240px;
+    width: 230px;
     border-color: #00877e;
 }
 
 .form-control {
-    width: 240px;
+    width: 230px;
     border-color: #00877e;
 }
 
