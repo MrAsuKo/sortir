@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 class SortieTest extends TestCase
 {
-    public function testSomething(): void
+    public function testSortie(): void
     {
 
         $sortie = new Sortie();

@@ -2,6 +2,7 @@
 
 namespace App\Tests\Entity;
 
+use App\Entity\Avatar;
 use App\Entity\Campus;
 use App\Entity\Participant;
 use App\Entity\Sortie;
@@ -9,12 +10,13 @@ use PHPUnit\Framework\TestCase;
 
 class ParticipantTest extends TestCase
 {
-    public function testSomething(): void
+    public function testParticipant(): void
     {
 
         $user = new Participant();
         $campus = new Campus();
         $sortie = new Sortie();
+        $avatar = new Avatar();
 
         $user->setActif(true);
         $user->setAdministrateur(true);
@@ -24,20 +26,23 @@ class ParticipantTest extends TestCase
         $user->setRoles([]);
         $user->setCampus($campus);
         $user->setMail('mail');
-        $user->setOrgaSorties($sortie);
+        $user->setOrgaSorties([$sortie]);
         $user->setPrenom('prenom');
         $user->setTelephone('tel');
         $user->addSorty($sortie);
+        $user->setAvatar($avatar);
 
         $this->assertNotNull($user->getSorties());
         $this->assertTrue($user->getActif());
         $this->assertTrue($user->getAdministrateur());
         $this->assertTrue((bool)$user->getRoles());
         $this->assertTrue((bool)$user->getCampus());
-        $this->assertTrue($user->getSorties());
+        $this->assertNotNull($user->getSorties());
+        $this->assertNotNull($user->getOrgaSorties());
+        $this->assertNotNull($user->getAvatar());
 
-        $this->assertEquals('email', $user->getUserIdentifier());
-        $this->assertEquals('email', $user->getMail());
+        $this->assertEquals('mail', $user->getUserIdentifier());
+        $this->assertEquals('mail', $user->getMail());
         $this->assertNull($user->getId());
         $this->assertEquals('nom', $user->getNom());
         $this->assertEquals('prenom', $user->getPrenom());
@@ -46,6 +51,8 @@ class ParticipantTest extends TestCase
         $this->assertEquals('pseudo', $user->getPseudo());
 
         $user->removeSorty($sortie);
+
+        $user->__toString();
 
     }
 }

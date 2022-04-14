@@ -50,7 +50,7 @@ class Sortie
 
     public function __construct()
     {
-        $this->participant = new ArrayCollection();
+        $this->participants = new ArrayCollection();
     }
 
     public function getId(): ?int
