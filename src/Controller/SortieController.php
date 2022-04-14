@@ -158,18 +158,6 @@ class SortieController extends AbstractController
         ]);
     }
 
-    #[Route('/sortie/lieu/{id}',
-        requirements: ["id" => "\d+"])]
-    public function findLieu(
-        SortieRepository $sm,
-        Lieu $lieu
-    ): JsonResponse
-    {
-        $tab = [$lieu];
-        return new JsonResponse(['mesDonnees' => $lieu, 200]);
-
-    }
-
     #[Route('/sortie/inscription/{id}', name: 'sortie_inscription', requirements: ["id" => "\d+"])]
     public function inscription(
         SortieRepository $sm,
