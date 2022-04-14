@@ -64,8 +64,9 @@ document.getElementById('sortie_ville').addEventListener('change',(event) => {
                 lieu.innerHTML = '';
                 for( let i=0; i < nbrLieux; i++)
                 {
-                    lieu.innerHTML += `<option value="${donnees.lieuxId[i]}">${donnees.lieuxNoms[i]}</option>"`
+                    lieu.innerHTML += `<option value="${donnees.lieuxId[i]}">${donnees.lieuxNoms[i]}</option>`;
                 }
+                console.log(lieu.innerHTML);
 
                 rue.innerText = '';
                 longitude.innerText = '';

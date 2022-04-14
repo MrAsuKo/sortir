@@ -85,8 +85,8 @@ class VilleController extends AbstractController
 
         foreach( $lieux as $lieu )
         {
-            $lieuxId = [$lieu->getId()];
-            $lieuxNoms = [$lieu->getNom()];
+            $lieuxId[] = $lieu->getId();
+            $lieuxNoms[] = [$lieu->getNom()];
         }
 
         return new JsonResponse(['ville' => $ville, 'lieuxId' => $lieuxId, 'lieuxNoms' => $lieuxNoms]);
