@@ -6,11 +6,14 @@ use App\Entity\Campus;
 use App\Entity\Participant;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ProfilType extends AbstractType
 {
@@ -115,6 +118,8 @@ class ProfilType extends AbstractType
                     'choice_label' => 'nom',
                     'mapped' => false
                 ])
+            ->add('avatar',
+            AvatarType::class)
         ;
     }
 

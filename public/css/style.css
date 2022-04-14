@@ -325,3 +325,13 @@ tbody {
     overflow-y: scroll;
 }
 
+.avatar{
+    height: 150px;
+    border: solid;
+}
+
+.profil_body{
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 660px;
+}

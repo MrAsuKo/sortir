@@ -3,15 +3,17 @@
 namespace App\Entity;
 
 use App\Repository\ParticipantRepository;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+
+
 #[ORM\Entity(repositoryClass: ParticipantRepository::class)]
 #[UniqueEntity(fields: ['mail'], message: 'There is already an account with this mail')]
+
 class Participant implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -55,6 +57,8 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 50, nullable: true,  unique: true)]
     private $pseudo;
 
+    #[ORM\OneToOne(targetEntity: Avatar::class, cascade: ['persist', 'remove'])]
+    private $avatar;
 
     public function __construct()
     {
@@ -262,6 +266,19 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->getNom();
     }
+
+    public function getAvatar(): ?Avatar
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(?Avatar $avatar): self
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
 
 
 }
