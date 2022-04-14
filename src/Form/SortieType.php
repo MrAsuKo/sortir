@@ -25,48 +25,52 @@ class SortieType extends AbstractType
             ->add('nom',
                 TextType::class,
                 [
-                    "label" => "Nom de la sortie : ",
-                    "attr" => ["class" => "form"]
+                    "label" => "Nom : ",
+                    "attr" => ["class" => "form-control form-control-sm"]
                 ]
             )
             ->add('dateHeureDebut',
                 DateTimeType::class,
                 [
-                    "label" => "Date et heure de la sortie : ",
+                    "label" => "Date/heure : ",
                     'widget' => 'single_text',
                     'data' => new DateTime('now'),
-                    "attr" => ["class" => "form"]
+                    'attr' => [
+                        'class' => 'form-select form-select-sm'
+                    ]
                 ]
             )
             ->add('dateLimiteInscription',
                 DateType::class,
                 [
-                    "label" => "Date limite d'inscription : ",
+                    "label" => "Limite : ",
                     'widget' => 'single_text',
                     'data' => new DateTime('now'),
-                    "attr" => ["class" => "form"]
+                    'attr' => [
+                        'class' => 'form-select form-select-sm'
+                    ]
                 ]
             )
             ->add('nbInscriptionsMax',
                 IntegerType::class,
                 [
-                    "label" => "Nombre de places : ",
-                    "attr" => ["class" => "form"]
+                    "label" => "Places : ",
+                    "attr" => ["class" => "form-control form-control-sm"]
                 ]
             )
             ->add('duree',
                 IntegerType::class,
                 [
                     "label" => "Durée : ",
-                    "attr" => ["class" => "form",
+                    "attr" => ["class" => "form-control form-control-sm",
                     "onchange" => "select()"]
                 ]
             )
             ->add('infosSortie',
                 TextareaType::class,
                 [
-                    "label" => "Description et infos : ",
-                    "attr" => [ "class" => "form"]
+                    "label" => "Description : ",
+                    "attr" => [ "class" => "form-control form-control-sm"]
                 ]
             )
             ->add('lieu',
@@ -76,7 +80,7 @@ class SortieType extends AbstractType
                     'class'=> Lieu::class,
                     'choice_label' => 'nom',
                     'mapped' => false,
-                    "attr" => ["class" => "form", "id" => "lieu"]
+                    "attr" => ["class" => "form-select form-select-sm", "id" => "lieu"]
 
                 ]
             )
@@ -87,21 +91,23 @@ class SortieType extends AbstractType
                     'class'=> Ville::class,
                     'choice_label' => 'nom',
                     'mapped' => false,
-                    "attr" => [ "class" => "form"]
+                    'attr' => [
+                        'class' => 'form-select form-select-sm'
+                    ]
                 ]
             )
             ->add('enregistrer',
                 SubmitType::class,
                 [
                     'label'=> 'Enregistrer',
-                    "attr" => [ "class" => "btn btn-info"]
+                    "attr" => [ "class" => "btn btn-secondary bouton_sortie"]
                 ]
             )
             ->add('publier',
                 SubmitType::class,
                 [
                     'label'=> 'Publier la sortie',
-                    "attr" => [ "class" => "btn btn-info"]
+                    "attr" => [ "class" => "btn btn-secondary bouton_sortie"]
                 ]
             )
         ;
