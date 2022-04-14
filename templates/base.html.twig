@@ -20,9 +20,12 @@
     </head>
     <body>
     <div class="test">
-    <a class="logo" href="{{ path('app_accueil') }}">
-        <img src="{{ asset('img/logo.png') }}" alt="Logo OnVaSortir!" id="img">
-    </a>
+
+        <a class="logo" href="{{ path('app_login') }}">
+            <img src="{{ asset('img/logo.png') }}" alt="Logo OnVaSortir!" id="img">
+        </a>
+
+
         <header>{% include ('header.html.twig') %}</header>
         {% block body %}{% endblock %}
     </div>
