@@ -2,15 +2,19 @@
 
 namespace App\Controller;
 
+use App\Entity\Avatar;
 use App\Entity\Participant;
+use App\Form\AvatarType;
 use App\Form\ProfilType;
 use App\Repository\ParticipantRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ProfilController extends AbstractController
 {
@@ -20,14 +24,18 @@ class ProfilController extends AbstractController
         Request                $request,
         ParticipantRepository  $participantRepository,
         UserPasswordHasherInterface $participantPasswordHasher,
+        SluggerInterface $slugger
     ): Response
     {
+
         $participant = $participantRepository->findOneBy(['mail' => $this->getUser()->getUserIdentifier()]);
         $profilForm = $this->createForm(ProfilType::class,$participant);
         $profilForm->handleRequest($request);
 
+
         if ($profilForm->isSubmitted() && $profilForm->isValid()) {
-            $participant->setPassword(
+
+                $participant->setPassword(
                 $participantPasswordHasher->hashPassword(
                 $participant,
                 $profilForm->get('password')->getData()
@@ -35,10 +43,12 @@ class ProfilController extends AbstractController
 
             $em->persist($participant);
             $em->flush();
+
+
             return $this->redirectToRoute('app_accueil');
         }
         return $this->render('profil/modifProfil.html.twig',
-            ['formProfil' =>$profilForm->createView()]
+            ['formProfil' =>$profilForm->createView(), 'participant'=> $participant]
         );
     }
 

@@ -6,17 +6,25 @@
 <div class="profil_div">
     <h1>Mon Profil</h1>
 </div>
-<div class="profil_div">
-    {{ form_start(formProfil) }}
-    {{ form_row(formProfil.pseudo) }}
-    {{ form_row(formProfil.prenom) }}
-    {{ form_row(formProfil.nom) }}
-    {{ form_row(formProfil.telephone) }}
-    {{ form_row(formProfil.mail) }}
-    {{ form_row(formProfil.password) }}
-    {{ form_row(formProfil.campus) }}
+<div class="profil_body">
+    <div style="margin-right: 50px;">
+        <img class="avatar" src="{{ asset('uploads/avatars/'~participant.avatar.avatar) }}" alt="avatar">
+    </div>
+    <div class="profil_div">
+        {{ form_start(formProfil) }}
+        {{ form_row(formProfil.pseudo) }}
+        {{ form_row(formProfil.prenom) }}
+        {{ form_row(formProfil.nom) }}
+        {{ form_row(formProfil.telephone) }}
+        {{ form_row(formProfil.mail) }}
+        {{ form_row(formProfil.password) }}
+        {{ form_row(formProfil.campus) }}
+        {{ form_row(formProfil.avatar) }}
+        {{ form_row(formProfil._token) }}
+    </div>
 </div>
 <div class="profil_div">
     <button class="profil_btn">{{ button_label|default('Save') }}</button>
 </div>
+
 {% endblock %}

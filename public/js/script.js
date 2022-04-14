@@ -1,12 +1,14 @@
 
+let rue = document.getElementById('rue');
+let longitude = document.getElementById('longitude');
+let latitude = document.getElementById('latitude');
 
-document.getElementById('sortie_lieu').addEventListener('change', (event) => {
+
+document.getElementById('sortie_lieu').addEventListener('click', (event) => {
 
     let lieu = document.getElementById('sortie_lieu');
 
-    let rue = document.getElementById('rue');
-    let longitude = document.getElementById('longitude');
-    let latitude = document.getElementById('latitude');
+
 
     lieuSortie = lieu.value;
 
@@ -38,21 +40,37 @@ document.getElementById('sortie_ville').addEventListener('change',(event) => {
 
 
     let cp = document.getElementById('cp');
-    let ville = document.getElementById('sortie_ville')
+    let ville = document.getElementById('sortie_ville');
+    let lieu = document.getElementById('sortie_lieu');
 
     villeSortie = ville.querySelector('option:checked').innerText.toLowerCase()
+    villeSortie = ville.value;
 
 
     $.ajax(
         {
-            url:'https://api-adresse.data.gouv.fr/search/?q=' + villeSortie ,
+            url:'http://127.0.0.1:8000/ville/' + villeSortie ,
             method:'GET'
         }
     )
         .done(
             (donnees) => {
-                console.log(villeSortie);
-                cp.innerText = donnees.features[2].properties.postcode;
+
+                cp.innerText = donnees.ville[0];
+                console.log(donnees.lieuxNoms[0]);
+                console.log(lieu.innerHTML);
+                let nbrLieux = donnees.lieuxNoms.length;
+
+                lieu.innerHTML = '';
+                for( let i=0; i < nbrLieux; i++)
+                {
+                    lieu.innerHTML += `<option value="${donnees.lieuxId[i]}">${donnees.lieuxNoms[i]}</option>"`
+                }
+
+                rue.innerText = '';
+                longitude.innerText = '';
+                latitude.innerText = '';
+
             }
         )
         .fail()
