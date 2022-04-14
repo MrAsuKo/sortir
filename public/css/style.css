@@ -399,24 +399,11 @@ tbody {
     border-color: #00877e;
 }
 
-.div {
 .img_avatar{
     height: 150px;
 }
 
-.div1 {
-    display: flex;
-}
-
-.div2 {
-    display: flex;
-}
-
-.div3 {
-    display: flex;
-}
-
-.div4 {
+.div {
     display: flex;
 }
 
