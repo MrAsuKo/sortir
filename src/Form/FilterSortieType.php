@@ -30,7 +30,7 @@ class FilterSortieType extends AbstractType
                     'choice_label' => 'nom',
                     "multiple" => false,
                     'attr' => [
-                        'class' => 'form-select'
+                        'class' => 'form-select form-select-sm'
                     ]
                 ])
             ->add('nom', TextType::class,
@@ -38,7 +38,7 @@ class FilterSortieType extends AbstractType
                 'label'=>'Nom : ',
                 'required' => false,
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control form-control-sm'
                 ]
             ])
             ->add('dateHeureDebut', DateTimeType::class,
@@ -47,7 +47,7 @@ class FilterSortieType extends AbstractType
                     'widget' => 'single_text',
                     'data' => new DateTime('now'),
                     'attr' => [
-                        'class' => 'form-control'
+                        'class' => 'form-select form-select-sm'
                     ]
                 ])
             ->add('dateHeureFin',DateTimeType::class,[
@@ -55,7 +55,7 @@ class FilterSortieType extends AbstractType
                 'widget' => 'single_text',
                 'data' => new DateTime('+6month'),
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-select form-select-sm'
                 ]
             ])
 
