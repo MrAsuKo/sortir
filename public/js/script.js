@@ -14,7 +14,7 @@ document.getElementById('sortie_lieu').addEventListener('click', (event) => {
 
         $.ajax(
             {
-                url:'localhost/lieu/' + lieuSortie ,
+                url:'/lieu/' + lieuSortie ,
                 method:'GET'
             }
         )
@@ -49,7 +49,7 @@ document.getElementById('sortie_ville').addEventListener('change',(event) => {
 
     $.ajax(
         {
-            url:'localhost/ville/' + villeSortie ,
+            url:'/ville/' + villeSortie ,
             method:'GET'
         }
     )
