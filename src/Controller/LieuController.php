@@ -18,6 +18,7 @@ class LieuController extends AbstractController
         Lieu $lieu
     ): JsonResponse
     {
+
         $lieu = [$lieu->getRue(), $lieu->getLongitude(), $lieu->getLatitude()];
         return new JsonResponse(['lieu' => $lieu]);
 
