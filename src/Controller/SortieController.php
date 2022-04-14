@@ -86,59 +86,65 @@ class SortieController extends AbstractController
         Request $request
     ): Response
     {
+
         $user = $this->getUser()->getUserIdentifier();
         $user = $pr->findOneBy(['mail'=> $user]);
 
-        $sortieForm = $this -> createForm(SortieType::class, $sortie);
-        $sortieForm -> handleRequest($request);
-
-        if ($sortieForm -> isSubmitted() && $sortieForm -> isValid())
+        if ($sortie->getOrganisateur() == $user)
         {
-            $sortie->setLieu($sortieForm->get('lieu')->getData()) ;
-            $sortie->setOrganisateur($user);
-            $sortie->setCampus($user->getCampus());
+            $sortieForm = $this -> createForm(SortieType::class, $sortie);
+            $sortieForm -> handleRequest($request);
 
-            if ($sortieForm->getClickedButton() && 'enregistrer' === $sortieForm->getClickedButton()->getName())
+            if ($sortieForm -> isSubmitted() && $sortieForm -> isValid())
             {
-                $etat = $er->findOneBy(['id' => 1]);
-                $sortie->setEtat($etat);
+                $sortie->setLieu($sortieForm->get('lieu')->getData()) ;
+                $sortie->setOrganisateur($user);
+                $sortie->setCampus($user->getCampus());
 
-                $this->addFlash
-                (
-                    'Bravo',
-                    'La sortie a bien été créée'
-                );
-            }
-            elseif( $sortieForm->getClickedButton() && 'publier' === $sortieForm->getClickedButton()->getName() )
-            {
-                $etat = $er->findOneBy(['id' => 2]);
-                $sortie->setEtat($etat);
-                $this->addFlash
-                (
-                    'Bravo',
-                    'La sortie a bien été publiée'
-                );
-            }
-            else
-            {
-                $etat = $er->findOneBy(['id' => 6]);
-                $sortie->setEtat($etat);
-                $this->addFlash
-                (
-                    'Bravo',
-                    'La sortie a bien été annulée'
-                );
+                if ($sortieForm->getClickedButton() && 'enregistrer' === $sortieForm->getClickedButton()->getName())
+                {
+                    $etat = $er->findOneBy(['id' => 1]);
+                    $sortie->setEtat($etat);
+
+                    $this->addFlash
+                    (
+                        'Bravo',
+                        'La sortie a bien été créée'
+                    );
+                }
+                elseif( $sortieForm->getClickedButton() && 'publier' === $sortieForm->getClickedButton()->getName() )
+                {
+                    $etat = $er->findOneBy(['id' => 2]);
+                    $sortie->setEtat($etat);
+                    $this->addFlash
+                    (
+                        'Bravo',
+                        'La sortie a bien été publiée'
+                    );
+                }
+                else
+                {
+                    $etat = $er->findOneBy(['id' => 6]);
+                    $sortie->setEtat($etat);
+                    $this->addFlash
+                    (
+                        'Bravo',
+                        'La sortie a bien été annulée'
+                    );
+                }
+
+                $em->persist($sortie);
+                $em->flush();
+
+                return $this -> redirectToRoute('app_accueil');
             }
 
-            $em->persist($sortie);
-            $em->flush();
-
-            return $this -> redirectToRoute('app_accueil');
+            return $this->render('sortie/modifier.html.twig',
+                ['sortieForm' => $sortieForm -> createView(), 'user' => $user]
+            );
         }
 
-        return $this->render('sortie/modifier.html.twig',
-            ['sortieForm' => $sortieForm -> createView(), 'user' => $user]
-        );
+        return $this->render('accueil/index.html.twig');
     }
 
     #[Route('/sortie/afficher/{id}', name: 'sortie_afficher')]

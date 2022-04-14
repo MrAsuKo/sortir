@@ -2,10 +2,12 @@
 
 namespace App\Repository;
 
+use App\Entity\Participant;
 use App\Entity\Sortie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
+use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -61,6 +63,13 @@ class SortieRepository extends ServiceEntityRepository
                 ->andWhere( 's.nom LIKE :nom')
                 ->setParameter('nom', '%'.$criteria['nom'].'%');
             }
+
+                /*$qb
+                ->innerJoin(Participant::class, 'p', Join::WITH, 'p = s.participants')
+                ->andWhere( 'p.nom = :user')
+                ->setParameter('user', 'titi');*/
+
+
 
             return
             $qb
