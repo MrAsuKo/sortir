@@ -23,7 +23,9 @@ class LieuType extends AbstractType
                 [
                     'label'=>'Ville : ',
                     'class'=> Ville::class,
-                    'choice_label' => 'nom',
+                    'choice_label' => function (Ville $ville){
+                        return $ville->getNom() . ' - ' . $ville->getCodePostal();
+                    },
                     "multiple" => false,
                     'attr' => [
                         'class' => 'form-select form-select-sm'
