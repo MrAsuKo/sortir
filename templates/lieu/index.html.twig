@@ -36,13 +36,7 @@
                 <td class="lieu_td">{{ form_widget(lieuForm.rue) }}
                 <td class="lieu_td">{{ form_widget(lieuForm.latitude) }}
                 <td class="lieu_td">{{ form_widget(lieuForm.longitude) }}</td>
-                <td class="lieu_td"><select name="villes" id="ville-select">
-                        <option value="">--Please choose an option--</option>
-                        {%  for ville in villes %}
-                        <option value="{{ ville.id }}">{{ ville.nom }}</option>
-                        {% endfor %}
-                                    </select>
-                </td>
+                <td class="lieu_td">{{ form_widget(lieuForm.ville) }}</td>
                 <td class="lieu_td">{{ form_widget(lieuForm.valider) }}</td>
                 {{ form_end(lieuForm) }}
             </tr>
