@@ -91,8 +91,8 @@ class ProfilType extends AbstractType
                         "class" => "profil_input"
                     ]
                 ])
-            ->add('administrateur')
-            ->add('actif')
+            //->add('administrateur')
+            //  ->add('actif')
             ->add('pseudo',
                 TextType::class,
                 [

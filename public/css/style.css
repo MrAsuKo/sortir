@@ -397,3 +397,7 @@ tbody {
     background-color: #00304a;
     border-color: #00877e;
 }
+
+.img_avatar{
+    height: 150px;
+}

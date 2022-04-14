@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Vich\UploaderBundle\Form\Type\VichFileType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class AvatarType extends AbstractType
 {
@@ -15,12 +15,13 @@ class AvatarType extends AbstractType
     {
         $builder
             ->add('avatarFile',
-                VichFileType::class,
-                //[
-                  //  'required' => false,
-                    //'allow_delete'  => false,
-                    //'download_link' => false,
-                //]
+                VichImageType::class,
+                [
+                    'required' => false,
+                    'allow_delete'  => false,
+                    'download_link' => false,
+                    'image_uri' => false
+                ]
             )
         ;
     }

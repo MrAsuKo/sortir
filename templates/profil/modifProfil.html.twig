@@ -8,7 +8,7 @@
 </div>
 <div class="profil_body">
     <div style="margin-right: 50px;">
-        <img class="avatar" src="{{ asset('uploads/avatars/'~participant.avatar.avatar) }}" alt="avatar">
+        <img class="img_avatar" src="{{ asset('uploads/avatars/'~participant.avatar.avatar) }}" alt="avatar">
     </div>
     <div class="profil_div">
         {{ form_start(formProfil) }}
@@ -21,10 +21,9 @@
         {{ form_row(formProfil.campus) }}
         {{ form_row(formProfil.avatar) }}
         {{ form_row(formProfil._token) }}
+        <button class="profil_btn">{{ button_label|default('Save') }}</button>
+        {{ form_end(formProfil) }}
     </div>
-</div>
-<div class="profil_div">
-    <button class="profil_btn">{{ button_label|default('Save') }}</button>
 </div>
 
 {% endblock %}
