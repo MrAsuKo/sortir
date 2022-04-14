@@ -11,6 +11,7 @@ use App\Repository\ParticipantRepository;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -155,18 +156,6 @@ class SortieController extends AbstractController
         return $this->render('sortie/annuler.html.twig', [
             'controller_name' => 'SortieController',
         ]);
-    }
-
-    #[Route('/sortie/lieu/{id}',
-        requirements: ["id" => "\d+"])]
-    public function findLieu(
-        SortieRepository $sm,
-        Lieu $lieu
-    ): Response
-    {
-
-        return $this->json($lieu);
-
     }
 
     #[Route('/sortie/inscription/{id}', name: 'sortie_inscription', requirements: ["id" => "\d+"])]
