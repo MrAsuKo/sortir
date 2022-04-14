@@ -29,45 +29,75 @@ class FilterSortieType extends AbstractType
                     'class'=> Campus::class,
                     'choice_label' => 'nom',
                     "multiple" => false,
+                    'attr' => [
+                        'class' => 'form-select'
+                    ]
                 ])
             ->add('nom', TextType::class,
             [
-                'required' => false
+                'label'=>'Nom : ',
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
             ->add('dateHeureDebut', DateTimeType::class,
                 [
-                    'label' => 'Entre ',
+                    'label' => 'Entre : ',
                     'widget' => 'single_text',
-                    'data' => new DateTime('now')
+                    'data' => new DateTime('now'),
+                    'attr' => [
+                        'class' => 'form-control'
+                    ]
                 ])
             ->add('dateHeureFin',DateTimeType::class,[
-                'label' => 'Et ',
+                'label' => ' Et : ',
                 'widget' => 'single_text',
-                'data' => new DateTime('+6month')
+                'data' => new DateTime('+6month'),
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
 
             ->add('organisateur', CheckboxType::class,
                 [
-                    'label'  => 'Sorties dont je suis l\'organisateur/trice',
                     'required' => false,
+                    'label'  => 'Sorties dont je suis l\'organisateur/trice',
+                    'attr' => [
+                        'class' => 'form-check-input filter_switch',
+                        'role' => 'switch'
+                    ]
                 ])
             ->add('participant', CheckboxType::class,
                 [
-                    'label' => 'Sorties auxquelles je suis inscrit/e ',
-                    'required' => false,
+                    'label' => 'Sorties auxquelles je suis inscrit/e',
+                    'attr' => [
+                        'class' => 'form-check-input filter_switch',
+                        'role' => 'switch'
+                    ],
+                    'required' => false
                 ])
             ->add('inscrit', CheckboxType::class,
                 [
                     'label' => 'Sorties auxquelles je ne suis pas inscrit/e',
-                    'required' => false,
+                    'attr' => [
+                        'class' => 'form-check-input filter_switch',
+                        'role' => 'switch'
+                    ],
+                    'required' => false
                 ])
             ->add('dateLimiteInscription', CheckboxType::class,
                 [
                     'label' => 'Sorties passées',
-                    'required' => false,
+                    'attr' => [
+                        'class' => 'form-check-input filter_switch',
+                        'role' => 'switch'
+                    ],
+                    'required' => false
                 ])
-            ->add('Rechercher', SubmitType::class)
-
+            ->add('Rechercher', SubmitType::class, [
+                'attr' => [ 'class' => 'btn btn-secondary bouton_filter']
+            ])
         ;
 
     }

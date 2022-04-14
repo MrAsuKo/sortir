@@ -3,24 +3,45 @@
 {%  block body %}
     <div class="body">
     {% set now = date('now') %}
-
-    <p>Date du jour : {{ "now"|date("m/d/Y") }}</p>
-    <p>Participant : {{ user.prenom }}</p>
-
-        {{ form_start(formProfil,{ 'attr': {'class': 'form_accueil'} }) }}
-<div class="parent">
-        <div class="div1">{{ form_row(formProfil.campus) }} </div>
-        <div class="div2">{{ form_row(formProfil.nom) }} </div>
-        <div class="div3">{{ form_row(formProfil.dateHeureDebut) }}
-                        {{ form_row(formProfil.dateHeureFin) }} </div>
-        <div class="div4">
-            {{ form_row(formProfil.organisateur) }}
-            {{ form_row(formProfil.participant) }}
-            {{ form_row(formProfil.inscrit) }}
-            {{ form_row(formProfil.dateLimiteInscription)  }}
+        <div class="index_id">
+            <div class="index_identite">
+                <p>Date du jour : {{ "now"|date("m/d/Y") }}</p>
+                <p>Participant : {{ user.prenom }}</p>
             </div>
-    {{ form_end(formProfil) }}
+        </div>
+<div class="index_filter">
+    <div class="index_filter1">
+        <h1>Filtrer les Sorties</h1><br>
+        {{ form_start(formProfil,{ 'attr': {'class': 'form_accueil'} }) }}
+        <div class="div1"><p>{{ form_label(formProfil.campus) }} {{ form_widget(formProfil.campus) }}{{ form_errors(formProfil.campus) }}</p></div>
+        <div class="div2"><p>{{ form_label(formProfil.nom) }} {{ form_widget(formProfil.nom) }}{{ form_errors(formProfil.nom) }}</p></div>
+        <div class="div3"><p>{{ form_label(formProfil.dateHeureDebut) }} {{ form_widget(formProfil.dateHeureDebut) }}{{ form_errors(formProfil.dateHeureDebut) }}</p></div>
+        <div class="div4"><p>{{ form_label(formProfil.dateHeureFin) }} {{ form_widget(formProfil.dateHeureFin) }}{{ form_errors(formProfil.dateHeureFin) }}</p></div>
+    </div>
+    <div class="index_filter2">
+        <div>  {{ form_widget(formProfil.organisateur) }}
+                            {{ form_label(formProfil.organisateur) }}
+                            {{ form_errors(formProfil.organisateur) }}
+            <br><br>
+                            {{ form_widget(formProfil.participant) }}
+                            {{ form_label(formProfil.participant) }}
+                            {{ form_errors(formProfil.participant) }}
+            <br><br>
+                            {{ form_widget(formProfil.inscrit) }}
+                            {{ form_label(formProfil.inscrit) }}
+                            {{ form_errors(formProfil.inscrit) }}
+            <br><br>
+                            {{ form_widget(formProfil.dateLimiteInscription) }}
+                            {{ form_label(formProfil.dateLimiteInscription) }}
+                            {{ form_errors(formProfil.dateLimiteInscription) }}
+        </div>
+    </div>
+    <div class="index_filter3">
+        {{ form_end(formProfil) }}
+    </div>
 </div>
+        <br>
+
 
     <table class="index_table">
         <thead>
@@ -68,7 +89,7 @@
 
     </table>
     <div>
-        <a class="index_creer_sortie" href="{{ path('sortie_creer') }}">Créer une sortie</a>
+        <a class="btn btn-secondary bouton_creer" href="{{ path('sortie_creer') }}">Créer une sortie</a>
     </div>
     </div>
 {% endblock %}
