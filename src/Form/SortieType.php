@@ -80,6 +80,7 @@ class SortieType extends AbstractType
                     'class'=> Lieu::class,
                     'choice_label' => 'nom',
                     'mapped' => false,
+                    'placeholder' => '--Lieu--',
                     "attr" => ["class" => "form-select form-select-sm", "id" => "lieu"]
 
                 ]
@@ -91,8 +92,9 @@ class SortieType extends AbstractType
                     'class'=> Ville::class,
                     'choice_label' => 'nom',
                     'mapped' => false,
+                    'placeholder' => '--Villes--',
                     'attr' => [
-                        'class' => 'form-select form-select-sm'
+                        'class' => 'form-select form-select-sm',
                     ]
                 ]
             )
