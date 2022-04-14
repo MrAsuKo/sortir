@@ -3,79 +3,103 @@
 {% block title %}Créer Sortie{% endblock %}
 
 {% block body %}
-    <div>
-        <h1>Créer une sortie</h1>
-    </div>
+    <div class="body sortie_form">
+        <h1 class="titre_sortie">Créer une sortie</h1><br>
     {{ form_start(sortieForm) }}
     <div class="sortieForm">
         <div class="sortieCol">
-            <div>
+            <div class="div input-group input-group-sm mb-3">
+                <div class="input-group-text">
                 {{ form_label(sortieForm.nom) }}
+                </div>
+                <div>
                 {{ form_widget(sortieForm.nom) }}
                 {{ form_errors(sortieForm.nom) }}
+                </div>
             </div>
-            <br>
-            <div>
+            <div class="div input-group input-group-sm mb-3">
+                <div class="input-group-text">
                 {{ form_label(sortieForm.dateHeureDebut) }}
+                </div>
+                <div>
                 {{ form_widget(sortieForm.dateHeureDebut) }}
                 {{ form_errors(sortieForm.dateHeureDebut) }}
+                </div>
             </div>
-            <br>
-            <div>
+            <div class="div input-group input-group-sm mb-3">
+                <div class="input-group-text">
                 {{ form_label(sortieForm.dateLimiteInscription) }}
+                </div>
+                <div>
                 {{ form_widget(sortieForm.dateLimiteInscription) }}
                 {{ form_errors(sortieForm.dateLimiteInscription) }}
+                </div>
             </div>
-            <br>
-            <div>
+            <div class="div input-group input-group-sm mb-3">
+                <div class="input-group-text">
                 {{ form_label(sortieForm.nbInscriptionsMax) }}
+                </div>
+                <div>
                 {{ form_widget(sortieForm.nbInscriptionsMax) }}
                 {{ form_errors(sortieForm.nbInscriptionsMax) }}
+                </div>
             </div>
-            <br>
-            <div>
+            <div class="div input-group input-group-sm mb-3">
+                <div class="input-group-text">
                 {{ form_label(sortieForm.duree) }}
+                </div>
+                <div>
                 {{ form_widget(sortieForm.duree) }}
                 {{ form_errors(sortieForm.duree) }}
+                </div>
             </div>
-            <br>
-            <div>
+            <div class="div input-group input-group-sm mb-3">
+                <div class="input-group-text">
                 {{ form_label(sortieForm.infosSortie) }}
+                </div>
+                <div>
                 {{ form_widget(sortieForm.infosSortie) }}
                 {{ form_errors(sortieForm.infosSortie) }}
+                </div>
             </div>
         </div>
         <div class="sortieInter"></div>
         <div class="sortieCol">
             <div>
-                <p>Campus : {{ user.campus.nom }}</p>
+                <p class="sortie_text">Campus : {{ user.campus.nom }}</p>
             </div>
-            <div>
+            <div class="div input-group input-group-sm mb-3">
+                <div class="input-group-text">
                 {{ form_label(sortieForm.ville) }}
+                </div>
+                <div>
                 {{ form_widget(sortieForm.ville) }}
                 {{ form_errors(sortieForm.ville) }}
+                </div>
             </div>
-            <br>
-            <div>
+            <div class="div input-group input-group-sm mb-3">
+                <div class="input-group-text">
                 {{ form_label(sortieForm.lieu) }}
+                </div>
+                <div>
                 {{ form_widget(sortieForm.lieu) }}
                 {{ form_errors(sortieForm.lieu) }}
+                </div>
             </div>
-            <br>
-            <div>
-                <p>Rue : </p>
+            <div class="sortie_coord">
+                <p class="sortie_text">Rue : </p>&nbsp;
                 <p id="rue"></p>
             </div>
-            <div>
-                <p id="CP" >Code postal : </p>
+            <div class="sortie_coord">
+                <p class="sortie_text">Code postal : </p>&nbsp;
                 <p id="cp"></p>
             </div>
-            <div>
-                <p>Latitude : </p>
+            <div class="sortie_coord">
+                <p class="sortie_text">Latitude : </p>&nbsp;
                 <p id="latitude"></p>
             </div>
-            <div>
-                <p>Longitude : </p>
+            <div class="sortie_coord">
+                <p class="sortie_text">Longitude : </p>&nbsp;
                 <p id="longitude"></p>
             </div>
         </div>
@@ -90,6 +114,7 @@
         </div>
     </div>
     {{ form_end(sortieForm) }}
+    </div>
     <script type="text/javascript" src="{{ asset('js/selectionCodePostal.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
 {% endblock %}

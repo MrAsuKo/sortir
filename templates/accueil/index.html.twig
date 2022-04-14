@@ -13,10 +13,10 @@
     <div class="index_filter1">
         <h1 class="filter_titre">Filtrer les Sorties</h1><br>
         {{ form_start(formProfil,{ 'attr': {'class': 'form_accueil'} }) }}
-        <div class="div1 input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formProfil.campus) }}</div><div>{{ form_widget(formProfil.campus) }}{{ form_errors(formProfil.campus) }}</div></div>
-        <div class="div2 input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formProfil.nom) }}</div><div>{{ form_widget(formProfil.nom) }}{{ form_errors(formProfil.nom) }}</div></div>
-        <div class="div3 input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formProfil.dateHeureDebut) }}</div><div>{{ form_widget(formProfil.dateHeureDebut) }}{{ form_errors(formProfil.dateHeureDebut) }}</div></div>
-        <div class="div4 input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formProfil.dateHeureFin) }}</div><div>{{ form_widget(formProfil.dateHeureFin) }}{{ form_errors(formProfil.dateHeureFin) }}</div></div>
+        <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formProfil.campus) }}</div><div>{{ form_widget(formProfil.campus) }}{{ form_errors(formProfil.campus) }}</div></div>
+        <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formProfil.nom) }}</div><div>{{ form_widget(formProfil.nom) }}{{ form_errors(formProfil.nom) }}</div></div>
+        <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formProfil.dateHeureDebut) }}</div><div>{{ form_widget(formProfil.dateHeureDebut) }}{{ form_errors(formProfil.dateHeureDebut) }}</div></div>
+        <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formProfil.dateHeureFin) }}</div><div>{{ form_widget(formProfil.dateHeureFin) }}{{ form_errors(formProfil.dateHeureFin) }}</div></div>
     </div>
     <div class="index_filter2">
         <div>  {{ form_widget(formProfil.organisateur) }}

@@ -287,6 +287,7 @@ header {
     width: 53%;
     border-radius: 50px;
     box-shadow: 5px 5px 5px rgba(44,194,84,0.25), -3px -3px 3px rgba(255,131,43,0.25);
+    color: #00304a;
 }
 
 .index_filter1 {
@@ -399,24 +400,12 @@ tbody {
     border-color: #00877e;
 }
 
-.div1 {
-    display: flex;
-}
-
-.div2 {
-    display: flex;
-}
-
-.div3 {
-    display: flex;
-}
-
-.div4 {
+.div {
     display: flex;
 }
 
 .input-group-text {
-    width: 75px;
+    width: 90px;
     background-color: #00304a;
     border-color: #00877e;
     color: white;
@@ -424,7 +413,7 @@ tbody {
 }
 
 .input-group-text:hover {
-    width: 75px;
+    width: 90px;
     background-color: #00304a;
     border-color: #00877e;
     color: black;
@@ -432,15 +421,50 @@ tbody {
 }
 
 .form-select {
-    width: 240px;
+    width: 230px;
     border-color: #00877e;
 }
 
 .form-control {
-    width: 240px;
+    width: 230px;
     border-color: #00877e;
 }
 
 .filter_titre {
     color: #00304a;
+}
+
+.titre_sortie {
+    text-align: center;
+}
+
+.sortie_form {
+    color: #00304a;
+    background-color: rgba(255,131,43,0.2);
+    margin: 50px auto;
+    padding: 25px;
+    width: 53%;
+    border-radius: 50px;
+    box-shadow: 5px 5px 5px rgba(254,233,42,0.25), -3px -3px 3px rgba(254,43,57,0.25);
+ }
+
+.bouton_sortie {
+    background: #00304a;
+    border-color: #00877e;
+    padding: 20px;
+    transition: all 1s ease-in-out;
+}
+
+.bouton_sortie:hover {
+    color: black;
+    border-color: #00877e;
+    background: linear-gradient(rgba(254,43,57,255), rgba(255,131,43,255), rgba(254,233,42,255), rgba(44,194,84,255), rgba(41,123,253,255), rgba(169,41,193,255), rgba(252,50,159,255));
+}
+
+.sortie_coord {
+    display: flex;
+}
+
+.sortie_text {
+    font-weight: bold;
 }
