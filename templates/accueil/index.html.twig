@@ -59,6 +59,7 @@
 
         <tbody>
         {% for sortie in sorties %}
+            {% if sortie.dateHeureDebut | date_modify("+1 day") > now %}
             <tr class="index_tr">
                 <td class="index_td">{{ sortie.nom }}</td>
                 <td class="index_td">{{ sortie.dateHeureDebut | date("d/m/Y H:m") }}</td>
@@ -87,6 +88,7 @@
                         {% endif %}
                 </td>
             </tr>
+            {% endif %}
         {% endfor %}
         </tbody>
 
