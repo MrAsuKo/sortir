@@ -8,6 +8,7 @@ use App\Form\VilleType;
 use App\Repository\VilleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -66,6 +67,30 @@ class VilleController extends AbstractController
         $em->flush();
 
         return $this->redirectToRoute('ville_liste');
+    }
+
+    #[Route('/ville/{id}',
+        requirements: ["id" => "\d+"])]
+    public function findLieu(
+        VilleRepository $sm,
+        Ville $ville
+    ): JsonResponse
+    {
+
+        $lieux = $ville->getLieux();
+        $lieuxId = [];
+        $lieuxNoms = [];
+
+        $ville = [$ville->getCodePostal(), $ville->getLieux()];
+
+        foreach( $lieux as $lieu )
+        {
+            $lieuxId = [$lieu->getId()];
+            $lieuxNoms = [$lieu->getNom()];
+        }
+
+        return new JsonResponse(['ville' => $ville, 'lieuxId' => $lieuxId, 'lieuxNoms' => $lieuxNoms]);
+
     }
 
 }
