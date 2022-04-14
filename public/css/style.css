@@ -69,7 +69,16 @@ header {
     display: inline-block;
 }
 
-.profil-input{
+.profil_input{
+
+}
+
+.register_label{
+    width: 100px;
+    display: inline-block;
+}
+
+.register_input{
 
 }
 

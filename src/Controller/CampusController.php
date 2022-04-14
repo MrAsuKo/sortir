@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CampusController extends AbstractController
 {
     #[Route('/campus', name: 'campus_liste')]
-    public function index(
+    public function     index(
         CampusRepository $campusRepository,
         Request $request,
         EntityManagerInterface $em

@@ -60,7 +60,9 @@
         {% endfor %}
     {% endfor %}
 </div>
-{%  endif %}
+{%  else %}
+    <img class="avatar" src="{{ asset('image/BruNO.jpg') }}" alt="Ne sois pas ici!">
+{% endif %}
     <script src={{ asset('js/Ville.js') }}></script>
 
 {% endblock %}
