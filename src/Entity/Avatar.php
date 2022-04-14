@@ -24,16 +24,27 @@ class Avatar
     /**
      * @Vich\UploadableField(mapping="avatars", fileNameProperty="avatar")
      * @var File
-     * @ignore()
      */
     private $avatarFile;
 
-    /**
-     * @ORM\Column(type="datetime")
-     *
-     * @var \DateTime
-     */
+    #[ORM\Column(type: 'datetime')]
     private $updatedAt;
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
+    }
 
     public function getId(): ?int
     {
@@ -66,4 +77,11 @@ class Avatar
         }
         return $this;
     }
+
+    public function __serialize()
+    {
+        $this->avatarFile = base64_encode($this->avatarFile);
+        return [];
+    }
+
 }
