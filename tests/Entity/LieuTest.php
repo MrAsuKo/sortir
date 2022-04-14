@@ -29,6 +29,7 @@ class LieuTest extends TestCase
         $this->assertEquals('rue', $lieu->getRue());
         $this->assertNotNull( $lieu->getVille());
         $this->assertNotNull( $lieu->getSorties());
+        $this->assertNull($lieu->getId());
 
         $lieu->removeSorty($sorty);
 
