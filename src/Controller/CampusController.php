@@ -14,11 +14,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CampusController extends AbstractController
 {
-    #[Route('/campus', name: 'campus_liste')]
-    public function index(
-        CampusRepository $campusRepository,
-        Request $request,
-        EntityManagerInterface $em
+    #[Route('/campus',
+            name: 'campus_liste')]
+    public function afficherCampus(
+        CampusRepository        $campusRepository,
+        Request                 $request,
+        EntityManagerInterface  $em
     ): Response
     {
 
@@ -47,7 +48,7 @@ class CampusController extends AbstractController
             $em->flush();
             $this->addFlash(
                 'bravo',
-                'la campus a bien été ajouté'
+                'Le campus a bien été ajouté'
             );
 
             return $this->redirectToRoute('campus_liste');
@@ -55,21 +56,30 @@ class CampusController extends AbstractController
         }
 
         return $this->render('campus/index.html.twig',
-            ['campusForm' => $campusForm->createView(),'filterForm' => $filterForm->createView(), "listCampus" => $listCampus ]
+            [   'campusForm' => $campusForm->createView(),
+                'filterForm' => $filterForm->createView(),
+                "listCampus" => $listCampus
+            ]
         );
     }
 
-    #[Route('/campus/supprimer/{id}', name: 'campus_supprimer')]
+    #[Route('/campus/supprimer/{id}',
+            name: 'campus_supprimer')]
     public function supprimer(
         CampusRepository       $campusRepository,
         EntityManagerInterface $em,
-        int                    $id
+        Campus                 $campus
     ): Response
     {
-        $campus = $campusRepository->findOneById($id);
+        $campus = $campusRepository->findOneById($campus->getId());
 
         $em->remove($campus);
         $em->flush();
+
+        $this->addFlash(
+            'bravo',
+            'Le campus a bien été supprimé'
+        );
 
         return $this->redirectToRoute('campus_liste');
     }

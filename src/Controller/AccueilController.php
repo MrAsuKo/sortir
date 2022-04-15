@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AccueilController extends AbstractController
 {
     #[Route('/accueil', name: 'app_accueil')]
-    public function index
+    public function afficherAccueil
     (
         SortieRepository      $sm,
         ParticipantRepository $pm,
@@ -93,7 +93,7 @@ class AccueilController extends AbstractController
         };
 
         return $this->render('accueil/index.html.twig',
-            ['formProfil' => $filterForm->createView(),
+            [   'formProfil' => $filterForm->createView(),
                 'user' => $user, 'sorties' => $sorties]);
     }
 }

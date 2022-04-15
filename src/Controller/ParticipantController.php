@@ -11,27 +11,33 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ParticipantController extends AbstractController
 {
-    #[Route('/participant/list', name: 'app_participants')]
-    public function listeParticipants(
+    #[Route('/participant/list',
+            name: 'app_participants')]
+    public function listeParticipants
+    (
         ParticipantRepository $pr,
     ): Response
     {
-
         $users = $pr->findAll();
 
-        return $this->render('admin/participants.html.twig', [
-            'users' => $users,
-        ]);
+        return $this->render('admin/participants.html.twig',
+            [
+                'users' => $users,
+            ]
+        );
     }
 
     /**
      * @throws \Doctrine\ORM\OptimisticLockException
      * @throws \Doctrine\ORM\ORMException
      */
-    #[Route('/participant/supprimer/{id}', name: 'participant_supprimer', requirements: ["id" => "\d+"])]
-    public function supprimerParticipant(
-        ParticipantRepository $pr,
-        Participant $user
+    #[Route('/participant/supprimer/{id}',
+            name: 'participant_supprimer',
+            requirements: ["id" => "\d+"])]
+    public function supprimerParticipant
+    (
+        ParticipantRepository   $pr,
+        Participant             $user
     ): Response
     {
 
@@ -40,28 +46,36 @@ class ParticipantController extends AbstractController
         return $this->redirectToRoute('app_participants');
     }
 
-    #[Route('/participant/inactif/{id}', name: 'participant_inactif', requirements: ["id" => "\d+"])]
-    public function participantInactif(
-        EntityManagerInterface $em,
-        ParticipantRepository $pr,
-        Participant $user
+    #[Route('/participant/inactif/{id}',
+            name: 'participant_inactif',
+            requirements: ["id" => "\d+"])]
+    public function participantInactif
+    (
+        EntityManagerInterface  $em,
+        ParticipantRepository   $pr,
+        Participant             $user
     ): Response
     {
         $user->setActif(0);
+
         $em->persist($user);
         $em->flush();
 
         return $this->redirectToRoute('app_participants');
     }
 
-    #[Route('/participant/actif/{id}', name: 'participant_actif', requirements: ["id" => "\d+"])]
-    public function participantActif(
-        EntityManagerInterface $em,
-        ParticipantRepository $pr,
-        Participant $user
+    #[Route('/participant/actif/{id}',
+            name: 'participant_actif',
+            requirements: ["id" => "\d+"])]
+    public function participantActif
+    (
+        EntityManagerInterface  $em,
+        ParticipantRepository   $pr,
+        Participant             $user
     ): Response
     {
         $user->setActif(1);
+
         $em->persist($user);
         $em->flush();
 

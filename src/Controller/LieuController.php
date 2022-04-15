@@ -7,7 +7,7 @@ use App\Form\LieuType;
 use App\Repository\LieuRepository;
 use App\Repository\SortieRepository;
 use App\Repository\VilleRepository;
-use App\Tests\Entity\LieuTest;
+;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -18,38 +18,51 @@ use Symfony\Component\Routing\Annotation\Route;
 class LieuController extends AbstractController
 {
 
-    #[Route('/lieu/creer', name: 'lieu_creer')]
-    public function creer(
-        Request             $request,
-        LieuRepository      $lr,
-        EntityManagerInterface $em,
-        VilleRepository $vr
+    #[Route('/lieu/creer',
+            name: 'lieu_creer')]
+    public function creerLieu(
+        Request                 $request,
+        LieuRepository          $lr,
+        EntityManagerInterface  $em,
+        VilleRepository         $vr
     ): Response
     {
         $lieu = new Lieu();
+
         $lieuForm = $this->createForm(LieuType::class,$lieu);
         $lieuForm->handleRequest($request);
-        $lieux=$lr->findAll();
-        if ($lieuForm->isSubmitted() && $lieuForm->isValid()){
+
+        if ($lieuForm->isSubmitted() && $lieuForm->isValid())
+        {
             $em->persist($lieu->getVille());
+
             $em->persist($lieu);
             $em->flush();
+
             $this->addFlash(
                 'bravo',
                 'le lieu a bien été ajouté'
             );
             return $this->redirectToRoute('lieu_creer');
         }
+
+        $lieux=$lr->findAll();
         $villes = $vr->findAll();
+
         return $this->render('lieu/index.html.twig',
-            ['lieuForm' => $lieuForm->createView(), "lieux" => $lieux, "villes" => $villes]
+            [
+                'lieuForm' => $lieuForm->createView(),
+                "lieux" => $lieux,
+                "villes" => $villes
+            ]
         );
 
     }
 
     #[Route('/lieu/{id}',
         requirements: ["id" => "\d+"])]
-    public function findLieu(
+    public function findLieu
+    (
         SortieRepository $sm,
         Lieu $lieu
     ): JsonResponse
