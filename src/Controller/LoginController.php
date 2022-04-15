@@ -9,17 +9,24 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LoginController extends AbstractController
 {
-    #[Route('/login/direction', name: 'loginDirection')]
-    public function direction(
+    #[Route('/login/direction',
+        name: 'loginDirection')]
+    public function direction
+    (
         ParticipantRepository $pm
     ): Response
     {
-        if ($this->getUser()) {
+        if ($this->getUser())
+        {
             $user = $pm->findOneBy(['mail' => $this->getUser()->getUserIdentifier()]);
             $pseudo = $user->getPseudo();
-            if ($pseudo != null) {
+
+            if ($pseudo != null)
+            {
                 return $this->redirectToRoute('app_accueil');
-            } else {
+            }
+            else
+            {
                 return $this->redirectToRoute('profil_modif');
             }
         }

@@ -17,10 +17,10 @@ class AvatarType extends AbstractType
             ->add('avatarFile',
                 VichImageType::class,
                 [
-                    'required' => false,
+                    'required'      => false,
                     'allow_delete'  => false,
                     'download_link' => false,
-                    'image_uri' => false
+                    'image_uri'     => false
                 ]
             )
         ;

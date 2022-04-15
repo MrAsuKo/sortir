@@ -6,14 +6,10 @@ use App\Entity\Campus;
 use App\Entity\Participant;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\IsTrue;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
+
 
 class RegistrationFormType extends AbstractType
 {
@@ -23,13 +19,15 @@ class RegistrationFormType extends AbstractType
             ->add('mail',
                 TextType::class,
                 [
-                    'label' => "Mail : ",
-                    "label_attr" => [
-                        "class" => "register_label"
-                    ],
-                    "attr" => [
-                        "class" => "register_input"
-                    ]
+                    'label'         => "Mail : ",
+                    "label_attr"    =>
+                        [
+                            "class" => "register_label"
+                        ],
+                    "attr" =>
+                        [
+                            "class" => "register_input"
+                        ]
                 ])
             /*
             ->add('agreeTerms', CheckboxType::class, [
@@ -62,40 +60,46 @@ class RegistrationFormType extends AbstractType
             ->add('nom',
                 TextType::class,
                 [
-                    'label' => "Nom : ",
-                    "label_attr" => [
-                        "class" => "register_label"
-                    ],
-                    "attr" => [
-                        "class" => "register_input"
-                    ]
+                    'label'     => "Nom : ",
+                    "label_attr"=>
+                        [
+                            "class" => "register_label"
+                        ],
+                    "attr" =>
+                        [
+                            "class" => "register_input"
+                        ]
                 ])
             ->add('prenom',
                 TextType::class,
                 [
-                    'label' => "Prenom : ",
-                    "label_attr" => [
-                        "class" => "register_label"
-                    ],
-                    "attr" => [
-                        "class" => "register_input"
-                    ]
+                    'label'     => "Prenom : ",
+                    "label_attr"=>
+                        [
+                            "class" => "register_label"
+                        ],
+                    "attr" =>
+                        [
+                            "class" => "register_input"
+                        ]
                 ])
             //->add('telephone')
             ->add('campus',
                 EntityType::class,
                 [
-                    'class'=> Campus::class,
-                    'choice_label' => 'nom',
-                    'mapped' => false,
-                    'label' => "Campus : ",
+                    'class'         => Campus::class,
+                    'choice_label'  => 'nom',
+                    'mapped'        => false,
+                    'label'         => "Campus : ",
 
-                    "label_attr" => [
-                        "class" => "register_label"
-                                    ],
-                    "attr" => [
-                        "class" => "register_input"
-                    ]
+                    "label_attr" =>
+                        [
+                            "class" => "register_label"
+                        ],
+                    "attr" =>
+                        [
+                            "class" => "register_input"
+                        ]
                 ])
 
         ;

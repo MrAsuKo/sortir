@@ -1,0 +1,12 @@
+App\Entity\Participant:
+  participant_admin:
+    nom: "nom"
+    prenom: "prenom"
+    mail: "mail\\@gmail.com"
+    password: "\\$2y\\$10$KjKXJ4mNz7xvZx4uRQ.RwedSk5IVGFD.vLfs5X2zWCy1ZkhOY43Gm"
+    administrateur: 1
+    roles: []
+    actif : 1
+    pseudo : "pseudo"
+    telephone: '066677889910'
+

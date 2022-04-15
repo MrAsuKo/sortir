@@ -40,7 +40,8 @@ class CampusRepository extends ServiceEntityRepository
     public function remove(Campus $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
-        if ($flush) {
+        if ($flush)
+        {
             $this->_em->flush();
         }
     }
@@ -48,8 +49,8 @@ class CampusRepository extends ServiceEntityRepository
     public function findCampus(string $nom)
     {
         return $this->createQueryBuilder('c')
-            ->where("c.nom = :nom")
-            ->setParameter('nom', $nom)
+            ->where("c.nom LIKE :nom")
+            ->setParameter('nom', '%'.$nom.'%')
             ->getQuery()
             ->getResult();
     }

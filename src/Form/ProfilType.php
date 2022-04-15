@@ -24,99 +24,118 @@ class ProfilType extends AbstractType
                 TextType::class,
                 [
                     'label' => "Mail : ",
-                    "label_attr" => [
-                        "class" => "profil_label"
-                    ],
-                        "attr" => [
+                    "label_attr" =>
+                        [
+                            "class" => "profil_label"
+                        ],
+                    "attr" =>
+                        [
                             "class" => "profil_input"
                         ]
                 ]
             )
             ->add('password',
-                RepeatedType::class, [
+                RepeatedType::class,
+                [
                     'type' => PasswordType::class,
                     'invalid_message' => 'les mdps ne sont pas identiques',
                     // 'options' => ['attr' => ['class' => 'password-field']],
-                    'required' => true,
-                    'first_options'  => [
-                        'label' => 'Mot de passe',
-                        "label_attr" => [
-                            "class" => "profil_label"
+                    'required'          => true,
+                    'first_options'     =>
+                        [
+                            'label'         => 'Mot de passe',
+                            "label_attr"    =>
+                                [
+                                "class"     => "profil_label"
+                                ],
+                            "attr"      =>
+                                [
+                                    "class" => "profil_input"
+                                ]
                         ],
-                        "attr" => [
-                            "class" => "profil_input"
-                        ]
+                    'second_options'    =>
+                        [
+                            'label'         => 'Confirmer',
+                            "label_attr"    =>
+                                [
+                                   "class" => "profil_label"
+                                ],
+                            "attr"      =>
+                                [
+                                    "class" => "profil_input"
+                                ]
                         ],
-                    'second_options' => [
-                        'label' => 'Confirmer',
-                        "label_attr" => [
-                           "class" => "profil_label"
-                            ],
-                        "attr" => [
-                            "class" => "profil_input"
-                            ]
-                    ],
 
             ])
             ->add('nom',
                 TextType::class,
                 [
-                    'label' => "Nom : ",
-                    "label_attr" => [
-                        "class" => "profil_label"
-                    ],
-                    "attr" => [
-                        "class" => "profil_input"
-                    ]
+                    'label'     => "Nom : ",
+                    "label_attr"=>
+                        [
+                            "class" => "profil_label"
+                        ],
+                    "attr" =>
+                        [
+                            "class" => "profil_input"
+                        ]
                 ])
             ->add('prenom',
                 TextType::class,
                 [
-                    'label' => "Prenom : ",
-                    "label_attr" => [
-                        "class" => "profil_label"
-                    ],
-                    "attr" => [
-                        "class" => "profil_input"
-                    ]
+                    'label'         => "Prenom : ",
+                    "label_attr"    =>
+                        [
+                            "class" => "profil_label"
+                        ],
+                    "attr" =>
+                        [
+                            "class" => "profil_input"
+                        ]
                 ])
             ->add('telephone',
                 TextType::class,
                 [
-                    'label' => "Telephone : ",
-                    "label_attr" => [
-                        "class" => "profil_label"
-                    ],
-                    "attr" => [
-                        "class" => "profil_input"
-                    ]
+                    'label'         => "Telephone : ",
+                    "label_attr"    =>
+                        [
+                            "class" => "profil_label"
+                        ],
+                    "attr" =>
+                        [
+                            "class" => "profil_input"
+                        ]
                 ])
             //->add('administrateur')
             //  ->add('actif')
             ->add('pseudo',
                 TextType::class,
                 [
-                    'label' => "Pseudo : ",
-                    "label_attr" => [
-                        "class" => "profil_label"
-                    ],
-                    "attr" => [
-                        "class" => "profil_input"
-                    ]
+                    'label'     => "Pseudo : ",
+                    "label_attr"=>
+                        [
+                            "class" => "profil_label"
+                        ],
+                    "attr"      =>
+                        [
+                            "class" => "profil_input"
+                        ]
                 ])
             ->add('campus',
             EntityType::class,
                 [
-                    'label' => "Campus : ",
-                    "label_attr" => [
-                        "class" => "profil_label"
-                    ],
-                    "attr" => [
-                        "class" => "profil_input"
-                    ],
-                    'class'=> Campus::class,
-                    'choice_label' => 'nom',
-                    'mapped' => false
+                    'label'     => "Campus : ",
+                    "label_attr"=>
+                        [
+                            "class" => "profil_label"
+                        ],
+                    "attr" =>
+                        [
+                            "class" => "profil_input"
+                        ],
+                    'class'         => Campus::class,
+                    'choice_label'  => 'nom',
+                    'mapped'        => false
                 ])
             ->add('avatar',
             AvatarType::class)

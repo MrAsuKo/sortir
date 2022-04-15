@@ -1,100 +1,124 @@
 {% extends 'base.html.twig' %}
 
 {%  block body %}
-    <div class="body">
+    <div class="conteneur">
+
     {% set now = date('now') %}
+
         <div class="index_id">
             <div class="index_identite">
+
                 <p>Date du jour : {{ "now"|date("m/d/Y") }}</p>
                 <p>Participant : {{ user.prenom }}</p>
+
             </div>
         </div>
-<div class="index_filter">
-    <div class="index_filter1">
-        <h1 class="filter_titre">Filtrer les Sorties</h1><br>
-        {{ form_start(formProfil,{ 'attr': {'class': 'form_accueil'} }) }}
-        <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formProfil.campus) }}</div><div>{{ form_widget(formProfil.campus) }}{{ form_errors(formProfil.campus) }}</div></div>
-        <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formProfil.nom) }}</div><div>{{ form_widget(formProfil.nom) }}{{ form_errors(formProfil.nom) }}</div></div>
-        <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formProfil.dateHeureDebut) }}</div><div>{{ form_widget(formProfil.dateHeureDebut) }}{{ form_errors(formProfil.dateHeureDebut) }}</div></div>
-        <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formProfil.dateHeureFin) }}</div><div>{{ form_widget(formProfil.dateHeureFin) }}{{ form_errors(formProfil.dateHeureFin) }}</div></div>
-    </div>
-    <div class="index_filter2">
-        <div>  {{ form_widget(formProfil.organisateur) }}
-                            {{ form_label(formProfil.organisateur) }}
-                            {{ form_errors(formProfil.organisateur) }}
-            <br><br>
-                            {{ form_widget(formProfil.participant) }}
-                            {{ form_label(formProfil.participant) }}
-                            {{ form_errors(formProfil.participant) }}
-            <br><br>
-                            {{ form_widget(formProfil.inscrit) }}
-                            {{ form_label(formProfil.inscrit) }}
-                            {{ form_errors(formProfil.inscrit) }}
-            <br><br>
-                            {{ form_widget(formProfil.dateLimiteInscription) }}
-                            {{ form_label(formProfil.dateLimiteInscription) }}
-                            {{ form_errors(formProfil.dateLimiteInscription) }}
+
+        <div class="index_filter">
+            <div class="index_filter1">
+
+                <h1 class="filter_titre">Filtrer les Sorties</h1><br>
+
+                {{ form_start(formFilter,{ 'attr': {'class': 'form_accueil'} }) }}
+
+                <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formFilter.campus) }}</div><div>{{ form_widget(formFilter.campus) }}{{ form_errors(formFilter.campus) }}</div></div>
+                <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formFilter.nom) }}</div><div>{{ form_widget(formFilter.nom) }}{{ form_errors(formFilter.nom) }}</div></div>
+                <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formFilter.dateHeureDebut) }}</div><div>{{ form_widget(formFilter.dateHeureDebut) }}{{ form_errors(formFilter.dateHeureDebut) }}</div></div>
+                <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formFilter.dateHeureFin) }}</div><div>{{ form_widget(formFilter.dateHeureFin) }}{{ form_errors(formFilter.dateHeureFin) }}</div></div>
+
+            </div>
+
+            <div class="index_filter2">
+                <div>               {{ form_widget(formFilter.organisateur) }}
+                                    {{ form_label(formFilter.organisateur) }}
+                                    {{ form_errors(formFilter.organisateur) }}
+                    <br><br>
+                                    {{ form_widget(formFilter.participant) }}
+                                    {{ form_label(formFilter.participant) }}
+                                    {{ form_errors(formFilter.participant) }}
+                    <br><br>
+                                    {{ form_widget(formFilter.inscrit) }}
+                                    {{ form_label(formFilter.inscrit) }}
+                                    {{ form_errors(formFilter.inscrit) }}
+                    <br><br>
+                                    {{ form_widget(formFilter.dateLimiteInscription) }}
+                                    {{ form_label(formFilter.dateLimiteInscription) }}
+                                    {{ form_errors(formFilter.dateLimiteInscription) }}
+                </div>
+            </div>
+
+            <div class="index_filter3">
+                {{ form_end(formFilter) }}
+            </div>
+
         </div>
-    </div>
-    <div class="index_filter3">
-        {{ form_end(formProfil) }}
-    </div>
-</div>
-        <br>
+                <br>
 
 
-    <table class="index_table">
-        <thead>
-        <tr class="index_tr">
-            <td class="index_td_head index_td_head1">Nom de la sortie</td>
-            <td class="index_td_head index_td_head2">Date de la sortie</td>
-            <td class="index_td_head index_td_head3">Clôture</td>
-            <td class="index_td_head index_td_head4">Inscrits/Places</td>
-            <td class="index_td_head index_td_head5">Etat</td>
-            <td class="index_td_head index_td_head6">Inscrit</td>
-            <td class="index_td_head index_td_head7">Organisateur</td>
-            <td class="index_td_head index_td_head8">Actions</td>
-        </tr>
-        </thead>
+            <table class="index_table">
+                <thead>
+                    <tr class="index_tr">
+                        <td class="index_td_head index_td_head1">Nom de la sortie</td>
+                        <td class="index_td_head index_td_head2">Date de la sortie</td>
+                        <td class="index_td_head index_td_head3">Clôture</td>
+                        <td class="index_td_head index_td_head4">Inscrits/Places</td>
+                        <td class="index_td_head index_td_head5">Etat</td>
+                        <td class="index_td_head index_td_head6">Inscrit</td>
+                        <td class="index_td_head index_td_head7">Organisateur</td>
+                        <td class="index_td_head index_td_head8">Actions</td>
+                    </tr>
+                </thead>
 
-        <tbody>
-        {% for sortie in sorties %}
-            {% if sortie.dateHeureDebut | date_modify("+1 day") > now %}
-            <tr class="index_tr">
-                <td class="index_td">{{ sortie.nom }}</td>
-                <td class="index_td">{{ sortie.dateHeureDebut | date("d/m/Y H:m") }}</td>
-                <td class="index_td">{{ sortie.dateLimiteInscription | date("d/m/Y") }}</td>
-                <td class="index_td">{{ sortie.participant | length }}/{{ sortie.nbInscriptionsMax }}</td>
-                <td class="index_td">{{ sortie.etat.libelle }}</td>
-                <td class="index_td"></td>
-                <td class="index_td"><a href="{{ path('profil_affichage', {'id' : sortie.organisateur.id }) }}">{{ sortie.organisateur }}</a></td>
-                <td class="index_td">
-                    <a href="{{ path('sortie_afficher', {'id': sortie.id}) }}">Afficher</a>
-                    {% if sortie.organisateur == user %}
-                        <a href="{{ path('sortie_modifier', {'id' : sortie.id })  }}">Modifier</a>
+                <tbody>
+                {% for sortie in sorties %}
+
+                    {% if sortie.dateHeureDebut | date_modify("+1 day") > now %}
+                    <tr class="index_tr">
+                        <td class="index_td">{{ sortie.nom }}</td>
+                        <td class="index_td">{{ sortie.dateHeureDebut | date("d/m/Y H:m") }}</td>
+                        <td class="index_td">{{ sortie.dateLimiteInscription | date("d/m/Y") }}</td>
+                        <td class="index_td">{{ sortie.participant | length }}/{{ sortie.nbInscriptionsMax }}</td>
+                        <td class="index_td">{{ sortie.etat.libelle }}</td>
+                        <td class="index_td"></td>
+
+                        <td class="index_td">
+                            <a href="{{ path('profil_affichage', {'id' : sortie.organisateur.id }) }}">{{ sortie.organisateur }}</a>
+                        </td>
+
+                        <td class="index_td">
+                            <a href="{{ path('sortie_afficher', {'id': sortie.id}) }}">Afficher</a>
+
+                            {% if sortie.organisateur == user %}
+                                    <a href="{{ path('sortie_modifier', {'id' : sortie.id })  }}">Modifier</a>
+                            {% endif %}
+
+                            {% if  user in sortie.participant %}
+
+                                    {% if sortie.etat.libelle == 'Ouverte' or  sortie.etat.libelle == 'Clôturée'%}
+                                            <a href="{{ path('sortie_inscription', {'id' : sortie.id })  }}">Se désister</a>
+                                    {% endif %}
+
+                            {% else %}
+
+                                    {% if sortie.dateLimiteInscription > now  %}
+                                            {% if sortie.etat.libelle == 'Ouverte' %}
+                                                    <a href="{{ path('sortie_inscription', {'id' : sortie.id })  }}">S'inscrire</a>
+                                            {% endif %}
+                                    {% endif %}
+
+                            {% endif %}
+
+                        </td>
+                    </tr>
+
                     {% endif %}
 
-                        {% if  user in sortie.participant %}
-                            {% if sortie.etat.libelle == 'Ouverte' or  sortie.etat.libelle == 'Clôturée'%}
-                                 - <a href="{{ path('sortie_inscription', {'id' : sortie.id })  }}">Se désister</a>
-                            {% endif %}
-                        {% else %}
+                {% endfor %}
+                </tbody>
 
-                            {% if sortie.dateLimiteInscription > now  %}
-                                {% if sortie.etat.libelle == 'Ouverte' %}
-                                     - <a href="{{ path('sortie_inscription', {'id' : sortie.id })  }}">S'inscrire</a>
-                                {% endif %}
-                            {% endif %}
-                        {% endif %}
-                </td>
-            </tr>
-            {% endif %}
-        {% endfor %}
-        </tbody>
-
-    </table>
-    <div>
-        <a class="btn btn-secondary bouton_creer" href="{{ path('sortie_creer') }}">Créer une sortie</a>
-    </div>
+            </table>
+            <div>
+                <a class="btn btn-secondary bouton_creer" href="{{ path('sortie_creer') }}">Créer une sortie</a>
+            </div>
     </div>
 {% endblock %}

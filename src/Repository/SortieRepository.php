@@ -2,12 +2,10 @@
 
 namespace App\Repository;
 
-use App\Entity\Participant;
 use App\Entity\Sortie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
-use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -30,7 +28,8 @@ class SortieRepository extends ServiceEntityRepository
     public function add(Sortie $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
-        if ($flush) {
+        if ($flush)
+        {
             $this->_em->flush();
         }
     }
@@ -42,7 +41,8 @@ class SortieRepository extends ServiceEntityRepository
     public function remove(Sortie $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
-        if ($flush) {
+        if ($flush)
+        {
             $this->_em->flush();
         }
     }

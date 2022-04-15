@@ -6,6 +6,7 @@
     <div>
         <h1>Afficher une sortie</h1>
     </div>
+
     <div class="sortieForm">
         <div class="sortieCol">
             <div>
@@ -32,7 +33,9 @@
                 <p>Descrption et infos : {{ sortie.infosSortie }}</p>
             </div>
         </div>
+
         <div class="sortieInter"></div>
+
         <div class="sortieCol">
             <div>
                 <p>Campus : {{ sortie.campus.nom }} </p>
@@ -63,19 +66,19 @@
 
         <table class="afficher_table">
             <thead>
-            <tr class="afficher_tr">
-                <td class="afficher_td_head afficher_td_head1">Pseudo</td>
-                <td class="afficher_td_head afficher_td_head2">Nom - Prénom</td>
-            </tr>
+                <tr class="afficher_tr">
+                    <td class="afficher_td_head afficher_td_head1">Pseudo</td>
+                    <td class="afficher_td_head afficher_td_head2">Nom - Prénom</td>
+                </tr>
             </thead>
             <tbody>
-            {% for part in sortie.participant %}
-            <p></p>
-                <tr class="afficher_tr">
-                    <td class="afficher_td">{{ part.pseudo }}</td>
-                    <td class="afficher_td">{{ part.nom }} {{ part.prenom }}</td>
-                </tr>
-            {% endfor %}
+                {% for part in sortie.participant %}
+                <p></p>
+                    <tr class="afficher_tr">
+                        <td class="afficher_td">{{ part.pseudo }}</td>
+                        <td class="afficher_td">{{ part.nom }} {{ part.prenom }}</td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
 

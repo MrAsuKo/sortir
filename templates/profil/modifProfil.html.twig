@@ -3,13 +3,17 @@
 {% block title %}Hello ProfilController!{% endblock %}
 
 {% block body %}
+
 <div class="profil_div">
     <h1>Mon Profil</h1>
 </div>
+
 <div class="profil_body">
+
     <div style="margin-right: 50px;">
         <img class="img_avatar" src="{{ asset('uploads/avatars/'~participant.avatar.avatar) }}" alt="avatar">
     </div>
+
     <div class="profil_div">
         {{ form_start(formProfil) }}
         {{ form_row(formProfil.pseudo) }}
@@ -24,6 +28,7 @@
         <button class="profil_btn">{{ button_label|default('Save') }}</button>
         {{ form_end(formProfil) }}
     </div>
+
 </div>
 
 {% endblock %}

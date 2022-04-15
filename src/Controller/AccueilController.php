@@ -13,7 +13,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class AccueilController extends AbstractController
 {
     #[Route('/accueil', name: 'app_accueil')]
-    public function index(
+    public function afficherAccueil
+    (
         SortieRepository      $sm,
         ParticipantRepository $pm,
         Request               $request,
@@ -21,14 +22,15 @@ class AccueilController extends AbstractController
     {
         $sorties = $sm->findAll();
         $user = $pm->findOneBy(['mail' => $this->getUser()->getUserIdentifier()]);
+
         $filterForm = $this->createForm(FilterSortieType::class);
         $filterForm->handleRequest($request);
 
-        if ($filterForm->isSubmitted() && $filterForm->isValid()) {
+        if ($filterForm->isSubmitted() && $filterForm->isValid())
+        {
 
             $critere = $filterForm->getData();
             $sorties = $sm->Filter($critere);
-
 
             if($filterForm->get('organisateur')->getViewData())
             {
@@ -91,7 +93,11 @@ class AccueilController extends AbstractController
         };
 
         return $this->render('accueil/index.html.twig',
-            ['formProfil' => $filterForm->createView(),
-                'user' => $user, 'sorties' => $sorties]);
+            [
+                'formFilter'    => $filterForm->createView(),
+                'user'          => $user,
+                'sorties'       => $sorties
+            ]
+        );
     }
 }

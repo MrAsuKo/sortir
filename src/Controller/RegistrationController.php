@@ -17,29 +17,39 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/register', name: 'register')]
-    public function register(Request $request,
-                             UserPasswordHasherInterface $userPasswordHasher,
-                             EntityManagerInterface $entityManager,
-                             Courriel $courriel,
-                            AvatarRepository $ar,
+    #[Route('/register',
+        name: 'register')]
+    public function register(
+        Request                     $request,
+        UserPasswordHasherInterface $userPasswordHasher,
+        EntityManagerInterface      $entityManager,
+        Courriel                    $courriel,
+        AvatarRepository            $ar,
     ): Response
     {
         $user = new Participant();
+
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
-        $mdp = $this->passgen1();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
+        $mdp = $this->passRandom();
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $avatar = $ar->findOneById('1');
+
             $user -> setAdministrateur(false);
             $user -> setActif(true);
-            $avatar = $ar->findOneById('1');
             $user->setAvatar($avatar);
             $user -> setCampus($form->get('campus')->getData());
+
             $plainPassword = $mdp;
-            $user->setPassword(
-            $userPasswordHasher->hashPassword(
+            // encode the plain password
+
+            $user->setPassword
+            (
+                $userPasswordHasher->hashPassword
+                (
                     $user,
                     $plainPassword
                 )
@@ -54,19 +64,26 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        return $this->render('registration/register.html.twig', [
+        return $this->render('registration/register.html.twig',
+            [
             'registrationForm' => $form->createView(),
-        ]);
+            ]
+        );
     }
 
-    function passgen1() {
+    function passRandom()
+    {
         $nbChar=6;
         $chaine ="mnoTUzS5678kVvwxy9WXYZRNCDEFrslq41GtuaHIJKpOPQA23LcdefghiBMbj0";
-        srand((double)microtime()*1000000);
         $pass = '';
-        for($i=0; $i<$nbChar; $i++){
+
+        srand((double)microtime()*1000000);
+
+        for($i=0; $i<$nbChar; $i++)
+        {
             $pass .= $chaine[rand()%strlen($chaine)];
         }
+
         return $pass;
     }
 }

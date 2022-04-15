@@ -14,55 +14,72 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CampusController extends AbstractController
 {
-    #[Route('/campus', name: 'campus_liste')]
-    public function     index(
-        CampusRepository $campusRepository,
-        Request $request,
-        EntityManagerInterface $em
+    #[Route('/campus',
+            name: 'campus_liste')]
+    public function afficherCampus(
+        CampusRepository        $campusRepository,
+        Request                 $request,
+        EntityManagerInterface  $em
     ): Response
     {
 
         $campus = new Campus();
-        $campusForm = $this->createForm(CampusType::class,$campus);
+        $newCampus = new Campus();
+
+        $campusForm = $this->createForm(CampusType::class,$newCampus);
         $campusForm->handleRequest($request);
 
         $filterForm = $this->createForm(FilterCampusType::class, $campus);
         $filterForm->handleRequest($request);
 
-        if ($filterForm->isSubmitted() && $filterForm->isValid()) {
+        if ($filterForm->isSubmitted() && $filterForm->isValid())
+        {
             $nom = $campus->getNom();
-            dump($nom);
-            $campuss = $campusRepository->findCampus($nom);
-            dump($campuss);
-        } else {
-            $campuss = $campusRepository->findAll();
+            $listCampus = $campusRepository->findCampus($nom);
+        }
+        else
+        {
+            $listCampus = $campusRepository->findAll();
+        }
 
-        if ($campusForm->isSubmitted() && $campusForm->isValid()) {
-            $em->persist($campus);
+        if ($campusForm->isSubmitted() && $campusForm->isValid())
+        {
+            $em->persist($newCampus);
             $em->flush();
             $this->addFlash(
                 'bravo',
-                'la campus a bien été ajouté'
+                'Le campus a bien été ajouté'
             );
+
             return $this->redirectToRoute('campus_liste');
+
         }
-    }
+
         return $this->render('campus/index.html.twig',
-            ['campusForm' => $campusForm->createView(),'filterForm' => $filterForm->createView(), "campuss" => $campuss ]
+            [   'campusForm' => $campusForm->createView(),
+                'filterForm' => $filterForm->createView(),
+                "listCampus" => $listCampus
+            ]
         );
     }
 
-    #[Route('/campus/supprimer/{id}', name: 'campus_supprimer')]
+    #[Route('/campus/supprimer/{id}',
+            name: 'campus_supprimer')]
     public function supprimer(
         CampusRepository       $campusRepository,
         EntityManagerInterface $em,
-        int                    $id
+        Campus                 $campus
     ): Response
     {
-        $campus = $campusRepository->findOneById($id);
+        $campus = $campusRepository->findOneById($campus->getId());
 
         $em->remove($campus);
         $em->flush();
+
+        $this->addFlash(
+            'bravo',
+            'Le campus a bien été supprimé'
+        );
 
         return $this->redirectToRoute('campus_liste');
     }
