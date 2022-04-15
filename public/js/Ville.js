@@ -2,6 +2,7 @@
  * Vicopo
  * @author https://github.com/kylekatarnls
  * https://vicopo.selfbuild.fr
+ * coucou
  */
 jQuery(function ($) {
     var _host = 'https://vicopo.selfbuild.fr';
