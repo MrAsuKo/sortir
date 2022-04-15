@@ -30,6 +30,9 @@ class Avatar
     #[ORM\Column(type: 'datetime')]
     private $updatedAt;
 
+    #[ORM\OneToMany(mappedBy: 'avatar', targetEntity: Participant::class)]
+    private $participants;
+
     /**
      * @return \DateTime
      */

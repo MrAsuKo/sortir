@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Avatar;
 use App\Entity\Participant;
 use App\Form\RegistrationFormType;
+use App\Repository\AvatarRepository;
 use App\Service\Courriel;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,6 +22,7 @@ class RegistrationController extends AbstractController
                              UserPasswordHasherInterface $userPasswordHasher,
                              EntityManagerInterface $entityManager,
                              Courriel $courriel,
+                            AvatarRepository $ar,
     ): Response
     {
         $user = new Participant();
@@ -31,6 +34,8 @@ class RegistrationController extends AbstractController
             // encode the plain password
             $user -> setAdministrateur(false);
             $user -> setActif(true);
+            $avatar = $ar->findOneById('1');
+            $user->setAvatar($avatar);
             $user -> setCampus($form->get('campus')->getData());
             $plainPassword = $mdp;
             $user->setPassword(
