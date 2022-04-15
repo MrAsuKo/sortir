@@ -2,19 +2,21 @@
 <header>
     <ul class="header_ul">
         {% if app.user.administrateur ==1 %}
-        <li class="header_li"><a class="header_a header_a1" href="{{ path('ville_liste') }}"><i class="fa-solid fa-building"></i> Villes</a></li>
+
+            <li class="header_li"><a class="header_a header_a1" href="{{ path('ville_liste') }}"><i class="fa-solid fa-building"></i> Villes</a></li>
 
             <li class="header_li"><a class="header_a header_a2" href="{{ path('campus_liste') }}"><i class="fa-solid fa-school"></i> Campus</a></li>
 
             <li class="header_li"> <a class="header_a header_a2" href="{{ path('app_participants') }}"><i class="fa-solid fa-users"></i> Liste utilisateurs</a> </li>
 
-        <li class="header_li"><a class="header_a header_a3" href="{{ path('register') }}"><i class="fa-solid fa-user-plus"></i> Ajouter Utilisateur</a></li>
+            <li class="header_li"><a class="header_a header_a3" href="{{ path('register') }}"><i class="fa-solid fa-user-plus"></i> Ajouter Utilisateur</a></li>
 
         {% endif %}
+
         <li class="header_li"><a class="header_a header_a4" href="{{ path('app_accueil') }}"><i class="fa-solid fa-house"></i> Accueil</a></li>
-        <li class="header_li">
+
         <li class="header_li"><a class="header_a header_a5" href="{{ path('profil_modif')  }}"><i class="fa-solid fa-user"></i> Mon profil</a></li>
-        <li class="header_li">
+
         <li class="header_li"><a class="header_a header_a6" href="{{ path('app_logout') }}"><i class="fa-solid fa-power-off"></i> Se déconnecter</a></li>
     </ul>
 </header>

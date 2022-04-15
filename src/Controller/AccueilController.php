@@ -94,7 +94,7 @@ class AccueilController extends AbstractController
 
         return $this->render('accueil/index.html.twig',
             [
-                'formProfil'    => $filterForm->createView(),
+                'formFilter'    => $filterForm->createView(),
                 'user'          => $user,
                 'sorties'       => $sorties
             ]
