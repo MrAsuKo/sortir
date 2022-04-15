@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{%  block body %}
+
+    <table class="index_table">
+        <thead>
+            <tr>
+                <td class="index_td_head index_td_head1">Nom</td>
+                <td class="index_td_head index_td_head2">Prénom</td>
+                <td class="index_td_head index_td_head3">Email</td>
+                <td class="index_td_head index_td_head4">Pseudo</td>
+                <td class="index_td_head index_td_head5">Téléphone</td>
+                <td class="index_td_head index_td_head6">Actions</td>
+            </tr>
+
+            {% for user in users %}
+                <tr class="index_tr">
+                    <td class="index_td">{{ user.nom }}</td>
+                    <td class="index_td">{{ user.prenom }}</td>
+                    <td class="index_td">{{ user.mail }}</td>
+                    <td class="index_td">{{ user.pseudo }}</td>
+                    <td class="index_td">{{ user.telephone }}</td>
+                    <td class="index_td">
+                        {% if user.actif == 1 %}
+
+                            <a href="{{ path('participant_inactif', {'id' : user.id }) }}">Rendre inactif</a>
+
+                        {% else %}
+
+                            <a href="{{ path('participant_actif', {'id' : user.id }) }}">Rendre actif</a>
+
+                        {% endif %}
+
+                        <a href="{{ path('participant_supprimer', {'id' : user.id }) }}"> Supprimer </a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+        </thead>
+    </table>
+
+{%  endblock %}
