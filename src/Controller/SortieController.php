@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Etat;
-use App\Entity\Lieu;
 use App\Entity\Sortie;
 use App\Form\SortieType;
 use App\Repository\EtatRepository;
@@ -11,19 +9,20 @@ use App\Repository\ParticipantRepository;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class SortieController extends AbstractController
 {
-    #[Route('/sortie/creer', name: 'sortie_creer')]
-    public function creer(
-        EntityManagerInterface $em,
-        Request $request,
-        ParticipantRepository $pr,
-        EtatRepository $er
+    #[Route('/sortie/creer',
+            name: 'sortie_creer')]
+    public function creerSortie
+    (
+        EntityManagerInterface  $em,
+        Request                 $request,
+        ParticipantRepository   $pr,
+        EtatRepository          $er
     ): Response
     {
         $sortie = new Sortie();
@@ -71,19 +70,23 @@ class SortieController extends AbstractController
 
         return $this->render(
             'sortie/creer.html.twig',
-            ['sortieForm' => $sortieForm -> createView(), 'user' => $user]
-
+            [
+                'sortieForm' => $sortieForm -> createView(),
+                'user'       => $user
+            ]
         );
     }
 
-    #[Route('/sortie/modifier/{id}', name: 'sortie_modifier', requirements: ["id" => "\d+"])]
-    public function modifier(
-        EtatRepository $er,
-        Sortie $sortie,
-        SortieRepository $sr,
-        ParticipantRepository $pr,
-        EntityManagerInterface $em,
-        Request $request
+    #[Route('/sortie/modifier/{id}',
+            name: 'sortie_modifier',
+            requirements: ["id" => "\d+"])]
+    public function modifierSortie(
+        EtatRepository          $er,
+        Sortie                  $sortie,
+        SortieRepository        $sr,
+        ParticipantRepository   $pr,
+        EntityManagerInterface  $em,
+        Request                 $request
     ): Response
     {
 
@@ -140,15 +143,21 @@ class SortieController extends AbstractController
             }
 
             return $this->render('sortie/modifier.html.twig',
-                ['sortieForm' => $sortieForm -> createView(), 'user' => $user]
+                [
+                    'sortieForm' => $sortieForm -> createView(),
+                    'user'       => $user
+                ]
             );
         }
 
         return $this->render('accueil/index.html.twig');
     }
 
-    #[Route('/sortie/afficher/{id}', name: 'sortie_afficher')]
-    public function afficher(
+
+    #[Route('/sortie/afficher/{id}',
+            name: 'sortie_afficher')]
+    public function afficherSorties
+    (
         Sortie $sortie
     ): Response
     {
@@ -156,20 +165,27 @@ class SortieController extends AbstractController
             compact('sortie'));
     }
 
-    #[Route('/sortie/annuler', name: 'sortie_annuler')]
-    public function annuler(): Response
+
+
+    #[Route('/sortie/annuler',
+            name: 'sortie_annuler')]
+    public function annulerSortie(): Response
     {
-        return $this->render('sortie/annuler.html.twig', [
-            'controller_name' => 'SortieController',
-        ]);
+        return $this->render('sortie/annuler.html.twig',
+            [
+                'controller_name' => 'SortieController',
+            ]
+        );
     }
 
-    #[Route('/sortie/inscription/{id}', name: 'sortie_inscription', requirements: ["id" => "\d+"])]
+    #[Route('/sortie/inscription/{id}',
+            name: 'sortie_inscription',
+            requirements: ["id" => "\d+"])]
     public function inscription(
-        SortieRepository $sm,
-        ParticipantRepository $pm,
-        Sortie $sortie,
-        EntityManagerInterface $em
+        SortieRepository        $sm,
+        ParticipantRepository   $pm,
+        Sortie                  $sortie,
+        EntityManagerInterface  $em
     ): Response
     {
         $now = new \DateTime();

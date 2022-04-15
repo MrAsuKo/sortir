@@ -50,12 +50,17 @@ class ProfilController extends AbstractController
             return $this->redirectToRoute('app_accueil');
         }
         return $this->render('profil/modifProfil.html.twig',
-            ['formProfil' =>$profilForm->createView(), 'participant'=> $participant]
+            [
+                'formProfil'    => $profilForm->createView(), '
+                participant'    => $participant
+            ]
         );
     }
 
-    #[Route('/profil/affichage/{id}', name: 'profil_affichage')]
-    public function affichage(
+    #[Route('/profil/affichage/{id}',
+            name: 'profil_affichage')]
+    public function affichage
+    (
         Participant $profil
     ):Response
     {

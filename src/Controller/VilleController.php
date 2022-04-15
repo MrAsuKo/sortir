@@ -15,14 +15,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class VilleController extends AbstractController
 {
-    #[Route('/ville/liste', name: 'ville_liste')]
-    public function liste(
+    #[Route('/ville/liste',
+            name: 'ville_liste')]
+    public function listeVilles(
         VilleRepository        $villeRepository,
         Request                $request,
         EntityManagerInterface $em
     ): Response
     {
-
 
         $ville = new Ville();
         $villeForm = $this->createForm(VilleType::class, $ville);
@@ -31,25 +31,35 @@ class VilleController extends AbstractController
         $filterForm=$this->createForm(FilterVilleType::class,$ville);
         $filterForm->handleRequest($request);
 
-        if($filterForm->isSubmitted() && $filterForm->isValid()){
+        if($filterForm->isSubmitted() && $filterForm->isValid())
+        {
             $nom=$ville->getNom();
             $villes = $villeRepository->findVille($nom);
         }
-        else {
+        else
+        {
             $villes = $villeRepository->findAll();
+        }
 
-        if ($villeForm->isSubmitted() && $villeForm->isValid()) {
+        if ($villeForm->isSubmitted() && $villeForm->isValid())
+        {
             $em->persist($ville);
             $em->flush();
-            $this->addFlash(
+
+            $this->addFlash
+            (
                 'bravo',
                 'la ville a bien été ajouté'
             );
             return $this->redirectToRoute('ville_liste');
-        }
+
         }
             return $this->render('ville/index.html.twig',
-                ['villeForm' => $villeForm->createView(),'filterForm' => $filterForm->createView(), "villes" => $villes]
+                [
+                    'villeForm'     => $villeForm->createView(),
+                    'filterForm'    => $filterForm->createView(),
+                    "villes"        => $villes
+                ]
             );
         }
 
@@ -89,7 +99,13 @@ class VilleController extends AbstractController
             $lieuxNoms[] = [$lieu->getNom()];
         }
 
-        return new JsonResponse(['ville' => $ville, 'lieuxId' => $lieuxId, 'lieuxNoms' => $lieuxNoms]);
+        return new JsonResponse(
+            [
+                'ville'     => $ville,
+                'lieuxId'   => $lieuxId,
+                'lieuxNoms' => $lieuxNoms
+            ]
+        );
 
     }
 

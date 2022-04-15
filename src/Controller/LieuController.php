@@ -51,9 +51,9 @@ class LieuController extends AbstractController
 
         return $this->render('lieu/index.html.twig',
             [
-                'lieuForm' => $lieuForm->createView(),
-                "lieux" => $lieux,
-                "villes" => $villes
+                'lieuForm'  => $lieuForm->createView(),
+                "lieux"     => $lieux,
+                "villes"    => $villes
             ]
         );
 
@@ -69,7 +69,11 @@ class LieuController extends AbstractController
     {
 
         $lieu = [$lieu->getRue(), $lieu->getLongitude(), $lieu->getLatitude()];
-        return new JsonResponse(['lieu' => $lieu]);
+        return new JsonResponse(
+            [
+                'lieu' => $lieu
+            ]
+        );
 
     }
 }

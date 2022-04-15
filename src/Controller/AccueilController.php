@@ -93,7 +93,11 @@ class AccueilController extends AbstractController
         };
 
         return $this->render('accueil/index.html.twig',
-            [   'formProfil' => $filterForm->createView(),
-                'user' => $user, 'sorties' => $sorties]);
+            [
+                'formProfil'    => $filterForm->createView(),
+                'user'          => $user,
+                'sorties'       => $sorties
+            ]
+        );
     }
 }
