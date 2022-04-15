@@ -40,7 +40,8 @@ class CampusRepository extends ServiceEntityRepository
     public function remove(Campus $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
-        if ($flush) {
+        if ($flush)
+        {
             $this->_em->flush();
         }
     }

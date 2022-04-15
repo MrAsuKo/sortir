@@ -25,79 +25,90 @@ class FilterSortieType extends AbstractType
         $builder
             ->add('campus', EntityType::class,
                 [
-                    'label'=>'Campus : ',
-                    'class'=> Campus::class,
-                    'choice_label' => 'nom',
-                    "multiple" => false,
-                    'attr' => [
-                        'class' => 'form-select form-select-sm'
-                    ]
-                ])
+                    'label'         =>'Campus : ',
+                    'class'         => Campus::class,
+                    'choice_label'  => 'nom',
+                    "multiple"      => false,
+                    'attr'          =>
+                        [
+                            'class' => 'form-select form-select-sm'
+                        ]
+                ]
+                )
             ->add('nom', TextType::class,
             [
-                'label'=>'Nom : ',
-                'required' => false,
-                'attr' => [
-                    'class' => 'form-control form-control-sm'
-                ]
+                'label'     =>'Nom : ',
+                'required'  => false,
+                'attr'      =>
+                    [
+                        'class' => 'form-control form-control-sm'
+                    ]
             ])
             ->add('dateHeureDebut', DateTimeType::class,
                 [
-                    'label' => 'Entre : ',
-                    'widget' => 'single_text',
-                    'data' => new DateTime('now'),
-                    'attr' => [
-                        'class' => 'form-select form-select-sm'
-                    ]
+                    'label'     => 'Entre : ',
+                    'widget'    => 'single_text',
+                    'data'      => new DateTime('now'),
+                    'attr'      =>
+                        [
+                            'class' => 'form-select form-select-sm'
+                        ]
                 ])
             ->add('dateHeureFin',DateTimeType::class,[
-                'label' => ' Et : ',
-                'widget' => 'single_text',
-                'data' => new DateTime('+6month'),
-                'attr' => [
-                    'class' => 'form-select form-select-sm'
-                ]
+                'label'     => ' Et : ',
+                'widget'    => 'single_text',
+                'data'      => new DateTime('+6month'),
+                'attr'      =>
+                    [
+                        'class' => 'form-select form-select-sm'
+                    ]
             ])
 
             ->add('organisateur', CheckboxType::class,
                 [
-                    'required' => false,
-                    'label'  => 'Sorties dont je suis l\'organisateur/trice',
-                    'attr' => [
-                        'class' => 'form-check-input filter_switch',
-                        'role' => 'switch'
-                    ]
+                    'required'  => false,
+                    'label'     => 'Sorties dont je suis l\'organisateur/trice',
+                    'attr'      =>
+                        [
+                            'class' => 'form-check-input filter_switch',
+                            'role'  => 'switch'
+                        ]
                 ])
             ->add('participant', CheckboxType::class,
                 [
                     'label' => 'Sorties auxquelles je suis inscrit/e',
-                    'attr' => [
-                        'class' => 'form-check-input filter_switch',
-                        'role' => 'switch'
-                    ],
+                    'attr'  =>
+                        [
+                            'class' => 'form-check-input filter_switch',
+                            'role'  => 'switch'
+                        ],
                     'required' => false
                 ])
             ->add('inscrit', CheckboxType::class,
                 [
                     'label' => 'Sorties auxquelles je ne suis pas inscrit/e',
-                    'attr' => [
-                        'class' => 'form-check-input filter_switch',
-                        'role' => 'switch'
-                    ],
+                    'attr'  =>
+                        [
+                            'class' => 'form-check-input filter_switch',
+                            'role'  => 'switch'
+                        ],
                     'required' => false
                 ])
             ->add('dateLimiteInscription', CheckboxType::class,
                 [
                     'label' => 'Sorties passées',
-                    'attr' => [
-                        'class' => 'form-check-input filter_switch',
-                        'role' => 'switch'
-                    ],
+                    'attr'  =>
+                        [
+                            'class' => 'form-check-input filter_switch',
+                            'role'  => 'switch'
+                        ],
                     'required' => false
                 ])
-            ->add('Rechercher', SubmitType::class, [
+            ->add('Rechercher', SubmitType::class,
+                [
                 'attr' => [ 'class' => 'btn btn-secondary bouton_filter']
-            ])
+                ]
+            )
         ;
 
     }

@@ -28,7 +28,8 @@ class AvatarRepository extends ServiceEntityRepository
     public function add(Avatar $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
-        if ($flush) {
+        if ($flush)
+        {
             $this->_em->flush();
         }
     }
@@ -40,7 +41,8 @@ class AvatarRepository extends ServiceEntityRepository
     public function remove(Avatar $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
-        if ($flush) {
+        if ($flush)
+        {
             $this->_em->flush();
         }
     }

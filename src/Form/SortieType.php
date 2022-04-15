@@ -26,29 +26,31 @@ class SortieType extends AbstractType
                 TextType::class,
                 [
                     "label" => "Nom : ",
-                    "attr" => ["class" => "form-control form-control-sm"]
+                    "attr"  => ["class" => "form-control form-control-sm"]
                 ]
             )
             ->add('dateHeureDebut',
                 DateTimeType::class,
                 [
-                    "label" => "Date/heure : ",
-                    'widget' => 'single_text',
-                    'data' => new DateTime('now'),
-                    'attr' => [
-                        'class' => 'form-select form-select-sm'
-                    ]
+                    "label"     => "Date/heure : ",
+                    'widget'    => 'single_text',
+                    'data'      => new DateTime('now'),
+                    'attr' =>
+                        [
+                            'class' => 'form-select form-select-sm'
+                        ]
                 ]
             )
             ->add('dateLimiteInscription',
                 DateType::class,
                 [
-                    "label" => "Limite : ",
-                    'widget' => 'single_text',
-                    'data' => new DateTime('now'),
-                    'attr' => [
-                        'class' => 'form-select form-select-sm'
-                    ]
+                    "label"     => "Limite : ",
+                    'widget'    => 'single_text',
+                    'data'      => new DateTime('now'),
+                    'attr' =>
+                        [
+                            'class' => 'form-select form-select-sm'
+                        ]
                 ]
             )
             ->add('nbInscriptionsMax',
@@ -61,41 +63,42 @@ class SortieType extends AbstractType
             ->add('duree',
                 IntegerType::class,
                 [
-                    "label" => "Durée : ",
-                    "attr" => ["class" => "form-control form-control-sm",
-                    "onchange" => "select()"]
+                    "label"     => "Durée : ",
+                    "attr"      => ["class" => "form-control form-control-sm",
+                    "onchange"  => "select()"]
                 ]
             )
             ->add('infosSortie',
                 TextareaType::class,
                 [
                     "label" => "Description : ",
-                    "attr" => [ "class" => "form-control form-control-sm"]
+                    "attr"  => [ "class" => "form-control form-control-sm"]
                 ]
             )
             ->add('lieu',
                 EntityType::class,
                 [
-                    'label'=> 'Lieu : ',
-                    'class'=> Lieu::class,
-                    'choice_label' => 'nom',
-                    'mapped' => false,
-                    'placeholder' => '--Lieu--',
-                    "attr" => ["class" => "form-select form-select-sm", "id" => "lieu"]
+                    'label'         => 'Lieu : ',
+                    'class'         => Lieu::class,
+                    'choice_label'  => 'nom',
+                    'mapped'        => false,
+                    'placeholder'   => '--Lieu--',
+                    "attr"          => ["class" => "form-select form-select-sm", "id" => "lieu"]
 
                 ]
             )
             ->add('ville',
                 EntityType::class,
                 [
-                    'label'=> 'Ville : ',
-                    'class'=> Ville::class,
-                    'choice_label' => 'nom',
-                    'mapped' => false,
-                    'placeholder' => '--Villes--',
-                    'attr' => [
-                        'class' => 'form-select form-select-sm',
-                    ]
+                    'label'         => 'Ville : ',
+                    'class'         => Ville::class,
+                    'choice_label'  => 'nom',
+                    'mapped'        => false,
+                    'placeholder'   => '--Villes--',
+                    'attr'  =>
+                        [
+                            'class' => 'form-select form-select-sm',
+                        ]
                 ]
             )
             ->add('enregistrer',

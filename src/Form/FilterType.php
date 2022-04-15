@@ -21,16 +21,17 @@ class FilterType extends AbstractType
         $builder
             ->add('campus', EntityType::class,
                 [
-                    'label'=>'Campus : ',
-                    'class'=> Campus::class,
-                    'choice_label' => 'nom',
+                    'label'         =>'Campus : ',
+                    'class'         => Campus::class,
+                    'choice_label'  => 'nom',
                 ])
             ->add('nom')
             ->add('dateHeureDebut', DateTimeType::class,
-                    [
-                        'label' => 'Entre '
-                    ])
-            ->add('dateHeureFin',DateTimeType::class,[
+                [
+                    'label' => 'Entre '
+                ])
+            ->add('dateHeureFin',DateTimeType::class,
+                [
                     'label' => 'Et '
                 ])
 
