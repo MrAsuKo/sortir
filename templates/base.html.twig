@@ -19,6 +19,13 @@
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body>
+    {% for label, messages in app.flashes%}
+        {% for message in messages %}
+            <div class="alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor%}
+    {% endfor%}
     <div class="test">
 
         <a class="logo" href="{{ path('app_login') }}">

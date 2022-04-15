@@ -23,32 +23,39 @@ class CampusController extends AbstractController
     {
 
         $campus = new Campus();
-        $campusForm = $this->createForm(CampusType::class,$campus);
+        $newCampus = new Campus();
+
+        $campusForm = $this->createForm(CampusType::class,$newCampus);
         $campusForm->handleRequest($request);
 
         $filterForm = $this->createForm(FilterCampusType::class, $campus);
         $filterForm->handleRequest($request);
 
-        if ($filterForm->isSubmitted() && $filterForm->isValid()) {
+        if ($filterForm->isSubmitted() && $filterForm->isValid())
+        {
             $nom = $campus->getNom();
-            dump($nom);
-            $campuss = $campusRepository->findCampus($nom);
-            dump($campuss);
-        } else {
-            $campuss = $campusRepository->findAll();
+            $listCampus = $campusRepository->findCampus($nom);
+        }
+        else
+        {
+            $listCampus = $campusRepository->findAll();
+        }
 
-        if ($campusForm->isSubmitted() && $campusForm->isValid()) {
-            $em->persist($campus);
+        if ($campusForm->isSubmitted() && $campusForm->isValid())
+        {
+            $em->persist($newCampus);
             $em->flush();
             $this->addFlash(
                 'bravo',
                 'la campus a bien été ajouté'
             );
+
             return $this->redirectToRoute('campus_liste');
+
         }
-    }
+
         return $this->render('campus/index.html.twig',
-            ['campusForm' => $campusForm->createView(),'filterForm' => $filterForm->createView(), "campuss" => $campuss ]
+            ['campusForm' => $campusForm->createView(),'filterForm' => $filterForm->createView(), "listCampus" => $listCampus ]
         );
     }
 

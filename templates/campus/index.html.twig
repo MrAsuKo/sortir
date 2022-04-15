@@ -22,7 +22,7 @@
         </thead>
 
         <tbody>
-        {% for campus in campuss %}
+        {% for campus in listCampus %}
             <tr class="campus_tr">
                 <td class="campus_td">{{ campus.nom }}</td>
                 <td class="campus_td"><a href=""> Modifier</a> - <a href="{{ path('campus_supprimer',{'id': campus.id}) }}"> Supprimer</a>    </td>

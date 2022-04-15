@@ -48,8 +48,8 @@ class CampusRepository extends ServiceEntityRepository
     public function findCampus(string $nom)
     {
         return $this->createQueryBuilder('c')
-            ->where("c.nom = :nom")
-            ->setParameter('nom', $nom)
+            ->where("c.nom LIKE :nom")
+            ->setParameter('nom', '%'.$nom.'%')
             ->getQuery()
             ->getResult();
     }
