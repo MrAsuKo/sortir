@@ -36,7 +36,7 @@ class Sortie
     #[ORM\ManyToMany(targetEntity: Participant::class, inversedBy: 'sorties')]
     private $participants;
 
-    #[ORM\ManyToOne(targetEntity: Participant::class, inversedBy: 'sorties')]
+    #[ORM\ManyToOne(targetEntity: Participant::class, inversedBy: 'orgaSorties')]
     private $organisateur;
 
     #[ORM\ManyToOne(targetEntity: Campus::class, inversedBy: 'sorties')]

@@ -27,8 +27,7 @@ class SortieController extends AbstractController
     {
         $sortie = new Sortie();
 
-        $user = $this->getUser()->getUserIdentifier();
-        $user = $pr->findOneBy(['mail' => $user] );
+        $user = $this->getUser();
 
         $sortieForm = $this -> createForm(SortieType::class, $sortie);
         $sortieForm -> handleRequest($request);
@@ -93,7 +92,7 @@ class SortieController extends AbstractController
         $user = $this->getUser()->getUserIdentifier();
         $user = $pr->findOneBy(['mail'=> $user]);
 
-        if ($sortie->getOrganisateur() == $user)
+        if ($sortie->getOrganisateur() == $user || $user->getAdministrateur())
         {
             $sortieForm = $this -> createForm(SortieType::class, $sortie);
             $sortieForm -> handleRequest($request);

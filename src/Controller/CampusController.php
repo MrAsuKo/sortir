@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CampusController extends AbstractController
 {
-    #[Route('/campus',
+    #[Route('/campus/admin',
             name: 'campus_liste')]
     public function afficherCampus(
         CampusRepository        $campusRepository,

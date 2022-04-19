@@ -43,7 +43,7 @@ class LieuController extends AbstractController
                 'bravo',
                 'le lieu a bien été ajouté'
             );
-            return $this->redirectToRoute('lieu_creer');
+            return $this->redirectToRoute('sortie_creer');
         }
 
         $lieux=$lr->findAll();

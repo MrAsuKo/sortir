@@ -115,6 +115,14 @@ class SortieType extends AbstractType
                     "attr" => [ "class" => "btn btn-secondary bouton_sortie"]
                 ]
             )
+
+            ->add('annuler',
+                SubmitType::class,
+                [
+                    'label'=> 'Annuler la sortie',
+                    "attr" => [ "class" => "btn btn-secondary bouton_sortie"]
+                ]
+            )
         ;
     }
 

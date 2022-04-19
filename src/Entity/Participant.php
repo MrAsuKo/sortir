@@ -49,10 +49,10 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(targetEntity: Campus::class, inversedBy: 'participants')]
     private $campus;
 
-    #[ORM\ManyToMany(targetEntity: Sortie::class, mappedBy: 'participant')]
+    #[ORM\ManyToMany(targetEntity: Sortie::class, mappedBy: 'participants')]
     private $sorties;
 
-    #[ORM\OneToMany(targetEntity: Sortie::class, mappedBy: 'participant')]
+    #[ORM\OneToMany(targetEntity: Sortie::class, mappedBy: 'organisateur')]
     private $orgaSorties;
 
     #[ORM\Column(type: 'string', length: 50, nullable: true,  unique: true)]

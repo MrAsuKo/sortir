@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class VilleController extends AbstractController
 {
-    #[Route('/ville/liste',
+    #[Route('/ville/admin',
             name: 'ville_liste')]
     public function listeVilles(
         VilleRepository        $villeRepository,

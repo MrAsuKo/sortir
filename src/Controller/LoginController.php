@@ -18,7 +18,7 @@ class LoginController extends AbstractController
     {
         if ($this->getUser())
         {
-            $user = $pm->findOneBy(['mail' => $this->getUser()->getUserIdentifier()]);
+            $user = $this->getUser();
             $pseudo = $user->getPseudo();
 
             if ($pseudo != null)
@@ -30,5 +30,7 @@ class LoginController extends AbstractController
                 return $this->redirectToRoute('profil_modif');
             }
         }
+
+        return $this->redirectToRoute('app_login');
     }
 }

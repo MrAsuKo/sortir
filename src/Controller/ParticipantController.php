@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ParticipantController extends AbstractController
 {
-    #[Route('/participant/list',
+    #[Route('/participants/admin',
             name: 'app_participants')]
     public function listeParticipants
     (

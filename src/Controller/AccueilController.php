@@ -16,12 +16,11 @@ class AccueilController extends AbstractController
     public function afficherAccueil
     (
         SortieRepository      $sm,
-        ParticipantRepository $pm,
         Request               $request,
     ): Response
     {
         $sorties = $sm->findAll();
-        $user = $pm->findOneBy(['mail' => $this->getUser()->getUserIdentifier()]);
+        $user = $this->getUser();
 
         $filterForm = $this->createForm(FilterSortieType::class);
         $filterForm->handleRequest($request);
@@ -95,7 +94,6 @@ class AccueilController extends AbstractController
         return $this->render('accueil/index.html.twig',
             [
                 'formFilter'    => $filterForm->createView(),
-                'user'          => $user,
                 'sorties'       => $sorties
             ]
         );
