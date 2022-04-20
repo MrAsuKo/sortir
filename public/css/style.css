@@ -14,6 +14,23 @@ header {
     width: auto;
 }
 
+.div-afficher_corps{
+    width: 70%;
+}
+
+.div_afficher_sortie{
+    display: flex;
+}
+
+.div_map{
+    padding-top: 230px;
+}
+
+.frame_map{
+    width:525px;
+    height:450px;
+}
+
 .logo {
     padding-left: 20px;
     padding-top: 20px;
@@ -527,7 +544,7 @@ tbody {
     background-color: rgba(169,41,193,0.2);
     margin: 50px auto;
     padding: 25px;
-    width: 53%;
+    width: 83%;
     border-radius: 50px;
     box-shadow: 5px 5px 5px rgba(254,155,209,0.25), -3px -3px 3px rgba(41,123,253,0.25);
 }
@@ -1221,5 +1238,14 @@ tbody {
     .logo{
         padding-left: 160px;
         padding-top: 20px;
+    }
+
+    .div_afficher_sortie{
+        display: block;
+    }
+
+    .div_map{
+        padding-left: 280px;
+        padding-top: 0px;
     }
 }

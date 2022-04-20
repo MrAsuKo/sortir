@@ -3,7 +3,8 @@
 {% block title %}Afficher Sortie{% endblock %}
 
 {% block body %}
-    <div class="body div">
+<div class="div_afficher_sortie">
+    <div class="div-afficher_corps">
         <div class="sortie_aff">
             <div>
                 <h1 class="titre_sortie">Afficher une sortie</h1>
@@ -105,8 +106,10 @@
     {% set longitudeMax = sortie.lieu.longitude + 0.05 %}
     {% set latitudeMin = sortie.lieu.latitude - 0.05 %}
     {% set latitudeMax = sortie.lieu.latitude + 0.05 %}
-
-    <iframe width="425" height="350"
+    <div class="div_map">
+    <iframe class="frame_map"
             src="https://www.openstreetmap.org/export/embed.html?bbox={{ longitudeMin}}%2C{{ latitudeMin }}%2C{{ longitudeMax }}%2C{{ latitudeMax }}&amp;layer=mapnik&amp;marker={{ sortie.lieu.latitude}}%2C{{ sortie.lieu.longitude}}&zoom=1" style="border: 1px solid black"></iframe>
+    </div>
+</div>
 {% endblock %}
 
