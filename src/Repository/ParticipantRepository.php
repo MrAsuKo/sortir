@@ -49,8 +49,20 @@ class ParticipantRepository extends ServiceEntityRepository implements PasswordU
         }
     }
 
-    public function supprimer( Participant  $entity )
+    public function supprimer( Participant  $entity ):void
     {
+        /*$entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'DELETE 
+                FROM App\Entity\Participant p
+                INNER JOIN App\Entity\Sortie s ON p = s.participants
+                INNER JOIN App\Entity\Sortie s ON p = s.organisateur
+                INNER JOIN App\Entity\Campus camp ON p = camp.participants
+                WHERE p.id = :id'
+        )->setParameter('id', $entity->getId());
+
+        $query->getResult();*/
 
     }
 

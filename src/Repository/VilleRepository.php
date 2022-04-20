@@ -48,8 +48,8 @@ class VilleRepository extends ServiceEntityRepository
     public function findVille(string $nom)
     {
         return $this->createQueryBuilder('v')
-            ->where("v.nom = :nom")
-            ->setParameter('nom', $nom)
+            ->where("v.nom LIKE :nom")
+            ->setParameter('nom', '%' . $nom . '%')
             ->getQuery()
             ->getResult();
     }

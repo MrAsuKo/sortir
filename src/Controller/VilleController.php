@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class VilleController extends AbstractController
 {
     #[Route('/ville/admin',
-            name: 'ville_liste')]
+        name: 'ville_liste')]
     public function listeVilles(
         VilleRepository        $villeRepository,
         Request                $request,
@@ -28,21 +28,17 @@ class VilleController extends AbstractController
         $villeForm = $this->createForm(VilleType::class, $ville);
         $villeForm->handleRequest($request);
 
-        $filterForm=$this->createForm(FilterVilleType::class,$ville);
+        $filterForm = $this->createForm(FilterVilleType::class, $ville);
         $filterForm->handleRequest($request);
 
-        if($filterForm->isSubmitted() && $filterForm->isValid())
-        {
-            $nom=$ville->getNom();
+        if ($filterForm->isSubmitted() && $filterForm->isValid()) {
+            $nom = $ville->getNom();
             $villes = $villeRepository->findVille($nom);
-        }
-        else
-        {
+        } else {
             $villes = $villeRepository->findAll();
         }
 
-        if ($villeForm->isSubmitted() && $villeForm->isValid())
-        {
+        if ($villeForm->isSubmitted() && $villeForm->isValid()) {
             $em->persist($ville);
             $em->flush();
 
@@ -54,16 +50,16 @@ class VilleController extends AbstractController
             return $this->redirectToRoute('ville_liste');
 
         }
-            return $this->render('ville/index.html.twig',
-                [
-                    'villeForm'     => $villeForm->createView(),
-                    'filterForm'    => $filterForm->createView(),
-                    "villes"        => $villes
-                ]
-            );
-        }
+        return $this->render('ville/index.html.twig',
+            [
+                'villeForm' => $villeForm->createView(),
+                'filterForm' => $filterForm->createView(),
+                "villes" => $villes
+            ]
+        );
+    }
 
-        #[Route('/ville/Supprimer/{id}', name: 'ville_Supprimer')]
+    #[Route('/ville/Supprimer/{id}', name: 'ville_Supprimer')]
     public function supprimer(
         VilleRepository        $villeRepository,
         EntityManagerInterface $em,
@@ -83,7 +79,7 @@ class VilleController extends AbstractController
         requirements: ["id" => "\d+"])]
     public function findLieu(
         VilleRepository $sm,
-        Ville $ville
+        Ville           $ville
     ): JsonResponse
     {
 
@@ -93,20 +89,51 @@ class VilleController extends AbstractController
 
         $ville = [$ville->getCodePostal(), $ville->getLieux()];
 
-        foreach( $lieux as $lieu )
-        {
+        foreach ($lieux as $lieu) {
             $lieuxId[] = $lieu->getId();
             $lieuxNoms[] = [$lieu->getNom()];
         }
 
         return new JsonResponse(
             [
-                'ville'     => $ville,
-                'lieuxId'   => $lieuxId,
+                'ville' => $ville,
+                'lieuxId' => $lieuxId,
                 'lieuxNoms' => $lieuxNoms
             ]
         );
 
     }
 
+    #[Route('/ville/modifier/{id}', name: 'ville_modifier')]
+    public function modifier(
+        VilleRepository        $villeRepository,
+        Request                $request,
+        EntityManagerInterface $em,
+        Ville $ville
+    ): Response
+    {
+
+        $villeForm = $this->createForm(VilleType::class, $ville);
+        $villeForm->handleRequest($request);
+
+
+        if ($villeForm->isSubmitted() && $villeForm->isValid()) {
+            $em->persist($ville);
+            $em->flush();
+
+            $this->addFlash
+            (
+                'bravo',
+                'la ville a bien été modifié'
+            );
+            return $this->redirectToRoute('ville_liste');
+
+        }
+        return $this->render('ville/modifier.html.twig',
+            [
+                'villeForm' => $villeForm->createView(),
+            ]
+        );
+
+    }
 }

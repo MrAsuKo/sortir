@@ -41,7 +41,7 @@ class ParticipantController extends AbstractController
     ): Response
     {
 
-        $pr->remove($user);
+        $pr->supprimer($user);
 
         return $this->redirectToRoute('app_participants');
     }
