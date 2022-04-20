@@ -1,6 +1,6 @@
 {% if app.user %}
     <nav class="nav" role="navigation">
-        {% if( app.request.cookies.get('theme')==1) %}
+        {% if( app.request.cookies.get('theme')=='2') %}
         <div id="menuToggle">
             <input type="checkbox" class="header_checkbox" />
             <span style="background-color: red;"></span>
@@ -16,7 +16,7 @@
                     <a class="header_a header_a4" href="{{ path('app_accueil') }}"><i class="fa-solid fa-house"></i> Accueil</a>
                     <a class="header_a header_a5" href="{{ path('profil_modif')  }}"><i class="fa-solid fa-user"></i> Mon profil</a>
                     <a class="header_a header_a6" href="{{ path('app_logout') }}"><i class="fa-solid fa-power-off"></i> Se déconnecter</a>
-                {% elseif( app.request.cookies.get('theme')==2) %}
+                {% elseif( app.request.cookies.get('theme')=='1') %}
                     <div id="container">
                         <div id="burger">
                             <div class="bun top"></div>

@@ -20,7 +20,7 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
 
-        {% if( app.request.cookies.get('theme')=='1') %}
+        {% if( app.request.cookies.get('theme')=='1' or app.request.cookies.get('theme')==null) %}
             <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         {% elseif( app.request.cookies.get('theme')=='2') %}
             <link rel="stylesheet" href="{{ asset('css/sw.css') }}">
