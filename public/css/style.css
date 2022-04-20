@@ -1031,9 +1031,9 @@ tbody {
     .index_td{
         display: block;
         text-align: right;
-        column-width:100px;
+
         font-size: x-small;
-        padding: 0px;
+        padding: 5px;
         width: auto;
         border: none;
         height: 50px;
@@ -1056,7 +1056,7 @@ tbody {
     .index_table{
         display: inline-flex;
         overflow-x: scroll;
-        width: 400px;
+        width: 800px;
     }
     tbody, thead tr, tfoot {
         display: contents;

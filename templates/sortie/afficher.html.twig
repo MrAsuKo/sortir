@@ -100,11 +100,7 @@
             </div>
         </div>
     </div>
-    <iframe id="inlineFrameExample"
-            title="Inline Frame Example"
-            width="800"
-            height="800"
-            src="https://www.openstreetmap.org/export/embed.html?bbox={{ sortie.lieu.longitude }}%2C{{ sortie.lieu.latitude }}&layer=mapnik">
-    </iframe>
 
+    <iframe width="425" height="350"
+            src="https://www.openstreetmap.org/export/embed.html?bbox={{ sortie.lieu.longitude}}%2C{{ sortie.lieu.latitude}}%2C{{ sortie.lieu.longitude}}%2C{{ sortie.lieu.latitude}}&amp;layer=mapnik&amp;marker={{ sortie.lieu.latitude}}%2C{{ sortie.lieu.longitude}}" style="border: 1px solid black"></iframe>
 {% endblock %}
