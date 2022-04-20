@@ -98,4 +98,12 @@ class AccueilController extends AbstractController
             ]
         );
     }
+
+    #[Route('/carte', name: 'carte')]
+    public function afficherezil
+    ()
+    {
+        return $this->render("accueil/carte.html.twig");
+    }
+
 }

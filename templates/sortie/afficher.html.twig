@@ -4,100 +4,107 @@
 
 {% block body %}
     <div class="body div">
-    <div class="sortie_aff">
-    <div>
-        <h1 class="titre_sortie">Afficher une sortie</h1>
-    </div>
-<br>
-    <div class="sortieForm">
-        <div class="sortieCol">
-            <div class="div">
-                <p class="gras">Nom de la sortie :</p>&nbsp;
-                <p>{{ sortie.nom }}</p>
+        <div class="sortie_aff">
+            <div>
+                <h1 class="titre_sortie">Afficher une sortie</h1>
             </div>
             <br>
-            <div class="div">
-                <p class="gras">Date et heure de sortie :</p>&nbsp;
-                <p>{{ sortie.dateHeureDebut | date('d/m/Y à G:i:s')}}</p>
-            </div>
-            <div class="div">
-                <p class="gras">Date limite d'inscription :</p>&nbsp;
-                <p>{{ sortie.dateLimiteInscription | date('d/m/Y à G:i:s') }}</p>
-            </div>
+            <div class="sortieForm">
+                <div class="sortieCol">
+                    <div class="div">
+                        <p class="gras">Nom de la sortie :</p>&nbsp;
+                        <p>{{ sortie.nom }}</p>
+                    </div>
+                    <br>
+                    <div class="div">
+                        <p class="gras">Date et heure de sortie :</p>&nbsp;
+                        <p>{{ sortie.dateHeureDebut | date('d/m/Y à G:i:s')}}</p>
+                    </div>
+                    <div class="div">
+                        <p class="gras">Date limite d'inscription :</p>&nbsp;
+                        <p>{{ sortie.dateLimiteInscription | date('d/m/Y à G:i:s') }}</p>
+                    </div>
+                    <br>
+                    <div class="div">
+                        <p class="gras">Nombre de place :</p>&nbsp;
+                        <p>{{ sortie.nbInscriptionsMax }}</p>
+                    </div>
+                    <br>
+                    <div class="div">
+                        <p class="gras">Durée :</p>&nbsp;
+                        <p>{{ sortie.duree }} minutes</p>
+                    </div>
+                    <br>
+                    <div class="div">
+                        <p class="gras">Descrption et infos :</p>&nbsp;
+                        <p>{{ sortie.infosSortie }}</p>
+                    </div>
+                </div>
+
+                <div class="sortieInter"></div>
+
+                <div class="sortieCol">
+                    <div class="div">
+                        <p class="gras">Campus :</p>&nbsp;
+                        <p>{{ sortie.campus.nom }} </p>
+                    </div>
+                    <br>
+                    <div class="div">
+                        <p class="gras">Lieu :</p>&nbsp;
+                        <p>{{ sortie.lieu.nom}} </p>
+                    </div>
+                    <div class="div">
+                        <p class="gras">Rue :</p>&nbsp;
+                        <p>{{ sortie.lieu.rue}}: </p>
+                    </div>
+                    <div class="div">
+                        <p class="gras">Code postal :</p>&nbsp;
+                        <p id="CP" >{{ sortie.lieu.ville.codePostal}} </p>
+                    </div>
+                    <div class="div">
+                        <p class="gras">Ville :</p>&nbsp;
+                        <p>{{ sortie.lieu.ville.nom}} </p>
+                    </div>
+                    <br>
+                    <div class="div">
+                        <p class="gras">Latitude :</p>&nbsp;
+                        <p>{{ sortie.lieu.latitude}} </p>
+                    </div>
+                    <div class="div">
+                        <p class="gras">Longitude :</p>&nbsp;
+                        <p>{{ sortie.lieu.longitude}} </p>
+                    </div>
+                </div>
+                </div>
             <br>
-            <div class="div">
-                <p class="gras">Nombre de place :</p>&nbsp;
-                <p>{{ sortie.nbInscriptionsMax }}</p>
-            </div>
-            <br>
-            <div class="div">
-                <p class="gras">Durée :</p>&nbsp;
-                <p>{{ sortie.duree }} minutes</p>
-            </div>
-            <br>
-            <div class="div">
-                <p class="gras">Descrption et infos :</p>&nbsp;
-                <p>{{ sortie.infosSortie }}</p>
+                <div class="tab_test">
+
+                <table class="afficher_table">
+                    <thead>
+                        <tr class="afficher_tr">
+                            <td class="afficher_td_head afficher_td_head1">Pseudo</td>
+                            <td class="afficher_td_head afficher_td_head2">Nom - Prénom</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for part in sortie.participant %}
+                        <p></p>
+                            <tr class="afficher_tr">
+                                <td class="gras index_td afficher_td">{{ part.pseudo }}</td>
+                                <td class="index_td afficher_td">{{ part.nom }} {{ part.prenom }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
             </div>
         </div>
-
-        <div class="sortieInter"></div>
-
-        <div class="sortieCol">
-            <div class="div">
-                <p class="gras">Campus :</p>&nbsp;
-                <p>{{ sortie.campus.nom }} </p>
-            </div>
-            <br>
-            <div class="div">
-                <p class="gras">Lieu :</p>&nbsp;
-                <p>{{ sortie.lieu.nom}} </p>
-            </div>
-            <div class="div">
-                <p class="gras">Rue :</p>&nbsp;
-                <p>{{ sortie.lieu.rue}}: </p>
-            </div>
-            <div class="div">
-                <p class="gras">Code postal :</p>&nbsp;
-                <p id="CP" >{{ sortie.lieu.ville.codePostal}} </p>
-            </div>
-            <div class="div">
-                <p class="gras">Ville :</p>&nbsp;
-                <p>{{ sortie.lieu.ville.nom}} </p>
-            </div>
-            <br>
-            <div class="div">
-                <p class="gras">Latitude :</p>&nbsp;
-                <p>{{ sortie.lieu.latitude}} </p>
-            </div>
-            <div class="div">
-                <p class="gras">Longitude :</p>&nbsp;
-                <p>{{ sortie.lieu.longitude}} </p>
-            </div>
-        </div>
-        </div>
-    <br>
-        <div class="tab_test">
-
-        <table class="afficher_table">
-            <thead>
-                <tr class="afficher_tr">
-                    <td class="afficher_td_head afficher_td_head1">Pseudo</td>
-                    <td class="afficher_td_head afficher_td_head2">Nom - Prénom</td>
-                </tr>
-            </thead>
-            <tbody>
-                {% for part in sortie.participant %}
-                <p></p>
-                    <tr class="afficher_tr">
-                        <td class="gras index_td afficher_td">{{ part.pseudo }}</td>
-                        <td class="index_td afficher_td">{{ part.nom }} {{ part.prenom }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
     </div>
-    </div>
-    </div>
+    <iframe id="inlineFrameExample"
+            title="Inline Frame Example"
+            width="800"
+            height="800"
+            src="https://www.openstreetmap.org/export/embed.html?bbox={{ sortie.lieu.longitude }}%2C{{ sortie.lieu.latitude }}&layer=mapnik">
+    </iframe>
+
 {% endblock %}
