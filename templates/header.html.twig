@@ -8,6 +8,7 @@
             <span style="background-color: yellow;"></span>
             <ul id="menu">
                 {% if is_granted('ROLE_ADMIN') %}
+                    <i class="fa-solid fa-alicorn"></i>
                     <a class="header_a header_a1" href="{{ path('ville_liste') }}"><i class="fa-solid fa-building"></i> Villes</a>
                     <a class="header_a header_a2" href="{{ path('campus_liste') }}"><i class="fa-solid fa-school"></i> Campus</a>
                     <a class="header_a header_a3" href="{{ path('app_participants') }}"><i class="fa-solid fa-users"></i> Liste utilisateurs</a>
@@ -19,22 +20,23 @@
             </ul>
         </div>
                 {% elseif( app.request.cookies.get('theme')=='2') %}
-                    <div id="container">
-                        <div id="burger">
-                            <div class="bun top"></div>
-                            <div class="filling"></div>
-                            <div class="bun bottom"></div>
-                        </div>
+                    <div id="menuToggle">
+                        <input type="checkbox" class="header_checkbox" />
+                        <span class="bun_top"></span>
+                        <span class="filling"></span>
+                        <span class="bun_bottom"></span>
+                        <ul id="menu">
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a class="header_a header_a1" href="{{ path('ville_liste') }}"><i class="fa-solid fa-jedi"></i> Villes</a>
+                                <a class="header_a header_a2" href="{{ path('campus_liste') }}"><i class="fa-solid fa-school"></i> Campus</a>
+                                <a class="header_a header_a3" href="{{ path('app_participants') }}"><i class="fa-brands fa-android"></i> Liste utilisateurs</a>
+                                <a class="header_a header_a3" href="{{ path('register') }}"><i class="fa-solid fa-user-plus"></i> Ajouter Utilisateur</a>
+                            {% endif %}
+                            <a class="header_a header_a4" href="{{ path('app_accueil') }}"><i class="fa-solid fa-house"></i> Accueil</a>
+                            <a class="header_a header_a5" href="{{ path('profil_modif')  }}"><i class="fa-solid fa-hand-spock"></i></i> Mon profil</a>
+                            <a class="header_a header_a6" href="{{ path('app_logout') }}"><i class="fa-solid fa-explosion"></i> Se déconnecter</a>
+                        </ul>
                     </div>
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <a class="header_a header_a1" href="{{ path('ville_liste') }}"><i class="fa-brands fa-galactic-republic"></i>   </i> Villes</a>
-                        <a class="header_a header_a2" href="{{ path('campus_liste') }}"><i class="fa-solid fa-jedi"></i></i> Campus</a>
-                        <a class="header_a header_a3" href="{{ path('app_participants') }}"><i class="fa-brands fa-old-republic"></i></i> Liste utilisateurs</a>
-                        <a class="header_a header_a3" href="{{ path('register') }}"><i class="fa-solid fa-user-hair-buns"></i> Ajouter Utilisateur</a>
-                    {% endif %}
-                    <a class="header_a header_a4" href="{{ path('app_accueil') }}"><i class="fa-solid fa-starfighter"></i>   Accueil</a>
-                    <a class="header_a header_a5" href="{{ path('profil_modif')  }}"><i class="fa-solid fa-robot-astromech"></i> Mon profil</a>
-                    <a class="header_a header_a6" href="{{ path('app_logout') }}"><i class="fa-solid fa-explosion"></i> Se déconnecter</a>
                 {% endif %}
             <form class="form_header" action="{{ path('theme_choix') }}" method="GET">
                 <label class="label_header" for="theme-select">theme:</label>
@@ -47,30 +49,4 @@
                 <input class="input_header" type="submit" value="valider">
             </form>
     </nav>
-
-
-    {#  <nav>
-    <label class="label_header" for="toggle">☰</label>
-    <input type="checkbox" id="toggle">
-    <ul class="header_ul">
-        {% if app.user.administrateur ==1 %}
-
-            <li class="header_li"><a class="header_a header_a1" href="{{ path('ville_liste') }}"><i class="fa-solid fa-building"></i> Villes</a></li>
-
-            <li class="header_li"><a class="header_a header_a2" href="{{ path('campus_liste') }}"><i class="fa-solid fa-school"></i> Campus</a></li>
-
-            <li class="header_li"> <a class="header_a header_a2" href="{{ path('app_participants') }}"><i class="fa-solid fa-users"></i> Liste utilisateurs</a> </li>
-
-            <li class="header_li"><a class="header_a header_a3" href="{{ path('register') }}"><i class="fa-solid fa-user-plus"></i> Ajouter Utilisateur</a></li>
-
-        {% endif %}
-
-        <li class="header_li"><a class="header_a header_a4" href="{{ path('app_accueil') }}"><i class="fa-solid fa-house"></i> Accueil</a></li>
-
-        <li class="header_li"><a class="header_a header_a5" href="{{ path('profil_modif')  }}"><i class="fa-solid fa-user"></i> Mon profil</a></li>
-
-        <li class="header_li"><a class="header_a header_a6" href="{{ path('app_logout') }}"><i class="fa-solid fa-power-off"></i> Se déconnecter</a></li>
-    </ul>
-</nav>
-#}
 {% endif %}
