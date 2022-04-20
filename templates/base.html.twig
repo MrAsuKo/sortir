@@ -20,13 +20,20 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
 
-
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        {% if( app.request.cookies.get('theme')=='2') %}
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        {% elseif( app.request.cookies.get('theme')=='1') %}
+            <link rel="stylesheet" href="{{ asset('css/sw.css') }}">
+        {% endif %}
 
     </head>
 
 
     <body>
+
+    {% if( app.request.cookies.get('theme')!=null) %}
+        <p>Votre theme de session est le  {{ app.request.cookies.get('theme') }}</p>
+    {% endif %}
 
     {% for label, messages in app.flashes%}
         {% for message in messages %}
