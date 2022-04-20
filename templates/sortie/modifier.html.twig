@@ -3,11 +3,122 @@
 {% block title %}Modifier Sortie{% endblock %}
 
 {% block body %}
-    <div>
-        <h1>Modifier une sortie</h1>
+    <div class="body sortie_modif">
+        <h1 class="titre_sortie">Modifier une sortie</h1><br>
+        {{ form_start(sortieForm) }}
+        <div class="sortieForm">
+            <div class="sortieCol">
+                <div class="div input-group input-group-sm mb-3">
+                    <div class="input-group-text">
+                        {{ form_label(sortieForm.nom) }}
+                    </div>
+                    <div>
+                        {{ form_widget(sortieForm.nom) }}
+                        {{ form_errors(sortieForm.nom) }}
+                    </div>
+                </div>
+                <div class="div input-group input-group-sm mb-3">
+                    <div class="input-group-text">
+                        {{ form_label(sortieForm.dateHeureDebut) }}
+                    </div>
+                    <div>
+                        {{ form_widget(sortieForm.dateHeureDebut) }}
+                        {{ form_errors(sortieForm.dateHeureDebut) }}
+                    </div>
+                </div>
+                <div class="div input-group input-group-sm mb-3">
+                    <div class="input-group-text">
+                        {{ form_label(sortieForm.dateLimiteInscription) }}
+                    </div>
+                    <div>
+                        {{ form_widget(sortieForm.dateLimiteInscription) }}
+                        {{ form_errors(sortieForm.dateLimiteInscription) }}
+                    </div>
+                </div>
+                <div class="div input-group input-group-sm mb-3">
+                    <div class="input-group-text">
+                        {{ form_label(sortieForm.nbInscriptionsMax) }}
+                    </div>
+                    <div>
+                        {{ form_widget(sortieForm.nbInscriptionsMax) }}
+                        {{ form_errors(sortieForm.nbInscriptionsMax) }}
+                    </div>
+                </div>
+                <div class="div input-group input-group-sm mb-3">
+                    <div class="input-group-text">
+                        {{ form_label(sortieForm.duree) }}
+                    </div>
+                    <div>
+                        {{ form_widget(sortieForm.duree) }}
+                        {{ form_errors(sortieForm.duree) }}
+                    </div>
+                </div>
+                <div class="div input-group input-group-sm mb-3">
+                    <div class="input-group-text">
+                        {{ form_label(sortieForm.infosSortie) }}
+                    </div>
+                    <div>
+                        {{ form_widget(sortieForm.infosSortie) }}
+                        {{ form_errors(sortieForm.infosSortie) }}
+                    </div>
+                </div>
+            </div>
+            <div class="sortieInter"></div>
+            <div class="sortieCol">
+                <div>
+                    <p class="sortie_text">Campus : {{ user.campus.nom }}</p>
+                </div>
+                <div class="div input-group input-group-sm mb-3">
+                    <div class="input-group-text">
+                        {{ form_label(sortieForm.ville) }}
+                    </div>
+                    <div>
+                        {{ form_widget(sortieForm.ville) }}
+                        {{ form_errors(sortieForm.ville) }}
+                    </div>
+                </div>
+                <div class="div input-group input-group-sm mb-3">
+                    <div class="input-group-text">
+                        {{ form_label(sortieForm.lieu) }}
+                    </div>
+                    <div>
+                        {{ form_widget(sortieForm.lieu) }}
+                        {{ form_errors(sortieForm.lieu) }}
+                    </div>&nbsp;&nbsp;
+                    <div>
+                        <a class="btn btn-secondary btn-sm bouton_lieu" href="{{ path('lieu_creer') }}">+</a>
+                    </div>
+                </div>
+                <div class="sortie_coord">
+                    <p class="sortie_text">Rue : </p>&nbsp;
+                    <p id="rue"></p>
+                </div>
+                <div class="sortie_coord">
+                    <p class="sortie_text">Code postal : </p>&nbsp;
+                    <p id="cp"></p>
+                </div>
+                <div class="sortie_coord">
+                    <p class="sortie_text">Latitude : </p>&nbsp;
+                    <p id="latitude"></p>
+                </div>
+                <div class="sortie_coord">
+                    <p class="sortie_text">Longitude : </p>&nbsp;
+                    <p id="longitude"></p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="sortieBout">
+            <div class="interBout">
+                {{ form_widget(sortieForm.enregistrer) }}
+            </div>
+            <div class="interBout">
+                {{ form_widget(sortieForm.annuler) }}
+            </div>
+            <div hidden>{{ form_widget(sortieForm.publier) }}</div>
+        </div>
+        {{ form_end(sortieForm) }}
     </div>
-
-    {{ form_start(sortieForm) }}
-    {{ form_end(sortieForm) }}
-
+    <script type="text/javascript" src="{{ asset('js/selectionCodePostal.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
 {% endblock %}

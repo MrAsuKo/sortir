@@ -1,24 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Ajouter Utilisateur{% endblock %}
 
 {% block body %}
 
     {% if app.user.administrateur ==1 %}
-
+<div class="body sortie_form">
     <div class="profil_div">
-        <h1>Register</h1>
+        <h1 class="titre_sortie">Ajouter un Utilisateur</h1>
     </div>
-
+    <br>
     <div class="profil_div">
         {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.prenom) }}
-        {{ form_row(registrationForm.nom) }}
-        {{ form_row(registrationForm.mail) }}
-        {{ form_row(registrationForm.campus) }}
+        <div class="div input-group input-group-sm mb-3">
+            <div class="input-group-text">
+            {{ form_label(registrationForm.prenom) }}
+            </div>
+            {{ form_widget(registrationForm.prenom) }}
+            {{ form_errors(registrationForm.prenom) }}
+        </div>
+        <div class="div input-group input-group-sm mb-3">
+            <div class="input-group-text">
+                {{ form_label(registrationForm.nom) }}
+            </div>
+            {{ form_widget(registrationForm.nom) }}
+            {{ form_errors(registrationForm.nom) }}
+        </div>
+        <div class="div input-group input-group-sm mb-3">
+            <div class="input-group-text">
+                {{ form_label(registrationForm.mail) }}
+            </div>
+            {{ form_widget(registrationForm.mail) }}
+            {{ form_errors(registrationForm.mail) }}
+        </div>
+        <div class="div input-group input-group-sm mb-3">
+            <div class="input-group-text">
+                {{ form_label(registrationForm.campus) }}
+            </div>
+            {{ form_widget(registrationForm.campus) }}
+            {{ form_errors(registrationForm.campus) }}
+        </div>
         {{ form_row(registrationForm._token) }}
-        <button type="submit" class="btn">Register</button>
     </div>
+    <br>
+    <div class="profil_div">
+        <button type="submit" class="btn btn-secondary bouton_creer_lieu">Ajouter</button>
+    </div>
+</div>
 
     {%  else %}
         <img class="avatar" src="{{ asset('image/BruNO.jpg') }}" alt="Ne sois pas ici!">

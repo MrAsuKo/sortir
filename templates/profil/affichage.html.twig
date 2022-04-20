@@ -1,27 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilController!{% endblock %}
+{% block title %}Profil Utilisateur{% endblock %}
 
 {% block body %}
+    <div class="body orga_infos">
     <div class="profil_div">
-        <h1>Profil</h1>
+        <h1 class="titre_sortie">Profil</h1>
+    </div>
+        <br>
+    <div class="profil_div div">
+        <p class="gras">Pseudo : </p>&nbsp;
+        <p>{{ profil.pseudo }}</p>
     </div>
     <div class="profil_div">
-        <p>Pseudo : {{ profil.pseudo }}</p>
-    </div>
-    <div class="profil_div">
+        <p class="gras">Nom : </p>&nbsp;
         <p>Nom : {{ profil.nom }}</p>
     </div>
     <div class="profil_div">
-        <p>Prénom : {{ profil.prenom }}</p>
+        <p class="gras">Prénom : </p>&nbsp;
+        <p>{{ profil.prenom }}</p>
     </div>
     <div class="profil_div">
-        <p>Telephone : {{ profil.telephone }}</p>
+        <p class="gras">Telephone : </p>&nbsp;
+        <p>{{ profil.telephone }}</p>
     </div>
     <div class="profil_div">
-        <p>Campus : {{ profil.campus.nom }}</p>
+        <p class="gras">Campus : </p>&nbsp;
+        <p>{{ profil.campus.nom }}</p>
     </div>
     <div class="profil_div">
-        <p>Mail : {{ profil.mail }}</p>
+        <p class="gras">Mail : </p>&nbsp;
+        <p>{{ profil.mail }}</p>
+    </div>
     </div>
 {% endblock %}
