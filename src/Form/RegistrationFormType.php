@@ -26,7 +26,7 @@ class RegistrationFormType extends AbstractType
                         ],
                     "attr" =>
                         [
-                            "class" => "register_input"
+                            "class" => "register_input form-control form-control-sm"
                         ]
                 ])
             /*
@@ -67,7 +67,7 @@ class RegistrationFormType extends AbstractType
                         ],
                     "attr" =>
                         [
-                            "class" => "register_input"
+                            "class" => "register_input form-control form-control-sm"
                         ]
                 ])
             ->add('prenom',
@@ -80,7 +80,7 @@ class RegistrationFormType extends AbstractType
                         ],
                     "attr" =>
                         [
-                            "class" => "register_input"
+                            "class" => "register_input form-control form-control-sm"
                         ]
                 ])
             //->add('telephone')
@@ -98,7 +98,7 @@ class RegistrationFormType extends AbstractType
                         ],
                     "attr" =>
                         [
-                            "class" => "register_input"
+                            "class" => "register_input form-select form-select-sm"
                         ]
                 ])
 

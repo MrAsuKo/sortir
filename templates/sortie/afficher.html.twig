@@ -3,66 +3,81 @@
 {% block title %}Afficher Sortie{% endblock %}
 
 {% block body %}
+    <div class="body div">
+    <div class="sortie_aff">
     <div>
-        <h1>Afficher une sortie</h1>
+        <h1 class="titre_sortie">Afficher une sortie</h1>
     </div>
-
+<br>
     <div class="sortieForm">
         <div class="sortieCol">
-            <div>
-                <p>Nom de la sortie : {{ sortie.nom }}</p>
+            <div class="div">
+                <p class="gras">Nom de la sortie :</p>&nbsp;
+                <p>{{ sortie.nom }}</p>
             </div>
             <br>
-            <div>
-                <p>Date et heure de sortie : {{ sortie.dateHeureDebut | date('d/m/Y à G:i:s')}}</p>
+            <div class="div">
+                <p class="gras">Date et heure de sortie :</p>&nbsp;
+                <p>{{ sortie.dateHeureDebut | date('d/m/Y à G:i:s')}}</p>
+            </div>
+            <div class="div">
+                <p class="gras">Date limite d'inscription :</p>&nbsp;
+                <p>{{ sortie.dateLimiteInscription | date('d/m/Y à G:i:s') }}</p>
             </div>
             <br>
-            <div>
-                <p> Date limite d'inscription : {{ sortie.dateLimiteInscription | date('d/m/Y à G:i:s') }}</p>
+            <div class="div">
+                <p class="gras">Nombre de place :</p>&nbsp;
+                <p>{{ sortie.nbInscriptionsMax }}</p>
             </div>
             <br>
-            <div>
-                <p>Nombre de place : {{ sortie.nbInscriptionsMax }}</p>
+            <div class="div">
+                <p class="gras">Durée :</p>&nbsp;
+                <p>{{ sortie.duree }} minutes</p>
             </div>
             <br>
-            <div>
-                <p> durée : {{ sortie.duree }} minutes</p>
-            </div>
-            <br>
-            <div>
-                <p>Descrption et infos : {{ sortie.infosSortie }}</p>
+            <div class="div">
+                <p class="gras">Descrption et infos :</p>&nbsp;
+                <p>{{ sortie.infosSortie }}</p>
             </div>
         </div>
 
         <div class="sortieInter"></div>
 
         <div class="sortieCol">
-            <div>
-                <p>Campus : {{ sortie.campus.nom }} </p>
-            </div>
-            <div>
-                <p>Ville : {{ sortie.lieu.ville.nom}} </p>
+            <div class="div">
+                <p class="gras">Campus :</p>&nbsp;
+                <p>{{ sortie.campus.nom }} </p>
             </div>
             <br>
-            <div>
-                <p>Lieu : {{ sortie.lieu.nom}} </p>
+            <div class="div">
+                <p class="gras">Lieu :</p>&nbsp;
+                <p>{{ sortie.lieu.nom}} </p>
+            </div>
+            <div class="div">
+                <p class="gras">Rue :</p>&nbsp;
+                <p>{{ sortie.lieu.rue}}: </p>
+            </div>
+            <div class="div">
+                <p class="gras">Code postal :</p>&nbsp;
+                <p id="CP" >{{ sortie.lieu.ville.codePostal}} </p>
+            </div>
+            <div class="div">
+                <p class="gras">Ville :</p>&nbsp;
+                <p>{{ sortie.lieu.ville.nom}} </p>
             </div>
             <br>
-            <div>
-                <p>Rue  {{ sortie.lieu.rue}}: </p>
+            <div class="div">
+                <p class="gras">Latitude :</p>&nbsp;
+                <p>{{ sortie.lieu.latitude}} </p>
             </div>
-            <div>
-                <p id="CP" >Code postal : {{ sortie.lieu.ville.codePostal}} </p>
-            </div>
-            <div>
-                <p>Latitude : {{ sortie.lieu.latitude}} </p>
-            </div>
-            <div>
-                <p>Longitude : {{ sortie.lieu.longitude}} </p>
+            <div class="div">
+                <p class="gras">Longitude :</p>&nbsp;
+                <p>{{ sortie.lieu.longitude}} </p>
             </div>
         </div>
         </div>
-    <div>
+    <br>
+        <div class="tab_test">
 
         <table class="afficher_table">
             <thead>
@@ -75,13 +90,14 @@
                 {% for part in sortie.participant %}
                 <p></p>
                     <tr class="afficher_tr">
-                        <td class="afficher_td">{{ part.pseudo }}</td>
-                        <td class="afficher_td">{{ part.nom }} {{ part.prenom }}</td>
+                        <td class="gras index_td afficher_td">{{ part.pseudo }}</td>
+                        <td class="index_td afficher_td">{{ part.nom }} {{ part.prenom }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
 
     </div>
-    <br>
+    </div>
+    </div>
 {% endblock %}

@@ -491,6 +491,7 @@ tbody {
 
 .titre_sortie {
     text-align: center;
+    font-weight: bold;
 }
 
 .sortie_form {
