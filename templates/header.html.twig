@@ -1,5 +1,6 @@
 {% if app.user %}
     <nav class="nav" role="navigation">
+        {% if( app.request.cookies.get('theme')=='2' XOR app.request.cookies.get('theme')=='null' ) %}
         <div id="menuToggle">
             <input type="checkbox" class="header_checkbox" />
             <span style="background-color: red;"></span>
@@ -15,18 +16,36 @@
                     <a class="header_a header_a4" href="{{ path('app_accueil') }}"><i class="fa-solid fa-house"></i> Accueil</a>
                     <a class="header_a header_a5" href="{{ path('profil_modif')  }}"><i class="fa-solid fa-user"></i> Mon profil</a>
                     <a class="header_a header_a6" href="{{ path('app_logout') }}"><i class="fa-solid fa-power-off"></i> Se déconnecter</a>
+                {% elseif( app.request.cookies.get('theme')=='1') %}
+                    <div id="container">
+                        <div id="burger">
+                            <div class="bun top"></div>
+                            <div class="filling"></div>
+                            <div class="bun bottom"></div>
+                        </div>
+                    </div>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a class="header_a header_a1" href="{{ path('ville_liste') }}"><i class="fa-brands fa-galactic-republic"></i>   </i> Villes</a>
+                        <a class="header_a header_a2" href="{{ path('campus_liste') }}"><i class="fa-solid fa-jedi"></i></i> Campus</a>
+                        <a class="header_a header_a3" href="{{ path('app_participants') }}"><i class="fa-brands fa-old-republic"></i></i> Liste utilisateurs</a>
+                        <a class="header_a header_a3" href="{{ path('register') }}"><i class="fa-solid fa-user-hair-buns"></i> Ajouter Utilisateur</a>
+                    {% endif %}
+                    <a class="header_a header_a4" href="{{ path('app_accueil') }}"><i class="fa-solid fa-starfighter"></i>   Accueil</a>
+                    <a class="header_a header_a5" href="{{ path('profil_modif')  }}"><i class="fa-solid fa-robot-astromech"></i> Mon profil</a>
+                    <a class="header_a header_a6" href="{{ path('app_logout') }}"><i class="fa-solid fa-explosion"></i> Se déconnecter</a>
+                {% endif %}
             </ul>
-        </div>
-        <form action="{{ path('theme_choix') }}," method="post">
-            <label for="theme-select">theme:</label>
+            <form action="{{ path('theme_choix') }}" method="GET">
+                <label for="theme-select">theme:</label>
 
-            <select name="themes" id="theme-select">
-                <option value="">--theme--</option>
-                <option value="1">Licorne</option>
-                <option value="2">StarWars</option>
-            </select>
-            <input type="submit" value="valider">
-        </form>
+                <select name="themes" id="theme-select">
+                    <option value="">--theme--</option>
+                    <option value="1">Licorne</option>
+                    <option value="2">StarWars</option>
+                </select>
+                <input type="submit" value="valider">
+            </form>
+        </div>
     </nav>
 
 
