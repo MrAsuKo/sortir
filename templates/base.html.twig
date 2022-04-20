@@ -31,10 +31,6 @@
 
     <body>
 
-    {% if( app.request.cookies.get('theme')!=null) %}
-        <p>Votre theme de session est le  {{ app.request.cookies.get('theme') }}</p>
-    {% endif %}
-
     {% for label, messages in app.flashes%}
         {% for message in messages %}
             <div class="alert-{{ label }}">

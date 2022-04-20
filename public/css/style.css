@@ -562,6 +562,17 @@ tbody {
 
 /* responsive portable*/
 @media screen and (max-width: 600px){
+    .form_header{
+        margin-top: 80px;
+    }
+    .label_header{
+        content-visibility: hidden;
+    }
+
+    .input_header{
+
+    }
+
     .nav
     {
         height: 60px;
@@ -833,7 +844,7 @@ tbody {
     {
         position: absolute;
         width: 300px;
-        margin: -100px 0 0 -50px;
+        margin: -120px 0 0 -50px;
         padding: 50px;
         padding-top: 125px;
 
@@ -1143,7 +1154,7 @@ tbody {
     {
         position: absolute;
         width: 300px;
-        margin: -100px 0 0 -50px;
+        margin: -120px 0 0 -50px;
         padding: 50px;
         padding-top: 125px;
 

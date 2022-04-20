@@ -1,6 +1,6 @@
 {% if app.user %}
     <nav class="nav" role="navigation">
-        {% if( app.request.cookies.get('theme')=='2') %}
+        {% if( app.request.cookies.get('theme')=='1' or app.request.cookies.get('theme')==null) %}
         <div id="menuToggle">
             <input type="checkbox" class="header_checkbox" />
             <span style="background-color: red;"></span>
@@ -16,7 +16,9 @@
                     <a class="header_a header_a4" href="{{ path('app_accueil') }}"><i class="fa-solid fa-house"></i> Accueil</a>
                     <a class="header_a header_a5" href="{{ path('profil_modif')  }}"><i class="fa-solid fa-user"></i> Mon profil</a>
                     <a class="header_a header_a6" href="{{ path('app_logout') }}"><i class="fa-solid fa-power-off"></i> Se déconnecter</a>
-                {% elseif( app.request.cookies.get('theme')=='1') %}
+            </ul>
+        </div>
+                {% elseif( app.request.cookies.get('theme')=='2') %}
                     <div id="container">
                         <div id="burger">
                             <div class="bun top"></div>
@@ -34,18 +36,16 @@
                     <a class="header_a header_a5" href="{{ path('profil_modif')  }}"><i class="fa-solid fa-robot-astromech"></i> Mon profil</a>
                     <a class="header_a header_a6" href="{{ path('app_logout') }}"><i class="fa-solid fa-explosion"></i> Se déconnecter</a>
                 {% endif %}
-            </ul>
-            <form action="{{ path('theme_choix') }}" method="GET">
-                <label for="theme-select">theme:</label>
+            <form class="form_header" action="{{ path('theme_choix') }}" method="GET">
+                <label class="label_header" for="theme-select">theme:</label>
 
-                <select name="themes" id="theme-select">
-                    <option value="">--theme--</option>
-                    <option value="1">Licorne</option>
-                    <option value="2">StarWars</option>
+                <select class="form_header" name="themes" id="theme-select">
+                    <option class="option_header" value="">--theme--</option>
+                    <option class="option_header" value="1">Licorne</option>
+                    <option class="option_header" value="2">StarWars</option>
                 </select>
-                <input type="submit" value="valider">
+                <input class="input_header" type="submit" value="valider">
             </form>
-        </div>
     </nav>
 
 
