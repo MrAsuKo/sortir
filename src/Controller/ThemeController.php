@@ -18,9 +18,8 @@ class ThemeController extends AbstractController
     {
 
         $theme = $request->query->get('themes');
-        dump($theme);
         $response = New Response();
-            $cookie = new Cookie('theme', $theme , strtotime('tomorrow'));
+        $cookie = new Cookie('theme', $theme , strtotime('tomorrow'));
         $response->headers->setCookie($cookie);
         $response->send();
 
