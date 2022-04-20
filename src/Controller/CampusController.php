@@ -63,7 +63,7 @@ class CampusController extends AbstractController
         );
     }
 
-    #[Route('/campus/supprimer/{id}',
+    #[Route('/campus/admin/supprimer/{id}',
             name: 'campus_supprimer')]
     public function supprimer(
         CampusRepository       $campusRepository,
@@ -82,6 +82,40 @@ class CampusController extends AbstractController
         );
 
         return $this->redirectToRoute('campus_liste');
+    }
+
+    #[Route('/campus/admin/modifier/{id}',
+        name: 'campus_modifier')]
+    public function modifier(
+        CampusRepository       $campusRepository,
+        EntityManagerInterface $em,
+        Campus                 $campus,
+        Request $request
+    ): Response
+    {
+        $campus = $campusRepository->findOneById($campus->getId());
+
+        $campusForm = $this->createForm(CampusType::class,$campus);
+        $campusForm->handleRequest($request);
+
+        if ($campusForm->isSubmitted() && $campusForm->isValid())
+        {
+            $em->persist($campus);
+            $em->flush();
+            $this->addFlash(
+                'bravo',
+                'Le campus a bien été modifié'
+            );
+
+            return $this->redirectToRoute('campus_liste');
+        }
+
+        return $this->render('campus/modifier.html.twig',
+            [
+                'campusForm' => $campusForm->createView(),
+            ]
+        );
+
     }
 
 
