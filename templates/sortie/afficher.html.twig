@@ -93,6 +93,12 @@
                                 <td class="gras index_td afficher_td">{{ part.pseudo }}</td>
                                 <td class="index_td afficher_td">{{ part.nom }} {{ part.prenom }}</td>
                             </tr>
+                            {% else %}
+
+                            <tr>
+                                <td>Encore personne ne s'est inscrit à cette sortie</td>
+                            </tr>
+
                         {% endfor %}
                     </tbody>
                 </table>
@@ -106,7 +112,9 @@
     {% set latitudeMin = sortie.lieu.latitude - 0.05 %}
     {% set latitudeMax = sortie.lieu.latitude + 0.05 %}
 
-    <iframe width="425" height="350"
-            src="https://www.openstreetmap.org/export/embed.html?bbox={{ longitudeMin}}%2C{{ latitudeMin }}%2C{{ longitudeMax }}%2C{{ latitudeMax }}&amp;layer=mapnik&amp;marker={{ sortie.lieu.latitude}}%2C{{ sortie.lieu.longitude}}&zoom=1" style="border: 1px solid black"></iframe>
+
+            <iframe width="425" height="350"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox={{ longitudeMin}}%2C{{ latitudeMin }}%2C{{ longitudeMax }}%2C{{ latitudeMax }}&amp;layer=mapnik&amp;marker={{ sortie.lieu.latitude}}%2C{{ sortie.lieu.longitude}}&zoom=1" style="border: 1px solid black"></iframe>
+
 {% endblock %}
 
