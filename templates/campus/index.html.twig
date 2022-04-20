@@ -28,7 +28,7 @@
             {% for campus in listCampus %}
                 <tr class="campus_tr">
                     <td class="campus_td">{{ campus.nom }}</td>
-                    <td class="campus_td"><a href=""> Modifier</a> - <a href="{{ path('campus_supprimer',{'id': campus.id}) }}"> Supprimer</a>    </td>
+                    <td class="campus_td"><a href="{{ path('campus_modifier', {'id' : campus.id }) }}"> Modifier</a> - <a href="{{ path('campus_supprimer',{'id': campus.id}) }}"> Supprimer</a>    </td>
                 </tr>
             {% endfor %}
             </tbody>
