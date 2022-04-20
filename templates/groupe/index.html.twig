@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Groupes{% endblock %}
+
+{% block body %}
+
+    {% for groupe in groupes %}
+
+        <div class="boite index_filter"  >
+
+            <p {{ groupe.id }}" >{{ groupe.nom }}</p>
+            <p><a href="{{ path('supprimer_groupe', {"id": groupe.id}) }}">Supprimer</a></p>
+            <p><a href="{{ path('ajouter_membre', {"groupe": groupe.id}) }}">Ajouter membre</a></p>
+
+            <div class="ferme">
+                <ul id="{{ groupe.id }}" >
+                    {% for membre in groupe.membres %}
+                        <li>{{ membre }} <a href="{{ path('supprimer_membre', {'id': membre.id, "groupe": groupe.id}) }}"> X </a></li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+    <a href="{{ path('creer_groupe') }}">Créer un groupe</a>
+
+
+    <script src="{{ asset('js/groupe.js') }}"></script>
+
+{% endblock %}

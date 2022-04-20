@@ -15,41 +15,47 @@
             </div>
         </div>
 
-        <div class="index_filter">
-            <div class="index_filter1">
+        <div class="index_filter boite">
 
-                <h1 class="filter_titre">Filtrer les Sorties</h1><br>
+            <h1 class="filter_titre">Filtrer les Sorties <i class="fa-solid fa-arrow-down"></i></h1>
+            <br>
 
-                {{ form_start(formFilter,{ 'attr': {'class': 'form_accueil'} }) }}
+            <div class="ferme">
 
-                <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formFilter.campus) }}</div><div>{{ form_widget(formFilter.campus) }}{{ form_errors(formFilter.campus) }}</div></div>
-                <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formFilter.nom) }}</div><div>{{ form_widget(formFilter.nom) }}{{ form_errors(formFilter.nom) }}</div></div>
-                <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formFilter.dateHeureDebut) }}</div><div>{{ form_widget(formFilter.dateHeureDebut) }}{{ form_errors(formFilter.dateHeureDebut) }}</div></div>
-                <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formFilter.dateHeureFin) }}</div><div>{{ form_widget(formFilter.dateHeureFin) }}{{ form_errors(formFilter.dateHeureFin) }}</div></div>
+                <div class="index_filter1">
 
-            </div>
+                    {{ form_start(formFilter,{ 'attr': {'class': 'form_accueil'} }) }}
 
-            <div class="index_filter2">
-                <div>               {{ form_widget(formFilter.organisateur) }}
-                                    {{ form_label(formFilter.organisateur) }}
-                                    {{ form_errors(formFilter.organisateur) }}
-                    <br><br>
-                                    {{ form_widget(formFilter.participant) }}
-                                    {{ form_label(formFilter.participant) }}
-                                    {{ form_errors(formFilter.participant) }}
-                    <br><br>
-                                    {{ form_widget(formFilter.inscrit) }}
-                                    {{ form_label(formFilter.inscrit) }}
-                                    {{ form_errors(formFilter.inscrit) }}
-                    <br><br>
-                                    {{ form_widget(formFilter.dateLimiteInscription) }}
-                                    {{ form_label(formFilter.dateLimiteInscription) }}
-                                    {{ form_errors(formFilter.dateLimiteInscription) }}
+                    <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formFilter.campus) }}</div><div>{{ form_widget(formFilter.campus) }}{{ form_errors(formFilter.campus) }}</div></div>
+                    <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formFilter.nom) }}</div><div>{{ form_widget(formFilter.nom) }}{{ form_errors(formFilter.nom) }}</div></div>
+                    <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formFilter.dateHeureDebut) }}</div><div>{{ form_widget(formFilter.dateHeureDebut) }}{{ form_errors(formFilter.dateHeureDebut) }}</div></div>
+                    <div class="div input-group input-group-sm mb-3"><div class="input-group-text">{{ form_label(formFilter.dateHeureFin) }}</div><div>{{ form_widget(formFilter.dateHeureFin) }}{{ form_errors(formFilter.dateHeureFin) }}</div></div>
+
                 </div>
-            </div>
 
-            <div class="index_filter3">
-                {{ form_end(formFilter) }}
+                <div class="index_filter2">
+                    <div>               {{ form_widget(formFilter.organisateur) }}
+                                        {{ form_label(formFilter.organisateur) }}
+                                        {{ form_errors(formFilter.organisateur) }}
+                        <br><br>
+                                        {{ form_widget(formFilter.participant) }}
+                                        {{ form_label(formFilter.participant) }}
+                                        {{ form_errors(formFilter.participant) }}
+                        <br><br>
+                                        {{ form_widget(formFilter.inscrit) }}
+                                        {{ form_label(formFilter.inscrit) }}
+                                        {{ form_errors(formFilter.inscrit) }}
+                        <br><br>
+                                        {{ form_widget(formFilter.dateLimiteInscription) }}
+                                        {{ form_label(formFilter.dateLimiteInscription) }}
+                                        {{ form_errors(formFilter.dateLimiteInscription) }}
+                    </div>
+                </div>
+
+                <div class="index_filter3">
+                    {{ form_end(formFilter) }}
+                </div>
+
             </div>
 
         </div>
@@ -126,4 +132,6 @@
                 <a class="btn btn-secondary bouton_creer" href="{{ path('sortie_creer') }}">Créer une sortie</a>
             </div>
     </div>
+
+    <script src="{{ asset('js/groupe.js') }}"></script>
 {% endblock %}

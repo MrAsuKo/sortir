@@ -61,9 +61,13 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(targetEntity: Avatar::class, inversedBy: 'participants')]
     private $avatar;
 
+    #[ORM\ManyToMany(targetEntity: Groupe::class, mappedBy: 'membres')]
+    private $groupes;
+
     public function __construct()
     {
         $this->sorties = new ArrayCollection();
+        $this->groupes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -276,6 +280,33 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAvatar(?Avatar $avatar): self
     {
         $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Groupe>
+     */
+    public function getGroupes(): Collection
+    {
+        return $this->groupes;
+    }
+
+    public function addGroupe(Groupe $groupe): self
+    {
+        if (!$this->groupes->contains($groupe)) {
+            $this->groupes[] = $groupe;
+            $groupe->addMembre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroupe(Groupe $groupe): self
+    {
+        if ($this->groupes->removeElement($groupe)) {
+            $groupe->removeMembre($this);
+        }
 
         return $this;
     }

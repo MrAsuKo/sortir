@@ -107,6 +107,7 @@ header {
     width: 360px;
 }
 
+
 .sortieInter {
     width: 100px;
 }
@@ -743,54 +744,13 @@ tbody {
         display: inline-grid;
         border: solid 0.5px;
     }
-    .index_td_head index_td_head1{
+    .index_td_head{
         display: block;
         text-align: right;
         column-width:100px;
         font-size: x-small;
     }
-    .index_td_head index_td_head2{
-        display: block;
-        text-align: right;
-        column-width:100px;
-        font-size: x-small;
-    }
-    .index_td_head index_td_head3{
-        display: block;
-        text-align: right;
-        column-width:100px;
-        font-size: x-small;
-    }
-    .index_td_head index_td_head4{
-        display: block;
-        text-align: right;
-        column-width:100px;
-        font-size: x-small;
-    }
-    .index_td_head index_td_head5{
-        display: block;
-        text-align: right;
-        column-width:100px;
-        font-size: x-small;
-    }
-    .index_td_head index_td_head6{
-        display: block;
-        text-align: right;
-        column-width:100px;
-        font-size: x-small;
-    }
-    .index_td_head index_td_head7{
-        display: block;
-        text-align: right;
-        column-width:100px;
-        font-size: x-small;
-    }
-    .index_td_head index_td_head8{
-        display: block;
-        text-align: right;
-        column-width:100px;
-        font-size: x-small;
-    }
+
     .index_td{
         display: block;
         text-align: right;
@@ -987,6 +947,14 @@ tbody {
     }
 }
 
+.ferme{
+    display: none;
+}
+
+.ouvrir{
+    display: block;
+}
+
 /* responsive tablette*/
 @media screen and (max-width: 1000px) {
 
@@ -1053,54 +1021,13 @@ tbody {
         display: inline-grid;
         border: solid 0.5px;
     }
-    .index_td_head index_td_head1{
+    .index_td_head{
         display: block;
         text-align: right;
         column-width:100px;
         font-size: x-small;
     }
-    .index_td_head index_td_head2{
-        display: block;
-        text-align: right;
-        column-width:100px;
-        font-size: x-small;
-    }
-    .index_td_head index_td_head3{
-        display: block;
-        text-align: right;
-        column-width:100px;
-        font-size: x-small;
-    }
-    .index_td_head index_td_head4{
-        display: block;
-        text-align: right;
-        column-width:100px;
-        font-size: x-small;
-    }
-    .index_td_head index_td_head5{
-        display: block;
-        text-align: right;
-        column-width:100px;
-        font-size: x-small;
-    }
-    .index_td_head index_td_head6{
-        display: block;
-        text-align: right;
-        column-width:100px;
-        font-size: x-small;
-    }
-    .index_td_head index_td_head7{
-        display: block;
-        text-align: right;
-        column-width:100px;
-        font-size: x-small;
-    }
-    .index_td_head index_td_head8{
-        display: block;
-        text-align: right;
-        column-width:100px;
-        font-size: x-small;
-    }
+
     .index_td{
         display: block;
         text-align: right;

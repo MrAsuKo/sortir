@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Groupes{% endblock %}
+
+{% block body %}
+
+    {{ form_start(formAjoutMembre) }}
+    {{ form_end(formAjoutMembre) }}
+
+    <h3>Liste des membres : </h3>
+    <ul>
+        {% for membre in groupe %}
+            <li>{{ membre }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
