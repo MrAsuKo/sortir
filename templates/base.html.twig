@@ -15,7 +15,6 @@
             <link rel="icon" href="{{ asset('img/chewy.png') }}">
         {% endif %}
 
-
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -31,8 +30,6 @@
         {% endif %}
 
     </head>
-
-
     <body>
 
     {% for label, messages in app.flashes%}
@@ -45,11 +42,9 @@
 
 
     <div class="test">
-
         <a class="logo" href="{{ path('app_login') }}">
             <img src="{{ asset('img/logo.png') }}" alt="Logo OnVaSortir!" id="img">
         </a>
-
         <header>{% include ('header.html.twig') %}</header>
         {% block body %}{% endblock %}
 
