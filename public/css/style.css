@@ -327,23 +327,17 @@ header {
     justify-content: flex-start;
     margin: 25px;
     padding: 25px;
-    width: 53%;
+    width: 55%;
     border-radius: 50px;
     box-shadow: 5px 5px 5px rgba(44,194,84,0.25), -3px -3px 3px rgba(255,131,43,0.25);
 }
 
 .index_filter1 {
-    width: 400px;
-    padding-right: 80px;
+    width: 350px;
 }
 
 .index_filter2 {
-    padding-right: 50px;
-    padding-top: 105px;
-}
-
-.index_filter3 {
-    padding-top: 110px;
+    width: 320px;
 }
 
 .index_id {
@@ -1411,6 +1405,8 @@ tbody {
 }
 
 .ouvrir{
-    display: block;
+    display: flex;
+    padding-top: 20px;
+    padding-left: 50px;
 }
 
