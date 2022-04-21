@@ -6,6 +6,7 @@ use App\Repository\LieuRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
 #[ORM\Entity(repositoryClass: LieuRepository::class)]
 class Lieu
@@ -13,27 +14,27 @@ class Lieu
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 100)]
-    private $nom;
+    private string $nom;
 
     #[ORM\Column(type: 'string', length: 200)]
-    private $rue;
+    private string $rue;
 
     #[ORM\Column(type: 'float')]
-    private $latitude;
+    private float $latitude;
 
     #[ORM\Column(type: 'float')]
-    private $longitude;
+    private float$longitude;
 
     #[ORM\OneToMany(mappedBy: 'lieu', targetEntity: Sortie::class)]
     private $sorties;
 
     #[ORM\ManyToOne(targetEntity: Ville::class, inversedBy: 'lieux')]
-    private $ville;
+    private Ville $ville;
 
-    public function __construct()
+    #[Pure] public function __construct()
     {
         $this->sorties = new ArrayCollection();
     }
@@ -132,4 +133,14 @@ class Lieu
 
         return $this;
     }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+
 }

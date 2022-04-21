@@ -7,6 +7,7 @@ use App\Repository\CampusRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
 #[ORM\Entity(repositoryClass: CampusRepository::class)]
 #[ApiResource]
@@ -15,10 +16,10 @@ class Campus
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 100)]
-    private $nom;
+    private string $nom;
 
     #[ORM\OneToMany(mappedBy: 'campus', targetEntity: Participant::class)]
     private $participants;
@@ -26,7 +27,7 @@ class Campus
     #[ORM\OneToMany(mappedBy: 'campus', targetEntity: Sortie::class)]
     private $sorties;
 
-    public function __construct()
+    #[Pure] public function __construct()
     {
         $this->participants = new ArrayCollection();
         $this->sorties = new ArrayCollection();
@@ -108,4 +109,14 @@ class Campus
 
         return $this;
     }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+
 }

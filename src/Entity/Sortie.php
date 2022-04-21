@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\SortieRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
 #[ORM\Entity(repositoryClass: SortieRepository::class)]
 class Sortie
@@ -13,42 +15,42 @@ class Sortie
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 100)]
-    private $nom;
+    private string $nom;
 
     #[ORM\Column(type: 'datetime')]
-    private $dateHeureDebut;
+    private DateTime $dateHeureDebut;
 
     #[ORM\Column(type: 'integer')]
-    private $duree;
+    private int $duree;
 
     #[ORM\Column(type: 'date')]
-    private $dateLimiteInscription;
+    private DateTime $dateLimiteInscription;
 
     #[ORM\Column(type: 'integer')]
-    private $nbInscriptionsMax;
+    private int $nbInscriptionsMax;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $infosSortie;
+    private string $infosSortie;
 
     #[ORM\ManyToMany(targetEntity: Participant::class, inversedBy: 'sorties')]
     private $participants;
 
     #[ORM\ManyToOne(targetEntity: Participant::class, inversedBy: 'orgaSorties')]
-    private $organisateur;
+    private Participant $organisateur;
 
     #[ORM\ManyToOne(targetEntity: Campus::class, inversedBy: 'sorties')]
-    private $campus;
+    private Campus $campus;
 
     #[ORM\ManyToOne(targetEntity: Etat::class, inversedBy: 'sorties')]
-    private $etat;
+    private Etat $etat;
 
     #[ORM\ManyToOne(targetEntity: Lieu::class, inversedBy: 'sorties')]
-    private $lieu;
+    private Lieu $lieu;
 
-    public function __construct()
+    #[Pure] public function __construct()
     {
         $this->participants = new ArrayCollection();
     }
@@ -70,12 +72,12 @@ class Sortie
         return $this;
     }
 
-    public function getDateHeureDebut(): ?\DateTimeInterface
+    public function getDateHeureDebut(): DateTime
     {
         return $this->dateHeureDebut;
     }
 
-    public function setDateHeureDebut(\DateTimeInterface $dateHeureDebut): self
+    public function setDateHeureDebut( DateTime $dateHeureDebut): self
     {
         $this->dateHeureDebut = $dateHeureDebut;
 
@@ -94,12 +96,12 @@ class Sortie
         return $this;
     }
 
-    public function getDateLimiteInscription(): ?\DateTimeInterface
+    public function getDateLimiteInscription(): DateTime
     {
         return $this->dateLimiteInscription;
     }
 
-    public function setDateLimiteInscription(\DateTimeInterface $dateLimiteInscription): self
+    public function setDateLimiteInscription( DateTime $dateLimiteInscription): self
     {
         $this->dateLimiteInscription = $dateLimiteInscription;
 
@@ -201,4 +203,14 @@ class Sortie
 
         return $this;
     }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+
 }
