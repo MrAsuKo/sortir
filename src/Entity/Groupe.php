@@ -6,6 +6,7 @@ use App\Repository\GroupeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
 #[ORM\Entity(repositoryClass: GroupeRepository::class)]
 class Groupe
@@ -13,15 +14,15 @@ class Groupe
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\ManyToMany(targetEntity: Participant::class, inversedBy: 'groupes')]
     private $membres;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $nom;
+    private string $nom;
 
-    public function __construct()
+    #[Pure] public function __construct()
     {
         $this->membres = new ArrayCollection();
     }
@@ -66,4 +67,14 @@ class Groupe
 
         return $this;
     }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+
 }

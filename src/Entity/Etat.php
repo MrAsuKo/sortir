@@ -6,6 +6,7 @@ use App\Repository\EtatRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
 #[ORM\Entity(repositoryClass: EtatRepository::class)]
 class Etat
@@ -13,15 +14,15 @@ class Etat
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 20)]
-    private $libelle;
+    private string $libelle;
 
     #[ORM\OneToMany(mappedBy: 'etat', targetEntity: Sortie::class)]
     private $sorties;
 
-    public function __construct()
+    #[Pure] public function __construct()
     {
         $this->sorties = new ArrayCollection();
     }
@@ -72,4 +73,14 @@ class Etat
 
         return $this;
     }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+
 }
