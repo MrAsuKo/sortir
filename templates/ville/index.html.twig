@@ -5,12 +5,16 @@
 {% block body %}
 {% if app.user.administrateur ==1 %}
 
-<div class="body div tab_test lieu_form">
-
+<div class="body ville_form">
+<div>
         <h1 class="titre_sortie">Gérer les villes</h1>
-<br>
-        <h2 class="titre_sortie">Filtrer les Villes</h2>
+</div>
     <br>
+    <div class="div center">
+    <div>
+        <br><br>
+        <h3 class="titre_sortie">Filtrer les Villes</h3>
+        <br>
         {{ form_start(filterForm) }}
     <div class="div input-group input-group-sm mb-3">
         <div class="input-group-text">
@@ -22,7 +26,9 @@
         </div>
     </div>
         {{ form_end(filterForm) }}
+    </div>
 <br>
+    <div class="lol">
         <table class="ville_table">
             <thead>
                 <tr class="ville_tr">
@@ -52,7 +58,6 @@
                 </tr>
             </tfoot>
         </table>
-
         <ul>
             <li data-vicopo="#ville_nom, #ville_codePostal" data-vicopo-click='{"#ville_codePostal": "code", "#ville_nom": "ville"}'>
                 <strong data-vicopo-code-postal></strong>
@@ -71,5 +76,7 @@
         <img class="avatar" src="{{ asset('image/BruNO.jpg') }}" alt="Ne sois pas ici!">
 {% endif %}
     <script src={{ asset('js/Ville.js') }}></script>
+    </div>
+    </div>
     </div>
 {% endblock %}

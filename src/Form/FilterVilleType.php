@@ -17,7 +17,7 @@ class FilterVilleType extends AbstractType
             ->add('nom',
                 TextType::class, ['attr' => ['class' => 'form-control form-control-sm']])
             ->add("Rechercher",
-                SubmitType::class, ["attr" => [ "class" => "btn btn-secondary bouton_creer_lieu"]])
+                SubmitType::class, ["attr" => [ "class" => "btn btn-secondary bouton_filter_ville"]])
         ;
     }
 
