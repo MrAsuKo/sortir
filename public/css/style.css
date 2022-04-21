@@ -401,6 +401,17 @@ tbody {
     overflow-y: scroll;
 }
 
+.index_groupes {
+    background-color: rgba(255,131,43,0.4);
+    display: inline-block;
+    text-align: center;
+    margin: 25px;
+    padding: 25px;
+    width: 29.5%;
+    border-radius: 50px;
+    box-shadow: 5px 5px 5px rgba(254,43,57,0.5), -3px -3px 3px rgba(169,41,193,0.5);
+}
+
 .bouton_lieu {
     background: #00304a;
     font-weight: bold;
@@ -607,6 +618,16 @@ tbody {
     box-shadow: 5px 5px 5px rgba(255,131,43,0.25), -3px -3px 3px rgba(254,233,42,0.25);
 }
 
+.groupe_form {
+    color: #00304a;
+    background-color: rgba(41,123,253,0.2);
+    margin: 50px auto;
+    padding: 25px;
+    width: 85%;
+    border-radius: 50px;
+    box-shadow: 5px 5px 5px rgba(44,194,84,0.25), -3px -3px 3px rgba(169,41,193,0.25);
+}
+
 .ville_form {
     color: #00304a;
     background-color: rgba(169,41,193,0.2);
@@ -660,6 +681,20 @@ tbody {
 
 .bouton_sortie:hover {
     color: black;
+    border-color: #00877e;
+    background: linear-gradient(rgba(254,43,57,255), rgba(255,131,43,255), rgba(254,233,42,255), rgba(44,194,84,255), rgba(41,123,253,255), rgba(169,41,193,255), rgba(252,50,159,255));
+}
+
+.color {
+    background: none;
+    border: none;
+    font-size: 25px;
+    color: #00877e;
+    transition: all 1s ease-in-out;
+}
+
+.color:hover {
+    color: #00304a;
     border-color: #00877e;
     background: linear-gradient(rgba(254,43,57,255), rgba(255,131,43,255), rgba(254,233,42,255), rgba(44,194,84,255), rgba(41,123,253,255), rgba(169,41,193,255), rgba(252,50,159,255));
 }

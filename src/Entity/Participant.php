@@ -6,6 +6,7 @@ use App\Repository\ParticipantRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -20,34 +21,34 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
-    private $mail;
+    private string $mail;
 
     #[ORM\Column(type: 'json')]
-    private $roles = [];
+    private array $roles = [];
 
     #[ORM\Column(type: 'string')]
-    private $password;
+    private string $password;
 
     #[ORM\Column(type: 'string', length: 50)]
-    private $nom;
+    private string $nom;
 
     #[ORM\Column(type: 'string', length: 50)]
-    private $prenom;
+    private string $prenom;
 
     #[ORM\Column(type: 'string', nullable: true, length: 10)]
     private $telephone;
 
     #[ORM\Column(type: 'boolean')]
-    private $administrateur;
+    private bool $administrateur;
 
     #[ORM\Column(type: 'boolean')]
-    private $actif;
+    private bool $actif;
 
     #[ORM\ManyToOne(targetEntity: Campus::class, inversedBy: 'participants')]
-    private $campus;
+    private Campus $campus;
 
     #[ORM\ManyToMany(targetEntity: Sortie::class, mappedBy: 'participants')]
     private $sorties;
@@ -64,7 +65,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Groupe::class, mappedBy: 'membres')]
     private $groupes;
 
-    public function __construct()
+    #[Pure] public function __construct()
     {
         $this->sorties = new ArrayCollection();
         $this->groupes = new ArrayCollection();
@@ -94,7 +95,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->mail;
+        return $this->mail;
     }
 
     /**
@@ -164,16 +165,15 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getTelephone(): ?string
+    public function getTelephone()
     {
         return $this->telephone;
     }
 
-    public function setTelephone(string $telephone): self
+    public function setTelephone(string $telephone): void
     {
         $this->telephone = $telephone;
 
-        return $this;
     }
 
     public function getAdministrateur(): ?bool
@@ -309,6 +309,14 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
     }
 
 

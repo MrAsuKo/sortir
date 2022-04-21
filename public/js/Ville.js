@@ -5,21 +5,19 @@
  * coucou
  */
 jQuery(function ($) {
-    var _host = 'https://vicopo.selfbuild.fr';
-    var _cache = {};
-    var _sort = function (a, b) {
+    let _host = 'https://vicopo.selfbuild.fr';
+    let _cache = {};
+    let _sort = function (a, b) {
         return a.city - b.city;
     };
-    var _filter = function () {
+    let _filter = function () {
         return true;
     };
     $.extend({
         vicopoSort: function ($sort) {
             _sort = $sort;
         },
-        vicopoFilter: function ($filter) {
-            _filter = $filter;
-        },
+
         vicopoPrepare: function ($cities) {
             $cities = $cities.filter(_filter);
             return $cities.sort(_sort);
@@ -45,7 +43,7 @@ jQuery(function ($) {
                     return;
                 }
 
-                var _data = {};
+                let _data = {};
                 _data[_name] = _input;
                 return $.getJSON(_host, _data, function (_answer) {
                     _cache[_name][_input] = _answer.cities;
@@ -59,17 +57,17 @@ jQuery(function ($) {
     $.fn.extend({
         vicopoClean: function () {
             return $(this).each(function () {
-                var _removeList = [];
-                for(var $next = $(this).next(); $next.hasClass('vicopo-answer'); $next = $next.next()) {
+                let _removeList = [];
+                for(let $next = $(this).next(); $next.hasClass('vicopo-answer'); $next = $next.next()) {
                     _removeList.push($next[0]);
                 }
                 $(_removeList).remove();
             });
         },
         vicopoTargets: function () {
-            var _targets = [];
+            let _targets = [];
             $(this).each(function () {
-                var $target = $(this);
+                let $target = $(this);
                 $('[data-vicopo]').each(function () {
                     if($target.is($(this).data('vicopo'))) {
                         _targets.push(this);
@@ -90,9 +88,9 @@ jQuery(function ($) {
         },
         getVicopo: function (_method, _done) {
             return $(this).keyup(function () {
-                var $input = $(this);
+                let $input = $(this);
                 $[_method]($input.val(), function (_input, _cities, _name) {
-                    if(_input == $input.val()) {
+                    if(_input === $input.val()) {
                         _done(_cities, _name, _input);
                     }
                 });
@@ -108,13 +106,13 @@ jQuery(function ($) {
             return $(this).getVicopo('ville', _done);
         }
     });
-    var _fields = 'input, textarea, select';
+    let _fields = 'input, textarea, select';
     $(document).on('keyup change', _fields, function () {
-        var $target = $(this);
-        var _input = $target.val();
+        let $target = $(this);
+        let _input = $target.val();
         if($target.data('vicopo-value') !== _input) {
-            var _fill = $target.data('vicopo-get');
-            var _$targets = $target.data('vicopo-value', _input)
+            let _fill = $target.data('vicopo-get');
+            let _$targets = $target.data('vicopo-value', _input)
                 .vicopoTargets().each(function () {
                     $(this).hide().vicopoClean();
                 });
@@ -122,15 +120,15 @@ jQuery(function ($) {
                 $.vicopo(_input, function (_check, _cities) {
                     if(_check === _input) {
                         _$targets.each(function () {
-                            var $repeater = $(this).vicopoClean();
-                            var _$template = $repeater.clone();
-                            var _click = _$template.data('vicopo-click');
+                            let $repeater = $(this).vicopoClean();
+                            let _$template = $repeater.clone();
+                            let _click = _$template.data('vicopo-click');
                             _$template.show().removeAttr('data-vicopo');
-                            var _$cities = [];
+                            let _$cities = [];
                             $.each(_cities, function () {
-                                var $city = _$template.clone();
-                                var _code = this.code;
-                                var _city = this.city;
+                                let $city = _$template.clone();
+                                let _code = this.code;
+                                let _city = this.city;
                                 $city.addClass('vicopo-answer');
                                 $city.find('[data-vicopo-code-postal]').text(_code);
                                 $city.find('[data-vicopo-ville]').text(_city);

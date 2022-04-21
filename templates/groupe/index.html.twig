@@ -3,31 +3,35 @@
 {% block title %}Groupes{% endblock %}
 
 {% block body %}
+<div class="body groupe_form">
 
+    <h1 class="titre_sortie">Groupes</h1>
+    <br>
     {% for groupe in groupes %}
 
-        <div class="boite index_filter"  >
+        <div class="boite index_groupes"  >
 
-            <p  class="clic">{{ groupe.nom }}</p>
-            <p><a href="{{ path('supprimer_groupe', {"id": groupe.id}) }}">Supprimer</a></p>
-            <p><a href="{{ path('ajouter_membre', {"groupe": groupe.id}) }}">Ajouter membre</a></p>
-
+            <p  class="clic gras color btn btn-secondary"><i class="fa-solid fa-arrow-down"></i> {{ groupe.nom }} <i class="fa-solid fa-arrow-down"></i></p>
             <div class="ferme">
                 <ul id="{{ groupe.id }}" >
                     {% for membre in groupe.membres %}
-                        <li>{{ membre }} <a href="{{ path('supprimer_membre', {'id': membre.id, "groupe": groupe.id}) }}"> X </a></li>
+                        <li>{{ membre }} <a class="lien_tab" href="{{ path('supprimer_membre', {'id': membre.id, "groupe": groupe.id}) }}"> X </a></li>
                     {% endfor %}
 
                 </ul>
             </div>
+            <p><a class="lien_tab" href="{{ path('supprimer_groupe', {"id": groupe.id}) }}">Supprimer</a></p>
+            <p><a class="lien_tab" href="{{ path('ajouter_membre', {"groupe": groupe.id}) }}">Ajouter membre</a></p>
 
         </div>
-
     {% endfor %}
-
-    <a href="{{ path('creer_groupe') }}">Créer un groupe</a>
+    <br>
+<br>
+    <a class="btn btn-secondary bouton_filter_ville div center" href="{{ path('creer_groupe') }}">Créer un groupe</a>
 
 
     <script src="{{ asset('js/groupe.js') }}"></script>
+    </div>
+
 
 {% endblock %}

@@ -4,8 +4,6 @@ namespace App\Repository;
 
 use App\Entity\Etat;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -21,10 +19,8 @@ class EtatRepository extends ServiceEntityRepository
         parent::__construct($registry, Etat::class);
     }
 
-    /**
-     * @throws ORMException
-     * @throws OptimisticLockException
-     */
+
+
     public function add(Etat $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
@@ -33,10 +29,7 @@ class EtatRepository extends ServiceEntityRepository
         }
     }
 
-    /**
-     * @throws ORMException
-     * @throws OptimisticLockException
-     */
+
     public function remove(Etat $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);

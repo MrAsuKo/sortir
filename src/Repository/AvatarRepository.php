@@ -4,8 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Avatar;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\ORMException;
+
+
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -21,10 +21,7 @@ class AvatarRepository extends ServiceEntityRepository
         parent::__construct($registry, Avatar::class);
     }
 
-    /**
-     * @throws ORMException
-     * @throws OptimisticLockException
-     */
+
     public function add(Avatar $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
@@ -34,10 +31,7 @@ class AvatarRepository extends ServiceEntityRepository
         }
     }
 
-    /**
-     * @throws ORMException
-     * @throws OptimisticLockException
-     */
+
     public function remove(Avatar $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);

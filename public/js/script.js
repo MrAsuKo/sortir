@@ -4,13 +4,13 @@ let longitude = document.getElementById('longitude');
 let latitude = document.getElementById('latitude');
 
 
-document.getElementById('sortie_lieu').addEventListener('click', (event) => {
+document.getElementById('sortie_lieu').addEventListener('click', () => {
 
     let lieu = document.getElementById('sortie_lieu');
 
 
 
-    lieuSortie = lieu.value;
+    let lieuSortie = lieu.value;
 
         $.ajax(
             {
@@ -36,14 +36,14 @@ document.getElementById('sortie_lieu').addEventListener('click', (event) => {
 )
 
 
-document.getElementById('sortie_ville').addEventListener('change',(event) => {
+document.getElementById('sortie_ville').addEventListener('change',() => {
 
 
     let cp = document.getElementById('cp');
     let ville = document.getElementById('sortie_ville');
     let lieu = document.getElementById('sortie_lieu');
 
-    villeSortie = ville.querySelector('option:checked').innerText.toLowerCase()
+    let villeSortie = ville.querySelector('option:checked').innerText.toLowerCase()
     villeSortie = ville.value;
 
 
