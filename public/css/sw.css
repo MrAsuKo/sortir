@@ -246,10 +246,12 @@ header {
 
 .afficher_td_head1 {
     background: linear-gradient(to right, #000000, #696969);
+    color: yellow;
 }
 
 .afficher_td_head2 {
     background: linear-gradient(to right, #696969, #000000);
+    color: yellow;
 }
 
 .index_table {
@@ -1378,3 +1380,22 @@ tbody {
     display: block;
 }
 
+.div_map{
+    padding-left: 30px;
+    padding-top: 0px;
+}
+
+.frame_map{
+    width: 325px;
+    height: 250px;
+}
+.div-afficher_corps{
+    width: auto;
+}
+
+.modif_profil{
+    width: auto;
+}
+.ville_form{
+    width: auto;
+}
