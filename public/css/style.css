@@ -115,14 +115,6 @@ header {
     justify-content: center;
 }
 
-.profil_btn{
-    margin: 10px;
-}
-
-.profil_btn:hover{
-    color:red
-}
-
 .sortieForm {
     display: flex;
     justify-content: center;
@@ -453,6 +445,21 @@ tbody {
     background: linear-gradient(to right, rgba(254,43,57,255), rgba(255,131,43,255), rgba(254,233,42,255), rgba(44,194,84,255), rgba(41,123,253,255), rgba(169,41,193,255), rgba(252,50,159,255));
 }
 
+.bouton_enregistrer_profil {
+    background: #00304a;
+    border-color: #00877e;
+    margin-left: 30px;
+    padding-left: 100px;
+    padding-right: 100px;
+    transition: all 1s ease-in-out;
+}
+
+.bouton_enregistrer_profil:hover {
+    color: black;
+    border-color: #00877e;
+    background: linear-gradient(to right, rgba(254,43,57,255), rgba(255,131,43,255), rgba(254,233,42,255), rgba(44,194,84,255), rgba(41,123,253,255), rgba(169,41,193,255), rgba(252,50,159,255));
+}
+
 .bouton_filter {
     background: #00304a;
     border-color: #00877e;
@@ -511,6 +518,10 @@ tbody {
     border-color: #00877e;
 }
 
+.formtest {
+    width: 250px;
+}
+
 .filter_titre {
     color: #00304a;
     font-weight: bold;
@@ -545,6 +556,16 @@ tbody {
     width: 40%;
     border-radius: 50px;
     box-shadow: 5px 5px 5px rgba(44,194,84,0.25), -3px -3px 3px rgba(169,41,193,0.25);
+}
+
+.modif_profil {
+    color: #00304a;
+    background-color: rgba(0,135,126,0.2);
+    margin: 50px auto;
+    padding: 25px;
+    width: 40%;
+    border-radius: 50px;
+    box-shadow: 5px 5px 5px rgba(41,123,253,0.25), -3px -3px 3px rgba(44,194,84,0.25);
 }
 
 .sortie_aff {
