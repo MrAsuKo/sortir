@@ -5,30 +5,43 @@
 {% block body %}
     {% if app.user.administrateur ==1 %}
 
-    <div class="profil_div">
-        <h1>Gerer les Campus</h1>
-    </div>
-
-    <div class="profil_div">
-        <h1>Filter les campus</h1>
+    <div class="body campus_form">
+        <div>
+        <h1 class="titre_sortie">Gérer les Campus</h1>
+        </div>
+        <br>
+    <div class="div center">
+        <div>
+        <br><br>
+        <h3 class="titre_sortie">Filtrer les campus</h3>
+        <br>
         {{ form_start(filterForm) }}
+        <div class="div input-group input-group-sm mb-3">
+            <div class="input-group-text">
+                {{ form_label(filterForm.nom) }}
+            </div>
+            <div>
+                {{ form_widget(filterForm.nom) }}
+                {{ form_errors(filterForm.nom) }}
+            </div>
+        </div>
         {{ form_end(filterForm) }}
     </div>
 
-    <div class="profil_div">
-        <table class="campus-table">
+    <div class="lol">
+        <table class="ville-table">
             <thead>
-                <tr class="campus_tr">
-                    <td class="campus_td_head campus_td_head1">Nom</td>
-                    <td class="campus_td_head campus_td_head2">Actions</td>
+                <tr class="ville_tr">
+                    <td class="ville_td_head campus_td_head1">Nom</td>
+                    <td class="ville_td_head campus_td_head2">Actions</td>
                 </tr>
             </thead>
 
             <tbody>
             {% for campus in listCampus %}
-                <tr class="campus_tr">
-                    <td class="campus_td">{{ campus.nom }}</td>
-                    <td class="campus_td"><a href="{{ path('campus_modifier', {'id' : campus.id }) }}"> Modifier</a> - <a href="{{ path('campus_supprimer',{'id': campus.id}) }}"> Supprimer</a>    </td>
+                <tr class="ville_tr">
+                    <td class="gras ville_td">{{ campus.nom }}</td>
+                    <td class="ville_td"><a class="lien_tab" href="{{ path('campus_modifier', {'id' : campus.id }) }}">Modifier</a> - <a class="lien_tab" href="{{ path('campus_supprimer',{'id': campus.id}) }}">Supprimer</a>    </td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -36,8 +49,8 @@
             <tfoot>
                 <tr class="campus_tr">
                     {{ form_start(campusForm) }}
-                    <td class="campus_td">{{ form_widget(campusForm.nom) }}</td>
-                    <td class="campus_td">{{ form_widget(campusForm.valider) }}</td>
+                    <td class="ville_td">{{ form_widget(campusForm.nom) }}</td>
+                    <td class="ville_td">{{ form_widget(campusForm.valider) }}</td>
                     {{ form_end(campusForm) }}
                 </tr>
             </tfoot>
