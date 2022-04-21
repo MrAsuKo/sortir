@@ -73,13 +73,21 @@ header {
 }
 
 .header_a6:hover{
-    color: #297bfd;
+    color: #00877e;
 }
 
 .header_a7:hover{
+    color: #297bfd;
+}
+
+.header_a8:hover{
     color: #a929c1;
 }
 
+.profil_image {
+    display: flex;
+    justify-content: center;
+}
 
 .conteneur {
     margin: 20px;

@@ -30,7 +30,7 @@ class ProfilType extends AbstractType
                         ],
                     "attr" =>
                         [
-                            "class" => "profil_input"
+                            "class" => "profil_input form-control form-control-sm"
                         ]
                 ]
             )
@@ -43,26 +43,26 @@ class ProfilType extends AbstractType
                     'required'          => true,
                     'first_options'     =>
                         [
-                            'label'         => 'Mot de passe',
+                            'label'         => 'Mot de passe : ',
                             "label_attr"    =>
                                 [
-                                "class"     => "profil_label"
+                                "class"     => "profil_label div input-group-text"
                                 ],
                             "attr"      =>
                                 [
-                                    "class" => "profil_input"
+                                    "class" => "profil_input form-control form-control-sm"
                                 ]
                         ],
                     'second_options'    =>
                         [
-                            'label'         => 'Confirmer',
+                            'label'         => 'Confirmer : ',
                             "label_attr"    =>
                                 [
-                                   "class" => "profil_label"
+                                   "class" => "profil_label div input-group-text"
                                 ],
                             "attr"      =>
                                 [
-                                    "class" => "profil_input"
+                                    "class" => "profil_input form-control form-control-sm"
                                 ]
                         ],
 
@@ -77,7 +77,7 @@ class ProfilType extends AbstractType
                         ],
                     "attr" =>
                         [
-                            "class" => "profil_input"
+                            "class" => "profil_input form-control form-control-sm"
                         ]
                 ])
             ->add('prenom',
@@ -90,7 +90,7 @@ class ProfilType extends AbstractType
                         ],
                     "attr" =>
                         [
-                            "class" => "profil_input"
+                            "class" => "profil_input form-control form-control-sm"
                         ]
                 ])
             ->add('telephone',
@@ -103,7 +103,7 @@ class ProfilType extends AbstractType
                         ],
                     "attr" =>
                         [
-                            "class" => "profil_input"
+                            "class" => "profil_input form-control form-control-sm"
                         ]
                 ])
             //->add('administrateur')
@@ -118,7 +118,7 @@ class ProfilType extends AbstractType
                         ],
                     "attr"      =>
                         [
-                            "class" => "profil_input"
+                            "class" => "profil_input form-control form-control-sm"
                         ]
                 ])
             ->add('campus',
@@ -131,14 +131,19 @@ class ProfilType extends AbstractType
                         ],
                     "attr" =>
                         [
-                            "class" => "profil_input"
+                            "class" => "profil_input form-select form-select-sm"
                         ],
                     'class'         => Campus::class,
                     'choice_label'  => 'nom',
                     'mapped'        => false
                 ])
             ->add('avatar',
-            AvatarType::class)
+            AvatarType::class, [
+                    'label' => "Avatar : ",
+                "attr" =>
+                        [
+                            "class" => "profil_input form-control form-control-sm"
+                        ]])
         ;
     }
 
