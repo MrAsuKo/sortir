@@ -3,6 +3,18 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+.ferme{
+    display: none;
+}
+
+.ouvrir{
+    display: flex;
+    padding-top: 20px;
+    padding-left: 50px;
+}
+
+
 select{
     height: 30px;
 }
@@ -1284,7 +1296,7 @@ tbody {
     }
     .index_filter{
         display: block;
-        width: 380px;
+        width: 95%;
     }
     .index_filter2{
         padding-top: 50px;
@@ -1515,6 +1527,8 @@ tbody {
 
     }
     .ville_form {
+        display: flex;
+        flex-direction: column;
         width: 90%;
         overflow-x: scroll;
     }
@@ -1535,17 +1549,19 @@ tbody {
         overflow-x: scroll;
     }
 
+    #img{
+        width: 100%;
+    }
 
+    .ferme
+    {
+        flex-direction: column;
+    }
+
+    .ouvrir{
+        flex-direction: column;
+    }
 
 }
 
-.ferme{
-    display: none;
-}
-
-.ouvrir{
-    display: flex;
-    padding-top: 20px;
-    padding-left: 50px;
-}
 

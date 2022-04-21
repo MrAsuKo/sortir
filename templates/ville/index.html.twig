@@ -11,72 +11,72 @@
 </div>
     <br>
     <div class="div center">
-    <div>
-        <br><br>
-        <h3 class="titre_sortie">Filtrer les Villes</h3>
-        <br>
-        {{ form_start(filterForm) }}
-    <div class="div input-group input-group-sm mb-3">
-        <div class="input-group-text">
-            {{ form_label(filterForm.nom) }}
-        </div>
         <div>
-            {{ form_widget(filterForm.nom) }}
-            {{ form_errors(filterForm.nom) }}
-        </div>
-    </div>
-        {{ form_end(filterForm) }}
-    </div>
-<br>
-    <div class="lol">
-        <table class="ville_table">
-            <thead>
-                <tr class="ville_tr">
-                    <td class="ville_td_head ville_td_head1">Ville</td>
-                    <td class="ville_td_head ville_td_head2">Code Postal</td>
-                    <td class="ville_td_head ville_td_head3">Actions</td>
-                </tr>
-            </thead>
-
-            <tbody>
-            {% for ville in villes %}
-                <tr class="ville_tr modif_ville" id="{{ ville.id }}">
-                    <td class="gras ville_td">{{ ville.nom }}</td>
-                    <td class="ville_td">{{ ville.codePostal }}</td>
-                    <td class="ville_td"><a class="lien_tab" href="{{ path('ville_modifier', {'id' : ville.id} ) }}">Modifier</a> - <a class="lien_tab" href="{{ path('ville_Supprimer',{'id': ville.id}) }}">Supprimer</a></td>
-                </tr>
-            {% endfor %}
-            </tbody>
-
-            <tfoot>
-                <tr class="ville_tr">
-                    {{ form_start(villeForm) }}
-                    <td class="ville_td">{{ form_widget(villeForm.nom) }}</td>
-                    <td class="ville_td">{{ form_widget(villeForm.codePostal) }}</td>
-                    <td class="ville_td">{{ form_widget(villeForm.valider) }}</td>
-                    {{ form_end(villeForm) }}
-                </tr>
-            </tfoot>
-        </table>
-        <ul>
-            <li data-vicopo="#ville_nom, #ville_codePostal" data-vicopo-click='{"#ville_codePostal": "code", "#ville_nom": "ville"}'>
-                <strong data-vicopo-code-postal></strong>
-                <span data-vicopo-ville></span>
-            </li>
-        </ul>
-
-        {% for label, messages in app.flashes %}
-            {% for message in messages %}
-                <div class="flash-{{ label }}">
-                    {{ message }}
+            <br><br>
+            <h3 class="titre_sortie">Filtrer les Villes</h3>
+            <br>
+            {{ form_start(filterForm) }}
+            <div class="div input-group input-group-sm mb-3">
+                <div class="input-group-text">
+                    {{ form_label(filterForm.nom) }}
                 </div>
-            {% endfor %}
-        {% endfor %}
-    {%  else %}
-        <img class="avatar" src="{{ asset('image/BruNO.jpg') }}" alt="Ne sois pas ici!">
-{% endif %}
-    <script src={{ asset('js/Ville.js') }}></script>
-    </div>
-    </div>
+                <div>
+                    {{ form_widget(filterForm.nom) }}
+                    {{ form_errors(filterForm.nom) }}
+                </div>
+            </div>
+                {{ form_end(filterForm) }}
+            </div>
+        <br>
+            <div class="lol">
+                <table class="ville_table">
+                    <thead>
+                        <tr class="ville_tr">
+                            <td class="ville_td_head ville_td_head1">Ville</td>
+                            <td class="ville_td_head ville_td_head2">Code Postal</td>
+                            <td class="ville_td_head ville_td_head3">Actions</td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for ville in villes %}
+                        <tr class="ville_tr modif_ville" id="{{ ville.id }}">
+                            <td class="gras ville_td">{{ ville.nom }}</td>
+                            <td class="ville_td">{{ ville.codePostal }}</td>
+                            <td class="ville_td"><a class="lien_tab" href="{{ path('ville_modifier', {'id' : ville.id} ) }}">Modifier</a> - <a class="lien_tab" href="{{ path('ville_Supprimer',{'id': ville.id}) }}">Supprimer</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+
+                    <tfoot>
+                        <tr class="ville_tr">
+                            {{ form_start(villeForm) }}
+                            <td class="ville_td">{{ form_widget(villeForm.nom) }}</td>
+                            <td class="ville_td">{{ form_widget(villeForm.codePostal) }}</td>
+                            <td class="ville_td">{{ form_widget(villeForm.valider) }}</td>
+                            {{ form_end(villeForm) }}
+                        </tr>
+                    </tfoot>
+                </table>
+                <ul>
+                    <li data-vicopo="#ville_nom, #ville_codePostal" data-vicopo-click='{"#ville_codePostal": "code", "#ville_nom": "ville"}'>
+                        <strong data-vicopo-code-postal></strong>
+                        <span data-vicopo-ville></span>
+                    </li>
+                </ul>
+
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="flash-{{ label }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {%  else %}
+                <img class="avatar" src="{{ asset('image/BruNO.jpg') }}" alt="Ne sois pas ici!">
+        {% endif %}
+            <script src={{ asset('js/Ville.js') }}></script>
+            </div>
+        </div>
     </div>
 {% endblock %}
