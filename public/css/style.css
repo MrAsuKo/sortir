@@ -1074,6 +1074,27 @@ tbody {
 
     }
 
+    .ville_form {
+        width: 90%;
+        overflow-x: scroll;
+    }
+
+    .campus_form{
+
+        width: 90%;
+        overflow-x: scroll;
+    }
+
+    .list_user{
+        width: 90%;
+        overflow-x: scroll;
+    }
+
+    .modif_profil{
+        width: 90%;
+        overflow-x: scroll;
+    }
+
 }
 
 
@@ -1360,6 +1381,27 @@ tbody {
         width: 80%;
 
     }
+    .ville_form {
+        width: 90%;
+        overflow-x: scroll;
+    }
+
+    .campus_form{
+
+        width: 90%;
+        overflow-x: scroll;
+    }
+
+    .list_user{
+        width: 90%;
+        overflow-x: scroll;
+    }
+
+    .modif_profil{
+        width: 90%;
+        overflow-x: scroll;
+    }
+
 
 
 }
