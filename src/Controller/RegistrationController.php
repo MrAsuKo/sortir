@@ -34,11 +34,11 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            $avatar = $ar->findOneBy(['id' => 1]);
+            //$avatar = $ar->findOneBy(['id' => 1]);
 
             $user -> setAdministrateur(false);
             $user -> setActif(true);
-            $user->setAvatar($avatar);
+            //$user->setAvatar($avatar);
             $user -> setCampus($form->get('campus')->getData());
 
             $plainPassword = $mdp;

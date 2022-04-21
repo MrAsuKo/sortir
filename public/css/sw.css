@@ -1,5 +1,5 @@
 body {
-    background-image: url("../img/bksw.jpg");
+    background-image: url("../img/star-wars-darth-vader-movies-anakin-skywalker-wallpaper-preview.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -7,14 +7,11 @@ select{
     height: 30px;
 }
 
-label{
-    color: yellow;
-}
 
 header {
     color: yellow;
     background: rgba(0,0,0,0.2);
-    box-shadow: 0px 3px 3px rgba(255,131,43,0.25);
+    box-shadow: 0px 3px 3px rgba(255,0,0,0.25);
     height: 160px;
     width: auto;
 }
@@ -213,11 +210,13 @@ header {
 }
 
 .campus_td_head1 {
-    background: linear-gradient(to right, #fe2b39, #ff832b);
+    background: linear-gradient(to right, #000000, #696969);
+    color: yellow;
 }
 
 .campus_td_head2 {
-    background: linear-gradient(to right, #ff832b, #fee92a);
+    background: linear-gradient(to right, #696969, #000000);
+    color: yellow;
 }
 
 .afficher_table {
@@ -246,11 +245,11 @@ header {
 }
 
 .afficher_td_head1 {
-    background: linear-gradient(to right, #297bfd, #a929c1);
+    background: linear-gradient(to right, #000000, #696969);
 }
 
 .afficher_td_head2 {
-    background: linear-gradient(to right, #a929c1, #fc329f);
+    background: linear-gradient(to right, #696969, #000000);
 }
 
 .index_table {
@@ -263,7 +262,7 @@ header {
     padding: 8px;
     width: 232px;
     text-align: center;
-    color: #00877e;
+    color: red;
 }
 
 .index_td2 {
@@ -273,11 +272,11 @@ header {
 .lien_tab {
     text-decoration: none;
     font-weight: bold;
-    color: #00304a;
+    color: red;
 }
 
 .lien_tab:hover {
-    background: linear-gradient(to right, rgba(252,50,159,255), rgba(169,41,193,255), rgba(41,123,253,255), rgba(44,194,84,255), rgba(254,233,42,255), rgba(255,131,43,255), rgba(254,43,57,255));
+    background: green;
     background-clip: border-box;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -314,12 +313,12 @@ header {
 }
 
 .index_td_head4 {
-    background: linear-gradient(to right, #DCDCDC, #D3D3D3);
+    background: linear-gradient(to right, #C0C0C0, #D3D3D3);
     color: yellow;
 }
 
 .index_td_head5 {
-    background: linear-gradient(to right,  	#DCDCDC, #C0C0C0);
+    background: linear-gradient(to right,  	#D3D3D3, #C0C0C0);
     color: yellow;
 }
 
@@ -346,8 +345,9 @@ header {
     padding: 25px;
     width: 53%;
     border-radius: 50px;
-    box-shadow: 5px 5px 5px rgba(44,194,84,0.25), -3px -3px 3px rgba(255,131,43,0.25);
+    box-shadow: 5px 5px 5px rgba(44,194,84,0.25), -3px -3px 3px rgba(255,0,0,0.25);
 }
+
 
 .index_filter1 {
     width: 400px;
@@ -357,6 +357,7 @@ header {
 .index_filter2 {
     padding-right: 50px;
     padding-top: 105px;
+    color: yellow;
 }
 
 .index_filter3 {
@@ -382,7 +383,7 @@ p{
     width: 18%;
     border-radius: 50px;
     color: #00304a;
-    box-shadow: -5px 5px 5px rgba(41,123,253,0.25), 3px -3px 3px rgba(252,50,159,0.25);
+    box-shadow: -5px 5px 5px rgba(41,123,253,0.25), 3px -3px 3px rgba(252,0,0,0.25);
 }
 
 tbody, thead tr, tfoot { display: block; }
@@ -435,7 +436,7 @@ tbody {
     color: black;
     font-weight: bold;
     border-color: #00877e;
-    background: linear-gradient(to right, rgba(254,43,57,255), rgba(255,131,43,255), rgba(254,233,42,255), rgba(44,194,84,255), rgba(41,123,253,255), rgba(169,41,193,255), rgba(252,50,159,255));
+    background: red;
 }
 
 .bouton_creer {
@@ -552,17 +553,21 @@ tbody {
     background-color: #00304a;
     border-color: #00877e;
     color: black;
-    background: linear-gradient(to right, rgba(254,43,57,255), rgba(255,131,43,255), rgba(254,233,42,255), rgba(44,194,84,255), rgba(41,123,253,255), rgba(169,41,193,255), rgba(252,50,159,255));
+    background: red;
 }
 
 .form-select {
     width: 230px;
     border-color: #00877e;
+    color: white;
+    background-color: black;
 }
 
 .form-control {
     width: 230px;
     border-color: #00877e;
+    background-color: black;
+    color: white ;
 }
 
 .formtest {
@@ -585,7 +590,7 @@ tbody {
 
 .sortie_form {
     color: #00304a;
-    background-color: rgba(255,131,43,0.2);
+    background-color: rgba(0,0,0,0.2);
     margin: 50px auto;
     padding: 25px;
     width: 53%;
@@ -595,7 +600,7 @@ tbody {
 
 .orga_infos {
     color: #00304a;
-    background-color: rgba(41,123,253,0.2);
+    background-color: rgba(0,0,0,0.2);
     margin: 50px auto;
     padding: 25px;
     width: 40%;
@@ -605,7 +610,7 @@ tbody {
 
 .modif_profil {
     color: #00304a;
-    background-color: rgba(0,135,126,0.2);
+    background-color: rgba(0,0,0,0.2);
     margin: 50px auto;
     padding: 25px;
     width: 40%;
@@ -615,7 +620,7 @@ tbody {
 
 .sortie_aff {
     color: #00304a;
-    background-color: rgba(169,41,193,0.2);
+    background-color: rgba(0,0,0,0.2);
     margin: 50px auto;
     padding: 25px;
     width: 83%;
@@ -635,7 +640,7 @@ tbody {
 
 .lieu_form {
     color: #00304a;
-    background-color: rgba(254,43,57,0.2);
+    background-color: rgba(0,0,0    ,0.2);
     margin: 50px auto;
     padding: 25px;
     width: 85%;
@@ -655,7 +660,7 @@ tbody {
 
 .campus_form {
     color: #00304a;
-    background-color: rgba(254,43,57,0.2);
+    background-color: rgba(0,0,0,0.2);
     margin: 50px auto;
     padding: 25px;
     width: 52%;
@@ -673,8 +678,8 @@ tbody {
 }
 
 .list_user {
-    color: #00304a;
-    background-color: rgba(252,50,159,0.2);
+    color: yellow;
+    background-color: rgba(0,0,0,0.2);
     margin: 50px auto;
     padding: 25px;
     width: 80%;
@@ -685,6 +690,7 @@ tbody {
 
 .gras {
     font-weight: bold;
+    color : red;
 }
 
 .bouton_sortie {
@@ -697,7 +703,7 @@ tbody {
 .bouton_sortie:hover {
     color: black;
     border-color: #00877e;
-    background: linear-gradient(rgba(254,43,57,255), rgba(255,131,43,255), rgba(254,233,42,255), rgba(44,194,84,255), rgba(41,123,253,255), rgba(169,41,193,255), rgba(252,50,159,255));
+    background: red;
 }
 
 .sortie_coord {
@@ -1056,7 +1062,7 @@ tbody {
     #menuToggle input:checked ~ ul
     {
         transform: none;
-        background-color: pink
+        background-color: grey
     }
     .logo{
         padding-left: 160px;
@@ -1350,7 +1356,7 @@ tbody {
     #menuToggle input:checked ~ ul
     {
         transform: none;
-        background-color: pink
+        background-color: grey
     }
     .logo{
         padding-left: 90px;
