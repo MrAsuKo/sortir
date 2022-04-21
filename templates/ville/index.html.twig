@@ -5,17 +5,24 @@
 {% block body %}
 {% if app.user.administrateur ==1 %}
 
-    <div class="profil_div">
-        <h1>Gerer les villes</h1>
-    </div>
+<div class="body div tab_test lieu_form">
 
-    <div class="profil_div">
-        <h1>Filter les Villes</h1>
+        <h1 class="titre_sortie">Gérer les villes</h1>
+<br>
+        <h2 class="titre_sortie">Filtrer les Villes</h2>
+    <br>
         {{ form_start(filterForm) }}
-        {{ form_end(filterForm) }}
+    <div class="div input-group input-group-sm mb-3">
+        <div class="input-group-text">
+            {{ form_label(filterForm.nom) }}
+        </div>
+        <div>
+            {{ form_widget(filterForm.nom) }}
+            {{ form_errors(filterForm.nom) }}
+        </div>
     </div>
-
-    <div class="profil_div">
+        {{ form_end(filterForm) }}
+<br>
         <table class="ville_table">
             <thead>
                 <tr class="ville_tr">
@@ -28,9 +35,9 @@
             <tbody>
             {% for ville in villes %}
                 <tr class="ville_tr modif_ville" id="{{ ville.id }}">
-                    <td class="ville_td">{{ ville.nom }}</td>
+                    <td class="gras ville_td">{{ ville.nom }}</td>
                     <td class="ville_td">{{ ville.codePostal }}</td>
-                    <td class="ville_td"><a href="{{ path('ville_modifier', {'id' : ville.id} ) }}"> Modifier</a> - <a href="{{ path('ville_Supprimer',{'id': ville.id}) }}"> Supprimer</a>    </td>
+                    <td class="ville_td"><a class="lien_tab" href="{{ path('ville_modifier', {'id' : ville.id} ) }}">Modifier</a> - <a class="lien_tab" href="{{ path('ville_Supprimer',{'id': ville.id}) }}">Supprimer</a></td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -45,16 +52,14 @@
                 </tr>
             </tfoot>
         </table>
-    </div>
-    <div class="profil_div">
+
         <ul>
             <li data-vicopo="#ville_nom, #ville_codePostal" data-vicopo-click='{"#ville_codePostal": "code", "#ville_nom": "ville"}'>
                 <strong data-vicopo-code-postal></strong>
                 <span data-vicopo-ville></span>
             </li>
         </ul>
-    </div>
-    <div class="profil_div">
+
         {% for label, messages in app.flashes %}
             {% for message in messages %}
                 <div class="flash-{{ label }}">
@@ -62,10 +67,9 @@
                 </div>
             {% endfor %}
         {% endfor %}
-    </div>
     {%  else %}
         <img class="avatar" src="{{ asset('image/BruNO.jpg') }}" alt="Ne sois pas ici!">
 {% endif %}
     <script src={{ asset('js/Ville.js') }}></script>
-
+    </div>
 {% endblock %}

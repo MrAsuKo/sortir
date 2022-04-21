@@ -15,13 +15,13 @@ class VilleType extends AbstractType
     {
         $builder
             ->add('nom',
-                TextType::class
+                TextType::class, ['attr' => ['class' => 'form-control form-control-sm']]
                         )
             ->add('codePostal',
-                TextType::class
+                TextType::class, ['attr' => ['class' => 'form-control form-control-sm']]
         )
             ->add("valider",
-            SubmitType::class)
+            SubmitType::class, ["attr" => [ "class" => "btn btn-secondary bouton_creer_lieu"]])
         ;
     }
 

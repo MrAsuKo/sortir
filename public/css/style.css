@@ -147,7 +147,8 @@ header {
 .ville_td {
     border: 1px solid #ddd;
     padding: 8px;
-    width: 232px;
+    width: 250px;
+    color: #00877e;
 }
 
 .ville_tr:nth-child(even){background-color: rgba(0,135,126,0.2);}
@@ -161,7 +162,7 @@ header {
     text-transform: uppercase;
     font-weight: bold;
     color: #00304a;
-    width: 232px;
+    width: 250px;
 }
 
 .ville_td_head1 {
