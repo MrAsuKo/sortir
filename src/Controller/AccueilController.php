@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use App\Form\FilterSortieType;
-use App\Repository\ParticipantRepository;
 use App\Repository\SortieRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,7 +49,7 @@ class AccueilController extends AbstractController
             {
                 $tabSorties = $sorties;
                 $sorties = [];
-                $now = new \DateTime();
+                $now = new DateTime();
 
                 foreach( $tabSorties as $sortie )
                 {
@@ -89,7 +89,7 @@ class AccueilController extends AbstractController
                     }
                 }
             }
-        };
+        }
 
         return $this->render('accueil/index.html.twig',
             [
@@ -97,13 +97,6 @@ class AccueilController extends AbstractController
                 'sorties'       => $sorties
             ]
         );
-    }
-
-    #[Route('/carte', name: 'carte')]
-    public function afficherezil
-    ()
-    {
-        return $this->render("accueil/carte.html.twig");
     }
 
 }

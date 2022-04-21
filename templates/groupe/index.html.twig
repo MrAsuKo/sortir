@@ -8,7 +8,7 @@
 
         <div class="boite index_filter"  >
 
-            <p {{ groupe.id }}" >{{ groupe.nom }}</p>
+            <p  class="clic">{{ groupe.nom }}</p>
             <p><a href="{{ path('supprimer_groupe', {"id": groupe.id}) }}">Supprimer</a></p>
             <p><a href="{{ path('ajouter_membre', {"groupe": groupe.id}) }}">Ajouter membre</a></p>
 
