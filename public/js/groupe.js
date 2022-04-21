@@ -1,10 +1,11 @@
 let boite = document.getElementsByClassName('boite');
+let clic = document.getElementsByClassName('clic');
 
 
-Array.from(boite).forEach(function(element) {
+Array.from(clic).forEach(function(element) {
     element.addEventListener('click', (event) => {
 
-        let interieurBoite = element.querySelector('div');
+        let interieurBoite = element.parentElement.querySelector('div');
         let titre = element.querySelector('h1');
 
         if ( interieurBoite.getAttribute('class') ===  'ouvrir')
