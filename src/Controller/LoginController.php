@@ -11,14 +11,14 @@ class LoginController extends AbstractController
 {
     #[Route('/login/direction',
         name: 'loginDirection')]
-    public function direction
-    (
-        ParticipantRepository $pm
+    public function direction(
+        ParticipantRepository $pr
     ): Response
     {
         if ($this->getUser())
         {
-            $user = $this->getUser();
+            $user = $pr->findOneBy(["mail" => $this->getUser()->getUserIdentifier()]);
+
             $pseudo = $user->getPseudo();
 
             if ($pseudo != null)

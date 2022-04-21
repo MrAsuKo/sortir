@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ThemeController extends AbstractController
 {
 
-    #[Route('/theme', name: 'theme_choix')]
+    #[Route('/theme', name:'theme_choix')]
     public function choix(
         Request $request
     ): Response

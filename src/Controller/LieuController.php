@@ -5,9 +5,7 @@ namespace App\Controller;
 use App\Entity\Lieu;
 use App\Form\LieuType;
 use App\Repository\LieuRepository;
-use App\Repository\SortieRepository;
 use App\Repository\VilleRepository;
-;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -63,7 +61,6 @@ class LieuController extends AbstractController
         requirements: ["id" => "\d+"])]
     public function findLieu
     (
-        SortieRepository $sm,
         Lieu $lieu
     ): JsonResponse
     {

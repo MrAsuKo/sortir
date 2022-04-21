@@ -27,10 +27,7 @@ class ParticipantController extends AbstractController
         );
     }
 
-    /**
-     * @throws \Doctrine\ORM\OptimisticLockException
-     * @throws \Doctrine\ORM\ORMException
-     */
+
     #[Route('/participant/supprimer/{id}',
             name: 'participant_supprimer',
             requirements: ["id" => "\d+"])]
@@ -52,7 +49,6 @@ class ParticipantController extends AbstractController
     public function participantInactif
     (
         EntityManagerInterface  $em,
-        ParticipantRepository   $pr,
         Participant             $user
     ): Response
     {
@@ -70,7 +66,6 @@ class ParticipantController extends AbstractController
     public function participantActif
     (
         EntityManagerInterface  $em,
-        ParticipantRepository   $pr,
         Participant             $user
     ): Response
     {

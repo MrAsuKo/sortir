@@ -36,10 +36,8 @@ class ProfilController extends AbstractController
 
         if ($profilForm->isSubmitted() && $profilForm->isValid())
         {
-                $avatar = new Avatar($participant->getAvatar()->getAvatar(),$participant->getAvatar()->getUpdatedAt());
-                $em->persist($avatar);
-                $em->flush();
-                $em->persist($participant->setAvatar($avatar));
+
+               // $em->persist($participant->setAvatar($avatar));
                 $participant->setPassword
                 (
                     $participantPasswordHasher->hashPassword
