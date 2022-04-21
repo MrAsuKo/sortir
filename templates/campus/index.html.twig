@@ -12,17 +12,18 @@
         <br>
     <div class="div center">
         <div>
-        <br><br>
-        <h3 class="titre_sortie">Filtrer les campus</h3>
-        <br>
-        {{ form_start(filterForm) }}
-        <div class="div input-group input-group-sm mb-3">
-            <div class="input-group-text">
-                {{ form_label(filterForm.nom) }}
-            </div>
-            <div>
-                {{ form_widget(filterForm.nom) }}
-                {{ form_errors(filterForm.nom) }}
+            <br><br>
+            <h3 class="titre_sortie">Filtrer les campus</h3>
+            <br>
+            {{ form_start(filterForm) }}
+            <div class="div input-group input-group-sm mb-3">
+                <div class="input-group-text">
+                    {{ form_label(filterForm.nom) }}
+                </div>
+                <div>
+                    {{ form_widget(filterForm.nom) }}
+                    {{ form_errors(filterForm.nom) }}
+                </div>
             </div>
         </div>
         {{ form_end(filterForm) }}
@@ -67,9 +68,11 @@
             {% endfor %}
         {% endfor %}
     </div>
+    </div>
 
     {%  else %}
         <img class="avatar" src="{{ asset('image/BruNO.jpg') }}" alt="Ne sois pas ici!">
     {% endif %}
+
 
 {% endblock %}

@@ -39,7 +39,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     private string $prenom;
 
     #[ORM\Column(type: 'string', nullable: true, length: 10)]
-    private string $telephone;
+    private $telephone;
 
     #[ORM\Column(type: 'boolean')]
     private bool $administrateur;
@@ -165,16 +165,15 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getTelephone(): ?string
+    public function getTelephone()
     {
         return $this->telephone;
     }
 
-    public function setTelephone(string $telephone): self
+    public function setTelephone(string $telephone): void
     {
         $this->telephone = $telephone;
 
-        return $this;
     }
 
     public function getAdministrateur(): ?bool
