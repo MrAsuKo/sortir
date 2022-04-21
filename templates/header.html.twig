@@ -2,7 +2,8 @@
     <nav class="nav" role="navigation">
         {% if( app.request.cookies.get('theme')=='1' or app.request.cookies.get('theme')==null ) %}
         <div id="menuToggle">
-            <input type="checkbox" class="header_checkbox" />
+            <label for="style"></label>
+            <input type="checkbox" class="header_checkbox" id="style"/>
             <span style="background-color: red;"></span>
             <span style="background-color: orange;"></span>
             <span style="background-color: yellow;"></span>
@@ -36,9 +37,9 @@
                         </div>
                     </div>
                     {% if is_granted('ROLE_ADMIN') %}
-                        <a class="header_a header_a1" href="{{ path('ville_liste') }}"><i class="fa-brands fa-galactic-republic"></i>   </i> Villes</a>
-                        <a class="header_a header_a2" href="{{ path('campus_liste') }}"><i class="fa-solid fa-jedi"></i></i> Campus</a>
-                        <a class="header_a header_a3" href="{{ path('app_participants') }}"><i class="fa-brands fa-old-republic"></i></i> Liste utilisateurs</a>
+                        <a class="header_a header_a1" href="{{ path('ville_liste') }}"><i class="fa-brands fa-galactic-republic"></i>  Villes</a>
+                        <a class="header_a header_a2" href="{{ path('campus_liste') }}"><i class="fa-solid fa-jedi"></i> Campus</a>
+                        <a class="header_a header_a3" href="{{ path('app_participants') }}"><i class="fa-brands fa-old-republic"></i>Liste utilisateurs</a>
                         <a class="header_a header_a3" href="{{ path('register') }}"><i class="fa-solid fa-user-hair-buns"></i> Ajouter Utilisateur</a>
                     {% endif %}
                     <a class="header_a header_a4" href="{{ path('app_accueil') }}"><i class="fa-solid fa-starfighter"></i>   Accueil</a>

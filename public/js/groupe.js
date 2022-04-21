@@ -3,7 +3,7 @@ let clic = document.getElementsByClassName('clic');
 
 
 Array.from(clic).forEach(function(element) {
-    element.addEventListener('click', (event) => {
+    element.addEventListener('click', () => {
 
         let interieurBoite = element.parentElement.querySelector('div');
         let titre = element.querySelector('h1');
