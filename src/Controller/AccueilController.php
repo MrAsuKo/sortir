@@ -19,7 +19,7 @@ class AccueilController extends AbstractController
         Request               $request,
     ): Response
     {
-        $sorties = $sm->findAll();
+        $sorties = $sm->findAll() ;
         $user = $this->getUser();
 
         $filterForm = $this->createForm(FilterSortieType::class);
