@@ -3,7 +3,7 @@
 {% block title %}Mon profil{% endblock %}
 
 {% block body %}
-<div class="body orga_infos">
+<div class="body modif_profil">
 
 <div class="profil_div">
     <h1 class="titre_sortie">Mon Profil</h1>
@@ -61,8 +61,13 @@
             </div>
         </div>
         <div class="div input-group input-group-sm mb-3">
+            <div class="input-group-text">
+                &nbsp;{{ form_label(formProfil.password) }}
+            </div>
+            <div>
             {{ form_widget(formProfil.password) }}
             {{ form_errors(formProfil.password) }}
+            </div>
         </div>
         <div class="div input-group input-group-sm mb-3">
             <div class="input-group-text">
@@ -75,7 +80,7 @@
         </div>
         <div class="div input-group input-group-sm mb-3">
             <div class="input-group-text">
-                {{ form_label(formProfil.avatar) }}
+                &nbsp;&nbsp;&nbsp;{{ form_label(formProfil.avatar) }}
             </div>
             <div>
                 {{ form_widget(formProfil.avatar) }}
@@ -83,7 +88,8 @@
             </div>
         </div>
         {{ form_row(formProfil._token) }}
-        <button class="profil_btn">{{ button_label|default('Save') }}</button>
+        <br>
+        <button class="profil_btn btn btn-secondary bouton_enregistrer_profil">{{ button_label|default('Enregistrer') }}</button>
         {{ form_end(formProfil) }}
     </div>
 
