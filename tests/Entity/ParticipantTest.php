@@ -6,6 +6,7 @@ use App\Entity\Avatar;
 use App\Entity\Campus;
 use App\Entity\Participant;
 use App\Entity\Sortie;
+use DateTime;
 use PHPUnit\Framework\TestCase;
 
 class ParticipantTest extends TestCase
@@ -13,10 +14,12 @@ class ParticipantTest extends TestCase
     public function testParticipant(): void
     {
 
+        $date = new DateTime();
+
         $user = new Participant();
         $campus = new Campus();
         $sortie = new Sortie();
-        $avatar = new Avatar();
+        $avatar = new Avatar('nom', $date);
 
         $user->setActif(true);
         $user->setAdministrateur(true);
