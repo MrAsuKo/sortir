@@ -1,6 +1,6 @@
 {% if app.user %}
     <nav class="nav" role="navigation">
-        {% if( app.request.cookies.get('theme')=='1') %}
+        {% if( app.request.cookies.get('theme')=='1' or app.request.cookies.get('theme')==null ) %}
         <div id="menuToggle">
             <input type="checkbox" class="header_checkbox" />
             <span style="background-color: red;"></span>
