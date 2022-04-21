@@ -91,6 +91,18 @@ class SortieController extends AbstractController
         $user = $this->getUser()->getUserIdentifier();
         $user = $pr->findOneBy(['mail'=> $user]);
 
+        if( $sortie->getOrganisateur() != $user)
+        {
+
+            $this->addFlash
+            (
+                'Erreur',
+                'Vous ne pouvez pas modifer une sortie qui n\'est pas là vôtre'
+            );
+
+            return $this->redirectToRoute('app_accueil');
+        }
+
         if ($sortie->getOrganisateur() === $user || $user->getAdministrateur())
         {
             $sortieForm = $this -> createForm(SortieType::class, $sortie);
