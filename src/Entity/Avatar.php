@@ -34,6 +34,16 @@ class Avatar
     private $participants;
 
     /**
+     * @param $avatar
+     * @param $updatedAt
+     */
+    public function __construct($avatar, $updatedAt)
+    {
+        $this->avatar = $avatar;
+        $this->updatedAt = $updatedAt;
+    }
+
+    /**
      * @return \DateTime
      */
     public function getUpdatedAt(): \DateTime
@@ -49,10 +59,14 @@ class Avatar
         $this->updatedAt = $updatedAt;
     }
 
+
+
     public function getId(): ?int
     {
         return $this->id;
     }
+
+
 
     public function getAvatar(): ?string
     {
