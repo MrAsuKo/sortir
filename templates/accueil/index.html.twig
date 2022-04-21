@@ -110,9 +110,8 @@
                                     {% endif %}
 
                             {% else %}
-
                                     {% if sortie.dateLimiteInscription > now  %}
-                                            {% if sortie.etat.libelle == 'Ouverte' and sortie.participant | length == sortie.nbInscriptionsMax %}
+                                            {% if sortie.etat.libelle == 'Ouverte' and sortie.participant | length < sortie.nbInscriptionsMax %}
                                                  - <a class="lien_tab" href="{{ path('sortie_inscription', {'id' : sortie.id })  }}">S'inscrire</a>
                                             {% endif %}
                                     {% endif %}
