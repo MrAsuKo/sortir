@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Avatar;
 use App\Entity\Participant;
 use App\Form\ProfilType;
+use App\Repository\AvatarRepository;
 use App\Repository\ParticipantRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,7 +25,8 @@ class ProfilController extends AbstractController
         Request                     $request,
         ParticipantRepository       $participantRepository,
         UserPasswordHasherInterface $participantPasswordHasher,
-        SluggerInterface            $slugger
+        SluggerInterface            $slugger,
+        AvatarRepository            $ar,
     ): Response
     {
         $participant = $participantRepository->findOneBy(['mail' => $this->getUser()->getUserIdentifier()]);
@@ -33,7 +36,10 @@ class ProfilController extends AbstractController
 
         if ($profilForm->isSubmitted() && $profilForm->isValid())
         {
-                $em->persist($participant->getAvatar());
+                $avatar = new Avatar($participant->getAvatar()->getAvatar(),$participant->getAvatar()->getUpdatedAt());
+                $em->persist($avatar);
+                $em->flush();
+                $em->persist($participant->setAvatar($avatar));
                 $participant->setPassword
                 (
                     $participantPasswordHasher->hashPassword
