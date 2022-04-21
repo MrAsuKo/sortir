@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Avatar;
 use App\Entity\Participant;
 use App\Form\RegistrationFormType;
 use App\Repository\AvatarRepository;
@@ -13,7 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -36,7 +34,7 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            $avatar = $ar->findOneById('1');
+            $avatar = $ar->findOneBy(['id' => 1]);
 
             $user -> setAdministrateur(false);
             $user -> setActif(true);
@@ -71,11 +69,11 @@ class RegistrationController extends AbstractController
         );
     }
 
-    function passRandom()
+    function passRandom():string
     {
         $nbChar=6;
         $chaine ="mnoTUzS5678kVvwxy9WXYZRNCDEFrslq41GtuaHIJKpOPQA23LcdefghiBMbj0";
-        $pass = '';
+        $pass = '' ;
 
         srand((double)microtime()*1000000);
 

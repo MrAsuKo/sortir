@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class VilleController extends AbstractController
 {
     #[Route('/ville/admin',
-        name: 'ville_liste')]
+        name:'ville_liste')]
     public function listeVilles(
         VilleRepository        $villeRepository,
         Request                $request,
@@ -59,15 +59,14 @@ class VilleController extends AbstractController
         );
     }
 
-    #[Route('/ville/Supprimer/{id}', name: 'ville_Supprimer')]
+    #[Route('/ville/Supprimer/{id}', name:'ville_Supprimer')]
     public function supprimer(
         VilleRepository        $villeRepository,
         EntityManagerInterface $em,
-        Request                $request,
         int                    $id
     ): Response
     {
-        $ville = $villeRepository->findOneById($id);
+        $ville = $villeRepository->findOneBy(['id' => $id]);
 
         $em->remove($ville);
         $em->flush();
@@ -78,7 +77,6 @@ class VilleController extends AbstractController
     #[Route('/ville/{id}',
         requirements: ["id" => "\d+"])]
     public function findLieu(
-        VilleRepository $sm,
         Ville           $ville
     ): JsonResponse
     {
@@ -104,9 +102,8 @@ class VilleController extends AbstractController
 
     }
 
-    #[Route('/ville/modifier/{id}', name: 'ville_modifier')]
+    #[Route('/ville/modifier/{id}', name:'ville_modifier')]
     public function modifier(
-        VilleRepository        $villeRepository,
         Request                $request,
         EntityManagerInterface $em,
         Ville $ville
@@ -119,7 +116,7 @@ class VilleController extends AbstractController
 
         if ($villeForm->isSubmitted() && $villeForm->isValid()) {
             $em->persist($ville);
-            $em->flush();
+            $em->flush() ;
 
             $this->addFlash
             (

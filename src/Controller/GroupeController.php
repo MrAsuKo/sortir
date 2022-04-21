@@ -7,8 +7,11 @@ use App\Entity\Participant;
 use App\Form\GroupeType;
 use App\Form\MembreType;
 use App\Repository\GroupeRepository;
+use App\Repository\ParticipantRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
+use Doctrine\ORM\Exception\ORMException;
+use Doctrine\ORM\OptimisticLockException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,16 +22,18 @@ class GroupeController extends AbstractController
     #[Route('/groupe/creer', name: 'creer_groupe')]
     public function creerGroupe(
         Request $request,
-        EntityManagerInterface $em
+        EntityManagerInterface $em,
+        ParticipantRepository $pr
     ): Response
     {
-        $groupe = new Groupe();
+        $groupe = new Groupe() ;
         $groupeForm = $this -> createForm(GroupeType::class, $groupe);
         $groupeForm -> handleRequest($request);
 
         if ($groupeForm -> isSubmitted() && $groupeForm -> isValid())
         {
-            $groupe->addMembre($this->getUser());
+            $user = $pr->findOneBy(['mail' => $this->getUser()->getUserIdentifier()]);
+            $groupe->addMembre($user);
 
             $membres = $groupeForm->get('membres')->getData();
 
@@ -49,11 +54,15 @@ class GroupeController extends AbstractController
         ['groupeForm' => $groupeForm -> createView()]);
     }
 
+    /**
+     * @throws OptimisticLockException
+     * @throws ORMException
+     * @throws \Doctrine\ORM\ORMException
+     */
     #[Route('/groupe/supprimer/{id}',
         name: 'supprimer_groupe',
         requirements: ["id" => "\d+"])]
     public function supprimerGroupe(
-        Request $request,
         GroupeRepository $gp,
         Groupe $groupe
     ): Response

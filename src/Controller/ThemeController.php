@@ -11,13 +11,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class ThemeController extends AbstractController
 {
 
-    #[Route('/theme', name: 'theme_choix')]
+    #[Route('/theme', name:'theme_choix')]
     public function choix(
         Request $request
     ): Response
     {
 
-        $theme = $request->query->get('themes');
+        $theme = $request->query->get('themes') ;
         $response = New Response();
         $cookie = new Cookie('theme', $theme , strtotime('tomorrow'));
         $response->headers->setCookie($cookie);

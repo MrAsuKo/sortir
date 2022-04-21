@@ -6,7 +6,7 @@ use App\Entity\Sortie;
 use App\Form\SortieType;
 use App\Repository\EtatRepository;
 use App\Repository\ParticipantRepository;
-use App\Repository\SortieRepository;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,7 +27,7 @@ class SortieController extends AbstractController
     {
         $sortie = new Sortie();
 
-        $user = $this->getUser();
+        $user = $pr->findOneBy(['mail' => $this->getUser()->getUserIdentifier()]);
 
         $sortieForm = $this -> createForm(SortieType::class, $sortie);
         $sortieForm -> handleRequest($request);
@@ -82,7 +82,6 @@ class SortieController extends AbstractController
     public function modifierSortie(
         EtatRepository          $er,
         Sortie                  $sortie,
-        SortieRepository        $sr,
         ParticipantRepository   $pr,
         EntityManagerInterface  $em,
         Request                 $request
@@ -92,7 +91,7 @@ class SortieController extends AbstractController
         $user = $this->getUser()->getUserIdentifier();
         $user = $pr->findOneBy(['mail'=> $user]);
 
-        if ($sortie->getOrganisateur() == $user || $user->getAdministrateur())
+        if ($sortie->getOrganisateur() === $user || $user->getAdministrateur())
         {
             $sortieForm = $this -> createForm(SortieType::class, $sortie);
             $sortieForm -> handleRequest($request);
@@ -127,7 +126,7 @@ class SortieController extends AbstractController
                 else
                 {
                     $etat = $er->findOneBy(['id' => 6]);
-                    $sortie->setEtat($etat);
+                    $sortie->setEtat($etat) ;
                     $this->addFlash
                     (
                         'Bravo',
@@ -181,13 +180,12 @@ class SortieController extends AbstractController
             name: 'sortie_inscription',
             requirements: ["id" => "\d+"])]
     public function inscription(
-        SortieRepository        $sm,
         ParticipantRepository   $pm,
         Sortie                  $sortie,
         EntityManagerInterface  $em
     ): Response
     {
-        $now = new \DateTime();
+        $now = new DateTime();
         $user = $this->getUser()->getUserIdentifier();
         $user = $pm->findOneBy(['mail' => $user]);
 

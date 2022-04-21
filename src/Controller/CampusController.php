@@ -66,14 +66,12 @@ class CampusController extends AbstractController
     #[Route('/campus/admin/supprimer/{id}',
             name: 'campus_supprimer')]
     public function supprimer(
-        CampusRepository       $campusRepository,
         EntityManagerInterface $em,
         Campus                 $campus
     ): Response
     {
-        $campus = $campusRepository->findOneById($campus->getId());
 
-        $em->remove($campus);
+        $em->remove($campus) ;
         $em->flush();
 
         $this->addFlash(
@@ -87,13 +85,11 @@ class CampusController extends AbstractController
     #[Route('/campus/admin/modifier/{id}',
         name: 'campus_modifier')]
     public function modifier(
-        CampusRepository       $campusRepository,
         EntityManagerInterface $em,
         Campus                 $campus,
         Request $request
     ): Response
     {
-        $campus = $campusRepository->findOneById($campus->getId());
 
         $campusForm = $this->createForm(CampusType::class,$campus);
         $campusForm->handleRequest($request);
