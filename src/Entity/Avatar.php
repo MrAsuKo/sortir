@@ -30,18 +30,6 @@ class Avatar
     #[ORM\Column(type: 'datetime')]
     private $updatedAt;
 
-    #[ORM\OneToMany(mappedBy: 'avatar', targetEntity: Participant::class)]
-    private $participants;
-
-    /**
-     * @param $avatar
-     * @param $updatedAt
-     */
-    public function __construct($avatar, $updatedAt)
-    {
-        $this->avatar = $avatar;
-        $this->updatedAt = $updatedAt;
-    }
 
     /**
      * @return \DateTime

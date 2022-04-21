@@ -58,7 +58,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 50, nullable: true,  unique: true)]
     private $pseudo;
 
-    #[ORM\ManyToOne(targetEntity: Avatar::class, inversedBy: 'participants')]
+    #[ORM\OneToOne(targetEntity: Avatar::class, cascade: ['persist', 'remove'])]
     private $avatar;
 
     #[ORM\ManyToMany(targetEntity: Groupe::class, mappedBy: 'membres')]

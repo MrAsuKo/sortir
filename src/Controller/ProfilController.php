@@ -36,8 +36,7 @@ class ProfilController extends AbstractController
 
         if ($profilForm->isSubmitted() && $profilForm->isValid())
         {
-
-               // $em->persist($participant->setAvatar($avatar));
+                $em->persist($participant->getAvatar());
                 $participant->setPassword
                 (
                     $participantPasswordHasher->hashPassword

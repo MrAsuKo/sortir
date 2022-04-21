@@ -10,7 +10,11 @@
 </div>
     <br>
     <div class="profil_image">
+        {% if (participant.avatar == null) %}
+            <p></p>
+        {% else %}
         <img class="img_avatar" src="{{ asset('uploads/avatars/'~participant.avatar.avatar) }}" alt="avatar">
+        {% endif %}
     </div>
 <br>
     <div class="profil_div">
