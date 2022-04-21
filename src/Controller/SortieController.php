@@ -126,7 +126,7 @@ class SortieController extends AbstractController
                 else
                 {
                     $etat = $er->findOneBy(['id' => 6]);
-                    $sortie->setEtat($etat);
+                    $sortie->setEtat($etat) ;
                     $this->addFlash
                     (
                         'Bravo',

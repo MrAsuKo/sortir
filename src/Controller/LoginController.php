@@ -19,7 +19,7 @@ class LoginController extends AbstractController
         {
             $user = $pr->findOneBy(["mail" => $this->getUser()->getUserIdentifier()]);
 
-            $pseudo = $user->getPseudo();
+            $pseudo = $user->getPseudo() ;
 
             if ($pseudo != null)
             {

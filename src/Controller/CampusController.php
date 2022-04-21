@@ -71,7 +71,7 @@ class CampusController extends AbstractController
     ): Response
     {
 
-        $em->remove($campus);
+        $em->remove($campus) ;
         $em->flush();
 
         $this->addFlash(

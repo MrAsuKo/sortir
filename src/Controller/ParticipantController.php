@@ -71,7 +71,7 @@ class ParticipantController extends AbstractController
     {
         $user->setActif(1);
 
-        $em->persist($user);
+        $em->persist($user) ;
         $em->flush();
 
         return $this->redirectToRoute('app_participants');

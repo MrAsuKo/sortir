@@ -73,7 +73,7 @@ class RegistrationController extends AbstractController
     {
         $nbChar=6;
         $chaine ="mnoTUzS5678kVvwxy9WXYZRNCDEFrslq41GtuaHIJKpOPQA23LcdefghiBMbj0";
-        $pass = '';
+        $pass = '' ;
 
         srand((double)microtime()*1000000);
 

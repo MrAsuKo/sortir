@@ -116,7 +116,7 @@ class VilleController extends AbstractController
 
         if ($villeForm->isSubmitted() && $villeForm->isValid()) {
             $em->persist($ville);
-            $em->flush();
+            $em->flush() ;
 
             $this->addFlash
             (

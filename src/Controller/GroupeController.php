@@ -26,7 +26,7 @@ class GroupeController extends AbstractController
         ParticipantRepository $pr
     ): Response
     {
-        $groupe = new Groupe();
+        $groupe = new Groupe() ;
         $groupeForm = $this -> createForm(GroupeType::class, $groupe);
         $groupeForm -> handleRequest($request);
 

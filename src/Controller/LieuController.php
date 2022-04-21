@@ -25,7 +25,7 @@ class LieuController extends AbstractController
         VilleRepository         $vr
     ): Response
     {
-        $lieu = new Lieu();
+        $lieu = new Lieu() ;
 
         $lieuForm = $this->createForm(LieuType::class,$lieu);
         $lieuForm->handleRequest($request);

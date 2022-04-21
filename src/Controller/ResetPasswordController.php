@@ -138,7 +138,7 @@ class ResetPasswordController extends AbstractController
             (
                 $user,
                 $form->get('plainPassword')->getData()
-            );
+            ) ;
 
             $user->setPassword($encodedPassword);
             $this->entityManager->flush();
