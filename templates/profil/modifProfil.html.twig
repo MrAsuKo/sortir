@@ -3,27 +3,85 @@
 {% block title %}Mon profil{% endblock %}
 
 {% block body %}
+<div class="body orga_infos">
 
 <div class="profil_div">
-    <h1>Mon Profil</h1>
+    <h1 class="titre_sortie">Mon Profil</h1>
 </div>
-
-<div class="profil_body">
-
-    <div style="margin-right: 50px;">
+    <br>
+    <div class="profil_image">
         <img class="img_avatar" src="{{ asset('uploads/avatars/'~participant.avatar.avatar) }}" alt="avatar">
     </div>
-
+<br>
     <div class="profil_div">
         {{ form_start(formProfil) }}
-        {{ form_row(formProfil.pseudo) }}
-        {{ form_row(formProfil.prenom) }}
-        {{ form_row(formProfil.nom) }}
-        {{ form_row(formProfil.telephone) }}
-        {{ form_row(formProfil.mail) }}
-        {{ form_row(formProfil.password) }}
-        {{ form_row(formProfil.campus) }}
-        {{ form_row(formProfil.avatar) }}
+        <div class="div input-group input-group-sm mb-3">
+            <div class="input-group-text">
+                {{ form_label(formProfil.pseudo) }}
+            </div>
+            <div>
+                {{ form_widget(formProfil.pseudo) }}
+                {{ form_errors(formProfil.pseudo) }}
+            </div>
+        </div>
+        <div class="div input-group input-group-sm mb-3">
+            <div class="input-group-text">
+                {{ form_label(formProfil.prenom) }}
+            </div>
+            <div>
+                {{ form_widget(formProfil.prenom) }}
+                {{ form_errors(formProfil.prenom) }}
+            </div>
+        </div>
+        <div class="div input-group input-group-sm mb-3">
+            <div class="input-group-text">
+                {{ form_label(formProfil.nom) }}
+            </div>
+            <div>
+                {{ form_widget(formProfil.nom) }}
+                {{ form_errors(formProfil.nom) }}
+            </div>
+        </div>
+        <div class="div input-group input-group-sm mb-3">
+            <div class="input-group-text">
+                {{ form_label(formProfil.telephone) }}
+            </div>
+            <div>
+                {{ form_widget(formProfil.telephone) }}
+                {{ form_errors(formProfil.telephone) }}
+            </div>
+        </div>
+        <div class="div input-group input-group-sm mb-3">
+            <div class="input-group-text">
+                {{ form_label(formProfil.mail) }}
+            </div>
+            <div>
+                {{ form_widget(formProfil.mail) }}
+                {{ form_errors(formProfil.mail) }}
+            </div>
+        </div>
+        <div class="div input-group input-group-sm mb-3">
+            {{ form_widget(formProfil.password) }}
+            {{ form_errors(formProfil.password) }}
+        </div>
+        <div class="div input-group input-group-sm mb-3">
+            <div class="input-group-text">
+                {{ form_label(formProfil.campus) }}
+            </div>
+            <div>
+                {{ form_widget(formProfil.campus) }}
+                {{ form_errors(formProfil.campus) }}
+            </div>
+        </div>
+        <div class="div input-group input-group-sm mb-3">
+            <div class="input-group-text">
+                {{ form_label(formProfil.avatar) }}
+            </div>
+            <div>
+                {{ form_widget(formProfil.avatar) }}
+                {{ form_errors(formProfil.avatar) }}
+            </div>
+        </div>
         {{ form_row(formProfil._token) }}
         <button class="profil_btn">{{ button_label|default('Save') }}</button>
         {{ form_end(formProfil) }}
