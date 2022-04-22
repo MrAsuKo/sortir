@@ -185,8 +185,15 @@ class SortieController extends AbstractController
         Sortie $sortie
     ): Response
     {
-        return $this->render('sortie/afficher.html.twig',
-            compact('sortie'));
+        if( $this->getUser())
+        {
+            return $this->render('sortie/afficher.html.twig',
+                compact('sortie'));
+        }
+        else{
+            return $this->redirectToRoute('app_login');
+        }
+
     }
 
 
