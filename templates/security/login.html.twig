@@ -4,6 +4,8 @@
 
 {% block body %}
 
+<div class="body connecter">
+
 <form method="post">
 
     {% if error %}
@@ -16,27 +18,32 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputMail">Mail</label>
+    <h1 class="titre_sortie">Se connecter</h1>
+    <br>
+    <div class="div input-group input-group-sm mb-3"><div class="input-group-text">
+    <label for="inputMail">Mail : </label>
+        </div>
     <input type="text" value="{{ last_username }}" name="mail" id="inputMail" class="form-control" autocomplete="username" required autofocus>
-    <label for="inputPassword">Password</label>
+    </div>
+    <div class="div input-group input-group-sm mb-3"><div class="input-group-text">
+        <label for="inputPassword">Password : </label>
+        </div>
     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
+    </div>
     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
 
         <div class="checkbox mb-3">
             <label>
-                <input type="checkbox" name="_remember_me"> Remember me
+                <input class="form-check-input filter_switch" type="checkbox" name="_remember_me"> Se souvenir de moi
             </label>
         </div>
 
-    <a href="{{ path('app_forgot_password_request') }}">J'ai oublié mon mot de passe</a>
-    <br>
+    <a class="lien_tab" href="{{ path('app_forgot_password_request') }}">J'ai oublié mon mot de passe</a>
+    <br><br>
 
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
+    <button class="btn btn-secondary bouton_connecter" type="submit">
+        Connexion
     </button>
 </form>
+</div>
 {% endblock %}

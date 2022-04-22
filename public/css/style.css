@@ -7,6 +7,16 @@ select{
     height: 30px;
 }
 
+.connecter {
+    color: #00304a;
+    background-color: rgba(254,43,57,0.2);
+    margin: 50px auto;
+    padding: 25px;
+    width: 25%;
+    border-radius: 50px;
+    box-shadow: 5px 5px 5px rgba(255,131,43,0.25), -3px -3px 3px rgba(254,233,42,0.25);
+}
+
 header {
     background: linear-gradient(rgba(252,50,159,0.2), rgba(169,41,193,0.2), rgba(41,123,253,0.2), rgba(44,194,84,0.2), rgba(254,233,42,0.2));
     box-shadow: 0 3px 3px rgba(255,131,43,0.25);
@@ -461,6 +471,19 @@ tbody {
 }
 
 .bouton_filter_ville:hover {
+    color: black;
+    border-color: #00877e;
+    background: linear-gradient(to right, rgba(254,43,57,255), rgba(255,131,43,255), rgba(254,233,42,255), rgba(44,194,84,255), rgba(41,123,253,255), rgba(169,41,193,255), rgba(252,50,159,255));
+}
+
+.bouton_connecter {
+    background: #00304a;
+    border-color: #00877e;
+    width: 100%;
+    transition: all 1s ease-in-out;
+}
+
+.bouton_connecter:hover {
     color: black;
     border-color: #00877e;
     background: linear-gradient(to right, rgba(254,43,57,255), rgba(255,131,43,255), rgba(254,233,42,255), rgba(44,194,84,255), rgba(41,123,253,255), rgba(169,41,193,255), rgba(252,50,159,255));
