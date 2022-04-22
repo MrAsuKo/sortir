@@ -67,9 +67,14 @@ class ProfilController extends AbstractController
         Participant $profil
     ):Response
     {
-        return $this->render('profil/affichage.html.twig',
-        compact('profil')
-        );
+        if($this->getUser())
+        {
+            return $this->render('profil/affichage.html.twig',
+                compact('profil')
+            );
+        } else {
+            return $this->redirectToRoute('app_login');
+        }
     }
 
 }
