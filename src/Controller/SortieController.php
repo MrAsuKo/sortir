@@ -25,6 +25,11 @@ class SortieController extends AbstractController
         EtatRepository          $er
     ): Response
     {
+        if(!$this->getUser())
+        {
+            return $this->redirectToRoute('app_login');
+        }
+
         $sortie = new Sortie();
 
         $user = $pr->findOneBy(['mail' => $this->getUser()->getUserIdentifier()]);
@@ -101,6 +106,10 @@ class SortieController extends AbstractController
         Request                 $request
     ): Response
     {
+        if(!$this->getUser())
+        {
+            return $this->redirectToRoute('app_login');
+        }
 
         $user = $this->getUser()->getUserIdentifier();
         $user = $pr->findOneBy(['mail'=> $user]);
