@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Form\FilterSortieType;
+use App\Repository\EtatRepository;
 use App\Repository\SortieRepository;
 use DateTime;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,11 +18,49 @@ class AccueilController extends AbstractController
     #[Route('/accueil', name: 'app_accueil')]
     public function afficherAccueil
     (
+        EntityManagerInterface $em,
         SortieRepository      $sm,
+        EtatRepository        $er,
         Request               $request,
     ): Response
     {
+        $date = new DateTime();
         $sorties = $sm->findAll() ;
+
+        foreach ( $sorties as $sortie)
+        {
+
+            $etat = $sortie->getEtat()->getId();
+
+            if($etat == 2)
+            {
+                if( $date >$sortie->getDateLimiteInscription() || $sortie->getNbInscriptionsMax() <= count($sortie->getParticipant()))
+                {
+                    $sortie->setEtat( $er->findOneBy(['libelle' => 'Clôturée']));
+                }
+
+                if( $date >$sortie->getDateHeureDebut())
+                {
+                    $sortie->setEtat( $er->findOneBy(['libelle' => 'Passée']));
+                }
+
+            }
+
+            if($etat == 3)
+            {
+                if( $date >$sortie->getDateHeureDebut())
+                {
+                    $sortie->setEtat( $er->findOneBy(['libelle' => 'Passée']));
+                }
+
+            }
+
+            $em->persist($sortie);
+            $em->flush();
+
+        }
+
+
         $user = $this->getUser();
 
         $filterForm = $this->createForm(FilterSortieType::class);

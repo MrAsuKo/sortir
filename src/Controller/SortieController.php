@@ -38,8 +38,22 @@ class SortieController extends AbstractController
             $sortie->setOrganisateur($user);
             $sortie->setCampus($user->getCampus());
 
+            $date = new DateTime();
+
+            if( $sortie->getDateLimiteInscription() <= $date || $sortie->getDateHeureDebut() <= $date)
+            {
+                $this->addFlash
+                (
+                    'Erreur',
+                    'Vous avez créee une sortie antérieur à la date d\'aujourd\'hui'
+                );
+
+                return $this->redirectToRoute('app_accueil');
+            }
+
             if ($sortieForm->getClickedButton() && 'enregistrer' === $sortieForm->getClickedButton()->getName())
             {
+
                 $etat = $er->findOneBy(['id' => 1]);
                 $sortie->setEtat($etat);
 
