@@ -3,11 +3,20 @@
 {% block title %}Profil Utilisateur{% endblock %}
 
 {% block body %}
+
     <div class="body orga_infos">
     <div class="profil_div">
         <h1 class="titre_sortie">Profil</h1>
     </div>
-        <br>
+
+    <div class="profil_div div">
+        {% if (profil.avatar == null) %}
+            <img class="img_avatar" src="{{ asset('img/unicorn.png') }}" alt="avatar">
+        {% else %}
+            <img class="img_avatar" src="{{ asset('uploads/avatars/'~profil.avatar.avatar) }}" alt="avatar">
+        {% endif %}
+    </div>
+    <br>
     <div class="profil_div div">
         <p class="gras">Pseudo : </p>&nbsp;
         <p>{{ profil.pseudo }}</p>
@@ -32,7 +41,7 @@
         <p class="gras">Mail : </p>&nbsp;
         <p>{{ profil.mail }}</p>
     </div>
-        <div>
+        <div class="profil_div div">
             <a class="btn btn-secondary bouton_creer" href="{{ path('app_accueil') }}">Retour</a>
         </div>
     </div>

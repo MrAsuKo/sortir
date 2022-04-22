@@ -8,10 +8,9 @@
 <div class="profil_div">
     <h1 class="titre_sortie">Mon Profil</h1>
 </div>
-    <br>
     <div class="profil_image">
         {% if (participant.avatar == null) %}
-            <p></p>
+        <img class="img_avatar" src="{{ asset('img/unicorn.png') }}" alt="avatar">
         {% else %}
         <img class="img_avatar" src="{{ asset('uploads/avatars/'~participant.avatar.avatar) }}" alt="avatar">
         {% endif %}
